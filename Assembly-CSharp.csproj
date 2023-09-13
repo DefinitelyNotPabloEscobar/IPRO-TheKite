@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2ee10a46-cff8-4523-0f27-53ea0c035b01}</ProjectGuid>
+    <ProjectGuid>{047fe5f9-0251-3bc4-69f3-de42fc584697}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -350,10 +350,10 @@
         <HintPath>D:\Unity\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>D:\iProlepse\The kite\The Kite\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+        <HintPath>D:\iProlepse\The kite\IPRO-TheKite\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-        <HintPath>D:\iProlepse\The kite\The Kite\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+        <HintPath>D:\iProlepse\The kite\IPRO-TheKite\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>D:\Unity\2021.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -724,135 +724,135 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
-      <Project>{1b8b4544-6cf6-7664-f493-b2eb26ebd061}</Project>
+      <Project>{d97049d2-742b-3555-0094-7b85cea66cfd}</Project>
       <Name>Unity.VisualScripting.Flow.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{ed53aaf3-2fc7-14bf-9c8f-f9daa1f188f1}</Project>
+      <Project>{60d26956-956a-ffbd-ae24-134ea9f9f801}</Project>
       <Name>Unity.VSCode.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Notifications.csproj">
-      <Project>{ef688f2a-2396-baf3-6034-3fa0d51eefff}</Project>
+      <Project>{abb4e9ca-b534-c3a3-6ea5-ea1b1e192f5c}</Project>
       <Name>Unity.Notifications</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{4bd541b7-f620-2dca-9286-480ba761af2b}</Project>
+      <Project>{07cbc2ac-5e26-c700-7357-647c7dffa0bf}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
-      <Project>{468e4129-525d-e447-92a1-fe48f0e06398}</Project>
+      <Project>{a7717f88-11d4-6357-12b0-ef3b2230a000}</Project>
       <Name>Unity.VisualStudio.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Profiling.Core.csproj">
-      <Project>{585832dc-048a-d1f8-dcc1-bfabdec20df0}</Project>
+      <Project>{aa71ae49-7de8-9c7e-a158-4195acbc78e9}</Project>
       <Name>Unity.Profiling.Core</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{807ff90d-23fc-5714-9103-018473f20813}</Project>
+      <Project>{c87fa993-1925-d7e9-511c-7380eb776124}</Project>
       <Name>Unity.Timeline</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.Editor.csproj">
-      <Project>{284bbaba-5cb8-5a95-2fc4-d0b813339bb8}</Project>
+      <Project>{9f6ea75a-329f-9fe6-8163-5e152d8b48a6}</Project>
       <Name>Unity.VisualScripting.Core.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{fd380044-7790-b641-1106-5911df7ff046}</Project>
+      <Project>{d8cc416a-55ce-f6b2-5cbc-e54d30bd0bae}</Project>
       <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj">
-      <Project>{f4189a16-52c0-1275-250b-4bd279177b15}</Project>
+      <Project>{2a66c468-ad24-a4a8-7a5b-43abbe0d56f6}</Project>
       <Name>Unity.VisualScripting.State.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.AdaptivePerformance.Simulator.Extension.csproj">
-      <Project>{7e44af6a-ab91-853a-9c1d-563ca0e9da81}</Project>
+      <Project>{79f3f605-3d58-a0d7-6a6f-16dd27b6eae0}</Project>
       <Name>Unity.AdaptivePerformance.Simulator.Extension</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
-      <Project>{f7b6b457-1826-0bde-4502-8b8fbc6c2ac7}</Project>
+      <Project>{8e59f8fd-2d0f-ede1-ee37-ef0d5ebaa451}</Project>
       <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Subsystem.Registration.csproj">
-      <Project>{4946ee37-0e62-18d8-c355-423c877878d4}</Project>
+      <Project>{877f316d-cafb-c668-03bf-e93ac95e289d}</Project>
       <Name>Unity.Subsystem.Registration</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.AdaptivePerformance.UI.Editor.csproj">
-      <Project>{94fd4f31-18d5-e374-3258-6e68d59577bf}</Project>
+      <Project>{c05de201-5c7b-ac60-504a-2dff8ba0071a}</Project>
       <Name>Unity.AdaptivePerformance.UI.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{b535eeb5-b73c-8e03-606f-032d3c1eccb1}</Project>
+      <Project>{c7175832-e437-75c2-e775-5709b3a664e4}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
-      <Project>{6de06ce4-edc7-6928-a280-ec7da2d56d68}</Project>
+      <Project>{72eb30d8-e0ac-7446-2535-c981bc7c6371}</Project>
       <Name>Unity.PlasticSCM.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{de5a3470-b9ce-5b79-2fce-e2c54d52386e}</Project>
+      <Project>{3e804b55-b4ce-f7d2-66e1-a51d5cfbe0de}</Project>
       <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{0167348b-4aa9-46d2-95f3-45a2fb89c011}</Project>
+      <Project>{522d316d-9b2a-3d6f-5199-e95bb62ae020}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
-      <Project>{2cd283af-9549-70bf-49a8-e31dc4cc2bc5}</Project>
+      <Project>{ec415eaf-c1fd-c15f-7e09-4b3fde086840}</Project>
       <Name>Unity.VisualScripting.Flow</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Notifications.iOS.csproj">
-      <Project>{b5e922e1-0ccd-6d77-2806-d6bc61bcad39}</Project>
+      <Project>{6838f03f-ded5-9488-1ce2-f13ba65cc3f6}</Project>
       <Name>Unity.Notifications.iOS</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.csproj">
-      <Project>{c704d19d-3989-d424-6a44-1c82815ba637}</Project>
+      <Project>{d2d8de2b-fc69-2b1a-ed08-36de6cd0dac1}</Project>
       <Name>Unity.Services.Core</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.csproj">
-      <Project>{348131ad-855e-4501-6d1f-73e9efbc22e9}</Project>
+      <Project>{4235e6ae-24bb-949d-b8cb-fc9d894660a2}</Project>
       <Name>Unity.VisualScripting.Core</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.AdaptivePerformance.Simulator.Editor.csproj">
-      <Project>{e4a3ba1f-df9b-c1b9-985b-01d9207c200f}</Project>
+      <Project>{1ad76e48-c606-c087-8470-d56e8324414f}</Project>
       <Name>Unity.AdaptivePerformance.Simulator.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Analytics.csproj">
-      <Project>{e235689e-01e0-1b3b-9acc-72532c124806}</Project>
+      <Project>{c9b747f3-620d-ab91-7714-24e375dc4ab9}</Project>
       <Name>Unity.Services.Core.Analytics</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.AdaptivePerformance.Editor.csproj">
-      <Project>{4dcef2db-31c5-0317-06dc-125ba66d4636}</Project>
+      <Project>{b5cabed1-827f-a486-6da6-a9cf7a2990d6}</Project>
       <Name>Unity.AdaptivePerformance.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj">
-      <Project>{b894bc78-4d37-1077-762e-77d6a93e8f4a}</Project>
+      <Project>{5932f4d3-ec62-b6fd-371c-892027b96591}</Project>
       <Name>Unity.VisualScripting.Shared.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Environments.csproj">
-      <Project>{78b46728-a523-4013-f474-93d71a61b365}</Project>
+      <Project>{f800b996-f3d2-56bf-d5c8-dc3f70f009dd}</Project>
       <Name>Unity.Services.Core.Environments</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mobile.AndroidLogcat.Editor.csproj">
-      <Project>{0394a4ab-4716-8356-25ee-636b5166debb}</Project>
+      <Project>{49e356b5-6cfb-7830-39c8-fa0708de3888}</Project>
       <Name>Unity.Mobile.AndroidLogcat.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{9a427f89-6e63-23ff-2aad-0bd8675a1bc7}</Project>
+      <Project>{feed8441-b161-517a-b8ce-bf56ce5456f4}</Project>
       <Name>Unity.Timeline.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.AdaptivePerformance.csproj">
-      <Project>{e58f83ef-ffb1-93a0-b4c4-512e9ce1681d}</Project>
+      <Project>{62cbaba8-84eb-49cf-9b8d-77f6dd65e9be}</Project>
       <Name>Unity.AdaptivePerformance</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Notifications.Android.csproj">
-      <Project>{77de794a-e2c7-6885-b7b0-55c20f1d4ecd}</Project>
+      <Project>{67616fce-c355-97ba-14c5-7b46a18819d1}</Project>
       <Name>Unity.Notifications.Android</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.AdaptivePerformance.Profiler.Editor.csproj">
-      <Project>{a211479c-cf70-d968-97c5-990289ece24a}</Project>
+      <Project>{49b70e7c-4716-22ba-1124-1fe1ba6f023d}</Project>
       <Name>Unity.AdaptivePerformance.Profiler.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.State.csproj">
-      <Project>{0821c980-e7f3-0480-933c-bbe999f63c8d}</Project>
+      <Project>{c3d59583-9a63-8d34-6954-f3bfbe286e4e}</Project>
       <Name>Unity.VisualScripting.State</Name>
     </ProjectReference>
   </ItemGroup>
