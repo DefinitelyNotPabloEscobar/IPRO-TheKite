@@ -36,6 +36,7 @@ public class SkyBoxMovement : MonoBehaviour
             Vector3 lookAtPosition = center.position;
             lookAtPosition.y = lightToMove.position.y;
             lightToMove.LookAt(lookAtPosition);
+            
         }
     }
 }
