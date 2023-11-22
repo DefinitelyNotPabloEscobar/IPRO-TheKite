@@ -2,6 +2,7 @@ using Assets.Scripts.Util;
 using ScottPlot.Drawing.Colormaps;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -69,6 +70,7 @@ public class KiteMovementScript : MonoBehaviour
     private float lastYPos;
 
     private bool won = false;
+    private int wonTime = 100;
 
     private float StartTime;
     private float EarlySecSpeed;
@@ -96,6 +98,8 @@ public class KiteMovementScript : MonoBehaviour
     private float exhaleDuration = 3f;
     private float inhaleDuration = 2f;
     private float holdDuration = 2f;
+
+    private int Score = 0;
 
     void Start()
     {
@@ -206,6 +210,7 @@ public class KiteMovementScript : MonoBehaviour
             {
                 HideProgressBars();
                 lastYPos = kite.position.y;
+                WriteIntToFile(SharedConsts.ScorePath, CalculateScore());
                 //RemoveIndicatores();
             }
             lost = true;
@@ -227,18 +232,19 @@ public class KiteMovementScript : MonoBehaviour
 
         //Debug.Log("Breath :" + breath.position + " vs " + predicted.position);
 
-        if (won || Time.time - StartTime > 100)
+        if (won || Time.time - StartTime > wonTime)
         {
 
             if (!won)
             {
                 SoundManager.playWin();
+                WriteIntToFile(SharedConsts.ScorePath, CalculateScore());
                 HideProgressBars();
             }
             won = true;
             WinAnimation();
 
-            if (Time.time - StartTime > 110) SceneManager.LoadScene(0);
+            if (Time.time - StartTime > 110) SceneManager.LoadScene(2);
             return;
         }
 
@@ -374,7 +380,7 @@ public class KiteMovementScript : MonoBehaviour
             SoundManager.playLose();
         }
 
-        if(kite.position.y > 150) SceneManager.LoadScene(0);
+        if(kite.position.y > 150) SceneManager.LoadScene(2);
 
         phaseManager.HideText();
         timerManager.HideText();
@@ -616,5 +622,29 @@ public class KiteMovementScript : MonoBehaviour
         progressBar1.HideBar();
         progressBar2.HideBar();
         progressBar3.HideBar();
+    }
+
+
+    private void WriteIntToFile(string filePath, int data)
+    {
+        try
+        {
+            DataContainer dataContainer = new DataContainer();
+            dataContainer.Score = data;
+
+            string jsonResult = JsonUtility.ToJson(dataContainer);
+
+            File.WriteAllText(filePath, jsonResult);
+        }
+        catch
+        {
+            Debug.Log("Error while writting Int to File at " +  filePath);
+        }
+    }
+
+    private int CalculateScore()
+    {
+        Score = (int) (LoseThreshold - Error) + (int) (timerManager.totalTime / (wonTime/5));
+        return Score;
     }
 }

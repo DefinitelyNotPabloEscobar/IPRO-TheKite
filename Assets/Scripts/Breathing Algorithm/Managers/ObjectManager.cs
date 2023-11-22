@@ -221,6 +221,7 @@ public class ObjectManager : MonoBehaviour {
                 feedbackImage.gameObject.SetActive(false);
                 instructionsText.gameObject.SetActive(false);
                 this.enabled = false;
+                SceneManager.LoadScene(0);
             }
         }
         //Update every numSeconds
