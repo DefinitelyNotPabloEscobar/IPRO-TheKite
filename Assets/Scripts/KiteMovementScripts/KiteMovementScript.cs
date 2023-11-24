@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class KiteMovementScript : MonoBehaviour
 {
     // Angle increment per frame
@@ -50,6 +51,7 @@ public class KiteMovementScript : MonoBehaviour
     public TextMeshProUGUI instructionsText;
     public TextMeshProUGUI gameResultText;
     public TextMeshProUGUI timeText;
+    public TextMeshProUGUI scoreText;
 
     public float ErrorCatchingTime = 0.25f;
 
@@ -84,6 +86,7 @@ public class KiteMovementScript : MonoBehaviour
 
     private TimerManager timerManager;
     private PhaseManager phaseManager;
+    private ScoreManager scoreManager;
 
     public ProgressBar progressBar1;
     public ProgressBar progressBar2;
@@ -130,6 +133,7 @@ public class KiteMovementScript : MonoBehaviour
             objectList.Add(indicatorObj);
         }
 
+        /*
         for(int  i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
         {
             float x = radius * Mathf.Cos((angle + (((float)i / (float)numberOfIndicatores) * indicatorSpread)) * Mathf.Deg2Rad);
@@ -147,35 +151,11 @@ public class KiteMovementScript : MonoBehaviour
 
             reverseObjectList.Add(indicatorObj);
         }
-        
-        /*
-        var initialAngle = angle;
-        var initialElevationAngule = elevationAngle;
-        float fullAngleCirculeTime = 360f / Mathf.Abs(angularSpeed);
-        float timePerTarget = fullAngleCirculeTime/numberOfIndicatores;
-        for(int i = 0; i < numberOfIndicatores; i++)
-        {
-            float x = radius * Mathf.Cos((initialAngle + (angularSpeed * timePerTarget * i)) * Mathf.Deg2Rad);
-            float z = radius * Mathf.Sin((initialAngle + (angularSpeed * timePerTarget * i)) * Mathf.Deg2Rad);
-            float y = (((Mathf.Sin((predictAngle(timePerTarget * i) * Mathf.Deg2Rad)) + 2) / 2) * elevationHeightAmp) + 3;
-            Vector3 drawVector = new Vector3(x, y, z);
-
-            GameObject indicatorObj = Instantiate(indicator, drawVector, Quaternion.Euler(0f, 0f, 0f));
-
-            Renderer objectRenderer = indicatorObj.GetComponent<Renderer>();
-            if (objectRenderer != null)
-            {
-                objectRenderer.material.color = greenColor;
-                objectRenderer.enabled = false;
-            }
-
-            objectList.Add(indicatorObj);
-        }
         */
 
         timerManager = new TimerManager(timeText);
         phaseManager = new PhaseManager(instructionsText);
-        
+        scoreManager = new ScoreManager(scoreText);
     }
 
     void Update()
@@ -322,7 +302,7 @@ public class KiteMovementScript : MonoBehaviour
                 if (cycleStarted)
                 {
                     if (Util.IsWithinThreshold(elevationAngle, 0f, 0.5f)) elevationAngle = 0f;
-                    if (elevationAngle < 0) elevationAngle += angularElevSpeed * Time.deltaTime;
+                    else if (elevationAngle < 0) elevationAngle += angularElevSpeed * Time.deltaTime;
                     else if (elevationAngle > 0) elevationAngle -= angularElevSpeed * Time.deltaTime;
                 }
                 else
@@ -333,9 +313,9 @@ public class KiteMovementScript : MonoBehaviour
             case "inhale":
                 if (cycleStarted)
                 {
-                    if (Util.IsWithinThreshold(elevationAngle, 90f, 0.5f)) elevationAngle = 90f;
-                    else if (elevationAngle < 90) elevationAngle += angularElevSpeed * Time.deltaTime;
-                    else if (elevationAngle > 90) elevationAngle -= angularElevSpeed * Time.deltaTime;
+                    if (Util.IsWithinThreshold(elevationAngle, 0, 0.5f)) elevationAngle = 0f;
+                    else if (elevationAngle < 0) elevationAngle += angularElevSpeed * Time.deltaTime;
+                    else if (elevationAngle > 0) elevationAngle -= angularElevSpeed * Time.deltaTime;
                 }
                 break;
             case "exhale":
@@ -384,6 +364,7 @@ public class KiteMovementScript : MonoBehaviour
 
         phaseManager.HideText();
         timerManager.HideText();
+        scoreManager.HideText();
         MoveIndicators();
     }
 
@@ -396,6 +377,7 @@ public class KiteMovementScript : MonoBehaviour
 
         phaseManager.HideText();
         timerManager.HideText();
+        scoreManager.HideText();
         MoveIndicators();
 
         if (Error <= 0)
@@ -423,7 +405,9 @@ public class KiteMovementScript : MonoBehaviour
         phaseManager.UpdateColor(textColor);
 
         //Update Timer and its color
-        UpdateTimeText(textColor);
+        //UpdateTimeText(textColor);
+
+        scoreManager.setText(CalculateScore());
     }
 
     private void UpdateTimeText(Color color)
@@ -448,8 +432,11 @@ public class KiteMovementScript : MonoBehaviour
 
     public float CalculateY()
     {
+        float t = Mathf.InverseLerp(-90f, 0f, elevationAngle);
+        float smoothedError = Mathf.Lerp(-Error / 4, Error / 4, t);
+
         return (((Mathf.Sin(elevationAngle * Mathf.Deg2Rad) + 2) / 2f) * elevationHeightAmp) + 3 +
-                Mathf.Sin(elevationAngle * Mathf.Deg2Rad) * Error/4;
+                smoothedError;
         //return kite.position.y + (predicted.position.y/10) * Time.deltaTime;
     }
 
@@ -499,63 +486,82 @@ public class KiteMovementScript : MonoBehaviour
 
         switch (phase.ToLower())
         {
-            /*
+            
             case "hold":
-                if(elevationAngle <= 90f && elevationAngle >= 0f)
-                {
-                    if (elevationAngle - angularElevSpeed * leftDuration > 0f) return elevationAngle - angularElevSpeed * leftDuration;
-                    else return 0f;
-                }
-                else if(elevationAngle >= -90f && elevationAngle <= 0f)
-                {
-                    if (elevationAngle + angularElevSpeed * leftDuration < 0f) return elevationAngle + angularElevSpeed * leftDuration;
-                    else return 0f;
-                }
-                break;
+                if (elevationAngle + angularElevSpeed * leftDuration < 0f) return elevationAngle + angularElevSpeed * leftDuration;
+                else return 0f;
             case "inhale":
-                if (elevationAngle + angularElevSpeed * leftDuration < 90f) return elevationAngle + angularElevSpeed * leftDuration;
-                else return 90f;
+                if (elevationAngle + angularElevSpeed * leftDuration < 0f) return elevationAngle + angularElevSpeed * leftDuration;
+                else return 0f;
             case "exhale":
                 if (elevationAngle - angularElevSpeed * leftDuration > -90f) return elevationAngle - angularElevSpeed * leftDuration;
                 else return -90f;
             default:
-                break;
-            */
-            case "hold":
-                return Mathf.Clamp(elevationAngle - angularElevSpeed * leftDuration, -90f, 90f);
-            case "inhale":
-                return Mathf.Clamp(elevationAngle + angularElevSpeed * leftDuration, elevationAngle, 90f);
-            case "exhale":
-                return Mathf.Clamp(elevationAngle - angularElevSpeed * leftDuration, -90f, elevationAngle);
-            default:
-                return elevationAngle;
+                return 0f;
         }
     }
 
     private void MoveIndicators(){
+
         float T = indicatoresFowardTiming;
         float futureTime;
+        float updatedAngle = angle + numberOfObjNotDrawn * T * angularSpeed; 
+
+        
         for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
         {
-            futureTime = Time.time - StartTime + (i * T);
-            float x = radius * Mathf.Cos((angle + ((i * T) * angularSpeed)) * Mathf.Deg2Rad);
+            int updatedI = i - numberOfObjNotDrawn + 1;
+            futureTime = Time.time - StartTime + (updatedI * T);
+            float x = radius * Mathf.Cos((updatedAngle + ((updatedI * T) * angularSpeed)) * Mathf.Deg2Rad);
             float y = (((Mathf.Sin(predictAngle(futureTime) * Mathf.Deg2Rad) + 2) / 2) * elevationHeightAmp) + 3;
-            float z = radius * Mathf.Sin((angle + ((i * T) * angularSpeed)) * Mathf.Deg2Rad);
+            float z = radius * Mathf.Sin((updatedAngle + ((updatedI * T) * angularSpeed)) * Mathf.Deg2Rad);
             Vector3 drawVector = new Vector3(x, y, z);
 
             objectList[i- numberOfObjNotDrawn].transform.position = drawVector;
         }
+
+        /*
         for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
         {
-            futureTime = Time.time - StartTime + (i * T);
-            float x = radius * Mathf.Cos((angle - ((i * T) * angularSpeed)) * Mathf.Deg2Rad);
+            int updatedI = i - numberOfObjNotDrawn + 1;
+            futureTime = Time.time - StartTime + (updatedI * T);
+            float x = radius * Mathf.Cos((updatedAngle - ((updatedI * T) * angularSpeed)) * Mathf.Deg2Rad);
             float y = (((Mathf.Sin(predictAngle(futureTime) * Mathf.Deg2Rad) + 2) / 2) * elevationHeightAmp) + 3;
-            float z = radius * Mathf.Sin((angle - ((i * T) * angularSpeed)) * Mathf.Deg2Rad);
+            float z = radius * Mathf.Sin((updatedAngle - ((updatedI * T) * angularSpeed)) * Mathf.Deg2Rad);
             Vector3 drawVector = new Vector3(x, y, z);
 
             reverseObjectList[i- numberOfObjNotDrawn].transform.position = drawVector;
         }
+        */
+
+        /*
+        for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
+        {
+            if (IsMainObjectNearby(objectList[i - numberOfObjNotDrawn], 1.5f))
+            {
+                var discartedObject = objectList[i - numberOfObjNotDrawn];
+                objectList.Remove(objectList[i - numberOfObjNotDrawn]);
+                Destroy(discartedObject);
+
+                futureTime = Time.time - StartTime + ((numberOfIndicatores - 1) * T);
+                float x = radius * Mathf.Cos((updatedAngle + (((numberOfIndicatores - 1) * T) * angularSpeed)) * Mathf.Deg2Rad);
+                float y = (((Mathf.Sin(predictAngle(futureTime) * Mathf.Deg2Rad) + 2) / 2) * elevationHeightAmp) + 3;
+                float z = radius * Mathf.Sin((updatedAngle + (((numberOfIndicatores - 1) * T) * angularSpeed)) * Mathf.Deg2Rad);
+                Vector3 drawVector = new Vector3(x, y, z);
+
+                GameObject indicatorObj = Instantiate(indicator, drawVector, Quaternion.Euler(0f, 0f, 0f));
+                objectList.Add(indicatorObj);
+
+            }
+        }
+        */
     }
+
+    private bool IsMainObjectNearby(GameObject indicatorObject, float distanceThreshold)
+    {
+        return Vector3.Distance(kite.transform.position, indicatorObject.transform.position) < distanceThreshold;
+    }
+
 
     private void UpdateIndicatorsColors(Color color)
     {
@@ -569,6 +575,7 @@ public class KiteMovementScript : MonoBehaviour
                 objectRenderer.material.color = color;
             }
         }
+        /*
         for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
         {
             Renderer objectRenderer = reverseObjectList[i - numberOfObjNotDrawn].GetComponent<Renderer>();
@@ -578,6 +585,7 @@ public class KiteMovementScript : MonoBehaviour
                 objectRenderer.material.color = color;
             }
         }
+        */
         
     }
 
@@ -646,5 +654,15 @@ public class KiteMovementScript : MonoBehaviour
     {
         Score = (int) (LoseThreshold - Error) + (int) (timerManager.totalTime / (wonTime/5));
         return Score;
+    }
+
+    public float getAngle()
+    {
+        return angle;
+    }
+
+    public float getRadius()
+    {
+        return radius;
     }
 }

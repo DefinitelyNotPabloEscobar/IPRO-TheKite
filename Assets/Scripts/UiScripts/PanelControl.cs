@@ -12,21 +12,21 @@ public class PanelControl : MonoBehaviour
     {
         if (panelScroller == null) return;
 
-        if (panelScroller.isMovingLeft())
+        if (panelScroller.isMovingUp())
         {
-            panelScroller.PanelGoRight();
+            panelScroller.PanelGoDown();
         }
-        else if (panelScroller.isMovingRigth())
+        else if (panelScroller.isMovingDown())
         {
-            panelScroller.PanelGoLeft();
+            panelScroller.PanelGoUp();
         }
-        else if (panelScroller.isOnRight())
+        else if (panelScroller.isOnBottomHalf())
         {
-            panelScroller.PanelGoLeft();
+            panelScroller.PanelGoUp();
         }
         else
         {
-            panelScroller.PanelGoRight();
+            panelScroller.PanelGoDown();
         }
 
         FixBtnIcon();
@@ -34,17 +34,17 @@ public class PanelControl : MonoBehaviour
 
     private void FixBtnIcon()
     {
-        if (panelScroller.isMovingLeft()) btn.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-        else if (panelScroller.isMovingRigth()) btn.transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+        if (panelScroller.isMovingUp()) btn.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        else if (panelScroller.isMovingDown()) btn.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
         else
         {
-            if (panelScroller.isOnRight())
+            if (panelScroller.isOnBottomHalf())
             {
-                btn.transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+                btn.transform.rotation = Quaternion.Euler(0f, 0f, 1800f);
             }
             else
             {
-                btn.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                btn.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
         }
     }

@@ -1,3 +1,4 @@
+using Assets.Scripts.Util;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,92 +9,92 @@ public class PanelScroller : MonoBehaviour
     public Canvas canvas;
     public GameObject panel;
 
-    private bool MovLeft = false;
-    private bool MovRigth = false;
+    private bool MoveUp = false;
+    private bool MoveDown = false;
 
-    private float leftPercentage = 2.6f;
-    private float rightPercentage = 3.675f;
-    private float leftPosition;
-    private float rightPosition;
+    private float upPercentage = 0.2f;
+    private float downPercentage = -0.075f;
+    private float upPosition;
+    private float downPosition;
 
-    private float speed = 2000f;
+    private float speed = 1000f;
 
 
-    private static float canvasWidth;
+    private static float canvasHeight;
 
     private void Start()
     {
-        canvasWidth = canvas.GetComponent<RectTransform>().rect.width;
-        leftPosition = canvasWidth * leftPercentage;
-        rightPosition = canvasWidth * rightPercentage;
+        canvasHeight = canvas.GetComponent<RectTransform>().rect.height;
+        upPosition = canvasHeight * upPercentage;
+        downPosition = canvasHeight * downPercentage;
 
         panel.transform.position = new Vector3(
-                rightPosition,
-                panel.transform.position.y,
+                panel.transform.position.x,
+                downPosition,
                 panel.transform.position.z);
 
     }
 
     private void Update()
     {
-        if (MovLeft)
+        if (MoveUp)
         {
             panel.transform.position = new Vector3(
-                panel.transform.position.x - Time.deltaTime * speed,
-                panel.transform.position.y,
+                panel.transform.position.x,
+                panel.transform.position.y + Time.deltaTime * speed,
                 panel.transform.position.z);
-            if (panel.transform.position.x <= leftPosition)
+            if (panel.transform.position.y >= upPosition)
             {
-                MovLeft = false;
+                MoveUp = false;
                 panel.transform.position = new Vector3(
-                leftPosition,
-                panel.transform.position.y,
+                panel.transform.position.x,
+                upPosition,
                 panel.transform.position.z);
             }
         }
 
-        else if (MovRigth)
+        else if (MoveDown)
         {
             panel.transform.position = new Vector3(
-                panel.transform.position.x + Time.deltaTime * speed,
-                panel.transform.position.y,
+                panel.transform.position.x,
+                panel.transform.position.y - Time.deltaTime * speed,
                 panel.transform.position.z);
-            if (panel.transform.position.x >= rightPosition)
+            if (panel.transform.position.y <= downPosition)
             {
-                MovLeft = false;
+                MoveDown = false;
                 panel.transform.position = new Vector3(
-                rightPosition,
-                panel.transform.position.y,
+                panel.transform.position.x,
+                downPosition,
                 panel.transform.position.z);
 
             }
         }
     }
 
-    public void PanelGoRight()
+    public void PanelGoDown()
     {
-        MovRigth = true;
-        MovLeft = false;
+        MoveDown = true;
+        MoveUp = false;
     }
 
-    public void PanelGoLeft()
+    public void PanelGoUp()
     {
-        MovLeft = true;
-        MovRigth = false;
+        MoveUp = true;
+        MoveDown = false;
     }
 
-    public bool isMovingLeft()
+    public bool isMovingUp()
     {
-        return MovLeft;
+        return MoveUp;
     }
 
-    public bool isMovingRigth()
+    public bool isMovingDown()
     {
-        return MovRigth;
+        return MoveDown;
     }
 
-    public bool isOnRight()
+    public bool isOnBottomHalf()
     {
-        return panel.transform.position.x > leftPosition +  ((rightPosition - leftPosition) / 2);
+        return Util.IsWithinThreshold(panel.transform.position.y, downPosition, 1f);
     }
 }
