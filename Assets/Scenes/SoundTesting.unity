@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1813502, g: 0.26893976, b: 0.32132128, a: 1}
+  m_IndirectSpecularColor: {r: 0.18129082, g: 0.2689528, b: 0.32214198, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -595,8 +595,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d75531bb242b1f64fb186e5ac8edf828, type: 2}
-  m_sharedMaterial: {fileID: 8547155888169081633, guid: d75531bb242b1f64fb186e5ac8edf828,
+  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
+  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -711,8 +711,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Starting
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d75531bb242b1f64fb186e5ac8edf828, type: 2}
-  m_sharedMaterial: {fileID: 8547155888169081633, guid: d75531bb242b1f64fb186e5ac8edf828,
+  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
+  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.4
+  m_fontSize: 37.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -965,8 +965,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d75531bb242b1f64fb186e5ac8edf828, type: 2}
-  m_sharedMaterial: {fileID: 8547155888169081633, guid: d75531bb242b1f64fb186e5ac8edf828,
+  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
+  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

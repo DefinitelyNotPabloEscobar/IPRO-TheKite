@@ -12,21 +12,21 @@ public class PanelScroller : MonoBehaviour
     private bool MoveUp = false;
     private bool MoveDown = false;
 
-    private float upPercentage = 0.2f;
-    private float downPercentage = -0.075f;
+    private float upPercentage = 0.07f;
+    private float downPercentage = -0.0285f;
     private float upPosition;
     private float downPosition;
 
     private float speed = 1000f;
 
 
-    private static float canvasHeight;
+    private static float screenHeight;
 
     private void Start()
     {
-        canvasHeight = canvas.GetComponent<RectTransform>().rect.height;
-        upPosition = canvasHeight * upPercentage;
-        downPosition = canvasHeight * downPercentage;
+        screenHeight = Screen.height;
+        upPosition = screenHeight * upPercentage;
+        downPosition = screenHeight * downPercentage;
 
         panel.transform.position = new Vector3(
                 panel.transform.position.x,

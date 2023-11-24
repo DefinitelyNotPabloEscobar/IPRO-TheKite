@@ -1,7 +1,9 @@
+using Assets.Scripts.Util;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class StressBar : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class StressBar : MonoBehaviour
     private bool MovUp = false;
     private bool MovDown = false;
 
-    private float topPercentage = 0.8f;
+    private float topPercentage = 0.45f;
     private float downPercentage = -1f;
     private float downPosition;
     private float topPosition;
@@ -28,13 +30,13 @@ public class StressBar : MonoBehaviour
     public float stress = 4f;
     public float stressThreshold = 10f;
 
-    private static float canvasHeight;
+    private static int screenHeight;
 
     private void Start()
     {
-        canvasHeight = canvas.GetComponent<RectTransform>().rect.height;
-        downPosition = canvasHeight * downPercentage;
-        topPosition = canvasHeight * topPercentage;
+        screenHeight = Screen.height;
+        downPosition = screenHeight * downPercentage;
+        topPosition = screenHeight * topPercentage;
 
     }
 
@@ -63,9 +65,9 @@ public class StressBar : MonoBehaviour
     private void Update()
     {
         /*
-        canvasHeight = canvas.GetComponent<RectTransform>().rect.height;
-        downPosition = canvasHeight * downPercentage;
-        topPosition = canvasHeight * topPercentage;
+        screenHeight = canvas.GetComponent<RectTransform>().rect.height;
+        downPosition = screenHeight * downPercentage;
+        topPosition = screenHeight * topPercentage;
         */
         fill.color = GetStressColor(stress, stressThreshold);
         slider.value = Mathf.Clamp01(stress/stressThreshold);
@@ -127,6 +129,6 @@ public class StressBar : MonoBehaviour
 
     public bool isBarTop()
     {
-        return slider.transform.position.y > downPosition/2;
+        return Util.IsWithinThreshold(slider.transform.position.y, topPosition, 5f);
     }
 }
