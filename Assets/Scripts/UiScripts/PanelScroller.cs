@@ -21,15 +21,18 @@ public class PanelScroller : MonoBehaviour
 
 
     private static float screenHeight;
+    private static float screenWidth;
 
     private void Start()
     {
         screenHeight = Screen.height;
+        screenWidth = Screen.width;
+
         upPosition = screenHeight * upPercentage;
         downPosition = screenHeight * downPercentage;
 
         panel.transform.position = new Vector3(
-                panel.transform.position.x,
+                screenWidth/2,
                 downPosition,
                 panel.transform.position.z);
 

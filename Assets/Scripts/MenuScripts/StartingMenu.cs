@@ -61,7 +61,7 @@ public class StartingMenu : MonoBehaviour
     {
         try
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(SharedConsts.Breath);
         }
         catch
         {

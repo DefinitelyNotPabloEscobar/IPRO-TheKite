@@ -9,13 +9,14 @@ public class EndGameMenu : MonoBehaviour
 {
     public StressBar stressBar;
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI intScoreText;
     private int Score;
 
     public void Start()
     {
         string filePath = SharedConsts.ScorePath;
         Score = ReadFromFile(filePath);
-        ScoreText.text += " " + Score;
+        intScoreText.text = "" + Score;
 
     }
 
@@ -39,7 +40,7 @@ public class EndGameMenu : MonoBehaviour
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SharedConsts.Game);
 
         /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         // Unload the main menu scene (assuming it's not the first scene)

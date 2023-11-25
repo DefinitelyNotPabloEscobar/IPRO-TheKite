@@ -221,7 +221,7 @@ public class ObjectManager : MonoBehaviour {
                 feedbackImage.gameObject.SetActive(false);
                 instructionsText.gameObject.SetActive(false);
                 this.enabled = false;
-                if(micAlertText.text.Equals("")) SceneManager.LoadScene(0);
+                if(micAlertText.text.Equals("")) SceneManager.LoadScene(SharedConsts.StartingMenu);
             }
         }
         //Update every numSeconds

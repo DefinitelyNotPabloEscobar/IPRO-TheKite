@@ -224,7 +224,7 @@ public class KiteMovementScript : MonoBehaviour
             won = true;
             WinAnimation();
 
-            if (Time.time - StartTime > 110) SceneManager.LoadScene(2);
+            if (Time.time - StartTime > 110) SceneManager.LoadScene(SharedConsts.EndGame);
             return;
         }
 
@@ -360,7 +360,7 @@ public class KiteMovementScript : MonoBehaviour
             SoundManager.playLose();
         }
 
-        if(kite.position.y > 150) SceneManager.LoadScene(2);
+        if(kite.position.y > 150) SceneManager.LoadScene(SharedConsts.EndGame);
 
         phaseManager.HideText();
         timerManager.HideText();
@@ -404,8 +404,8 @@ public class KiteMovementScript : MonoBehaviour
         //+0.25 So it stays red for a bit before losing
         phaseManager.UpdateColor(textColor);
 
-        //Update Timer and its color
-        //UpdateTimeText(textColor);
+        //Update Timer and its color if necessary
+        UpdateTimeText(textColor);
 
         scoreManager.setText(CalculateScore());
     }
@@ -413,7 +413,7 @@ public class KiteMovementScript : MonoBehaviour
     private void UpdateTimeText(Color color)
     {
         timerManager.Update();
-        timerManager.UpdateColor(color);
+        //timerManager.UpdateColor(color);
     }
 
     public void CalculateError()

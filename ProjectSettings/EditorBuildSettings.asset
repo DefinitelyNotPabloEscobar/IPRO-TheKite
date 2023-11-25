@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/EarlyStressScreen.unity
+    guid: 10f938f1e04c4a749b140c4a5c4d44a2
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 6bb0370e7f584804d977d3ce4fb0a9df
   - enabled: 1
