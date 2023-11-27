@@ -7,7 +7,7 @@ public class StartingMenu : MonoBehaviour
 {
     public StressBar stressBar;
     public void PlayGame(){
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SharedConsts.Game);
         
         /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         // Unload the main menu scene (assuming it's not the first scene)
