@@ -990,7 +990,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1979184343}
   fill: {fileID: 1501956076}
-  canvas: {fileID: 0}
   stress: 0
   stressThreshold: 10
 --- !u!114 &1979184343
