@@ -9,7 +9,6 @@ public class StressBar : MonoBehaviour
 {
     public Slider slider;
     public Image fill;
-    public Canvas canvas;
     private Color blueColor = new Color(.1f, .1f, .8f);
     private Color greenColor = new Color(.1f, .8f, .1f); // Green
     private Color yellowColor = new Color(.8f, .8f, .1f); // Yellow
@@ -27,8 +26,8 @@ public class StressBar : MonoBehaviour
     private float speed = 1500f;
 
     //stress example from 0-10
-    public float stress = 4f;
-    public float stressThreshold = 10f;
+    public float stress;
+    public float stressThreshold;
 
     private static int screenHeight;
 
@@ -69,8 +68,15 @@ public class StressBar : MonoBehaviour
         downPosition = screenHeight * downPercentage;
         topPosition = screenHeight * topPercentage;
         */
-        fill.color = GetStressColor(stress, stressThreshold);
-        slider.value = Mathf.Clamp01(stress/stressThreshold);
+        //fill.color = GetStressColor(stress, stressThreshold);
+        //fill.transform.localScale = new Vector3(-0.1601821f, 0.86271f, 1);
+        var stressReal = stress - 0.5f;
+        if(stressReal < 0) stressReal = 0;
+        slider.value = Mathf.Clamp01(stressReal/stressThreshold);
+        if (slider.value > 0.85f) slider.value = 0.85f;
+        else if (slider.value < 0.05f) slider.value = 0.05f;
+
+        /*
         if(MovUp)
         {
             slider.transform.position = new Vector3(
@@ -103,6 +109,7 @@ public class StressBar : MonoBehaviour
                 
             }
         }
+        */
     }
 
     public void BarGoDown()

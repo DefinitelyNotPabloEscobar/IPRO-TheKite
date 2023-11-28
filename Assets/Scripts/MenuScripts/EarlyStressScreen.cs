@@ -24,6 +24,5 @@ public class EarlyStressScreen : MonoBehaviour
 
     public void Start()
     {
-        stressBar.stress = 7f;
     }
 }

@@ -4,12 +4,15 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndGameMenu : MonoBehaviour
 {
     public StressBar stressBar;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI intScoreText;
+    public StressPanelController panelScroller;
+    public Button btn;
     private int Score;
 
     public void Start()
@@ -103,4 +106,45 @@ public class EndGameMenu : MonoBehaviour
         return dataContainer;
     }
 
+
+    public void MovePanel()
+    {
+        if (panelScroller == null) return;
+
+        if (panelScroller.isMovingUp())
+        {
+            panelScroller.PanelGoDown();
+        }
+        else if (panelScroller.isMovingDown())
+        {
+            panelScroller.PanelGoUp();
+        }
+        else if (panelScroller.isOnBottomHalf())
+        {
+            panelScroller.PanelGoUp();
+        }
+        else
+        {
+            panelScroller.PanelGoDown();
+        }
+
+        FixBtnIcon();
+    }
+
+    private void FixBtnIcon()
+    {
+        if (panelScroller.isMovingUp()) btn.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+        else if (panelScroller.isMovingDown()) btn.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        else
+        {
+            if (panelScroller.isOnBottomHalf())
+            {
+                btn.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+            }
+            else
+            {
+                btn.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+        }
+    }
 }
