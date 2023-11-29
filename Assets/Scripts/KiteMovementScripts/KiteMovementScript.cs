@@ -27,10 +27,6 @@ public class KiteMovementScript : MonoBehaviour
     public Transform breath;
     public Transform predicted;
 
-    public float xRotation;
-    public float yRotation;
-    public float zRotation;
-
     public float indicatorSpread = 50f;
     
     private float angle = 0f;
@@ -206,7 +202,7 @@ public class KiteMovementScript : MonoBehaviour
         kite.position = new Vector3(x, CalculateY(), z);
         //Debug.Log("Position: " + kite.position);
 
-        kite.rotation = Quaternion.Euler(CalculateRotation(), -angle - 180f, secAngle + shakeLevel*shakeStrengh);
+        kite.rotation = Quaternion.Euler(CalculateRotation(), -angle, secAngle + shakeLevel*shakeStrengh);
 
         //Debug.Log("Rotation: " + kite.rotation);
 

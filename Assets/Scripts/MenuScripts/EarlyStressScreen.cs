@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class EarlyStressScreen : MonoBehaviour
 {
     public StressBar stressBar;
+    public AudioSource btnSoundEffect;
     public void PlayGame(){
+        if(btnSoundEffect != null) btnSoundEffect.Play();
         SceneManager.LoadScene(SharedConsts.StartingMenu);
     }
 

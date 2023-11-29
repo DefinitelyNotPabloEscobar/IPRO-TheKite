@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class StartingMenu : MonoBehaviour
 {
     public StressBar stressBar;
+    public AudioSource btnClickedSound;
     public void PlayGame(){
+
+        if(btnClickedSound != null) btnClickedSound.Play();
         SceneManager.LoadScene(SharedConsts.Game);
         
         /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -53,12 +56,11 @@ public class StartingMenu : MonoBehaviour
         {
             stressBar.BarGoUp();
         }
-
-        Debug.Log("YOU MOVED " + Time.time + " " + stressBar.isMovingUp() + " " + stressBar.isMovingDown() + " " + stressBar.isBarTop());
     }
 
     public void MoveToMicTesting()
     {
+        if (btnClickedSound != null) btnClickedSound.Play();
         try
         {
             SceneManager.LoadScene(SharedConsts.Breath);

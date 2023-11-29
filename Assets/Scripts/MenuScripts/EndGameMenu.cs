@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class EndGameMenu : MonoBehaviour
 {
+    public AudioSource btnClickedSound;
     public StressBar stressBar;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI intScoreText;
@@ -43,6 +44,7 @@ public class EndGameMenu : MonoBehaviour
     }
     public void PlayGame()
     {
+        if (btnClickedSound != null) btnClickedSound.Play();
         SceneManager.LoadScene(SharedConsts.Game);
 
         /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
