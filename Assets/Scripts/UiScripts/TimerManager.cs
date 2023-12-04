@@ -6,7 +6,7 @@ using TMPro;
 public class TimerManager
 {
     public float totalTime = 600.0f;
-    private float currentTime = 0.0f;
+    public float currentTime = 0.0f;
     private bool isTimerRunning = true;
     public TextMeshProUGUI timerText;
 

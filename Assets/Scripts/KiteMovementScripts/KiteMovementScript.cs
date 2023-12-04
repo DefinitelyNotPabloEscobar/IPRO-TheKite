@@ -49,10 +49,13 @@ public class KiteMovementScript : MonoBehaviour
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI scoreText;
 
-    public float ErrorCatchingTime = 0.25f;
+    public float ErrorCatchingTime = 0.1f;
 
     //Error Variables
     private float Error = 0f;
+    private const float errorAmpConst = 1f;
+    private float errorAmp = errorAmpConst;
+    private float errorAmpIncrease = 0.075f;
     private float lastErrorUpdate = 0f;
     public float LoseThreshold = 12f;
     public float ErrorDecrease = 0.2f;
@@ -68,10 +71,11 @@ public class KiteMovementScript : MonoBehaviour
     private float lastYPos;
 
     private bool won = false;
-    private int wonTime = 100;
+    private int wonTime = 90;
 
     private float StartTime;
     private float EarlySecSpeed;
+    private float phaseTimer;
 
     public SoundManager SoundManager;
 
@@ -208,7 +212,7 @@ public class KiteMovementScript : MonoBehaviour
 
         //Debug.Log("Breath :" + breath.position + " vs " + predicted.position);
 
-        if (won || Time.time - StartTime > wonTime)
+        if (won || timerManager.currentTime > wonTime)
         {
 
             if (!won)
@@ -220,7 +224,7 @@ public class KiteMovementScript : MonoBehaviour
             won = true;
             WinAnimation();
 
-            if (Time.time - StartTime > 110) SceneManager.LoadScene(SharedConsts.EndGame);
+            if (timerManager.currentTime > wonTime + 10) SceneManager.LoadScene(SharedConsts.EndGame);
             return;
         }
 
@@ -240,28 +244,30 @@ public class KiteMovementScript : MonoBehaviour
             subError += Error - oldError;
         oldError = Error;
 
-        Debug.Log("PBars " + Time.time + " " + phaseManager.GetText() + " " + currentProgressBar);
+        Color errorColor = GetErrorColor(subError, subErrorThreshold);
+
+
         switch (currentProgressBar)
         {
             case -1:
                 break;
             case 0:
                 progressBar1.StartBar();
-                progressBar1.ChangeColor(GetErrorColor(subError, subErrorThreshold));
+                progressBar1.ChangeColor(errorColor);
                 break;
             case 1: 
                 progressBar2.StartBar();
-                progressBar2.ChangeColor(GetErrorColor(subError, subErrorThreshold));
+                progressBar2.ChangeColor(errorColor);
                 break;
             case 2:
                 progressBar3.StartBar();
-                progressBar3.ChangeColor(GetErrorColor(subError, subErrorThreshold));
+                progressBar3.ChangeColor(errorColor);
                 break;
             default:
                 HideProgressBars();
                 currentProgressBar = 0;
                 progressBar1.StartBar();
-                progressBar1.ChangeColor(GetErrorColor(subError, subErrorThreshold));
+                progressBar1.ChangeColor(errorColor);
                 break;
         }
     }
@@ -371,6 +377,7 @@ public class KiteMovementScript : MonoBehaviour
             Error -= Time.deltaTime;
         }
 
+        timerManager.Update();
         phaseManager.HideText();
         timerManager.HideText();
         scoreManager.HideText();
@@ -385,20 +392,26 @@ public class KiteMovementScript : MonoBehaviour
 
     public void UpdateText(Color textColor)
     {
-        var oldText = phaseManager.GetText();
+        var oldText = phaseManager.GetPhase();
         if (instructionsTextFromIlias.text.Equals("New Text")) phaseManager.HideText();
-        else phaseManager.Update(instructionsTextFromIlias.text);
+        else 
+        {
+            phaseManager.Update(instructionsTextFromIlias.text, phaseTimer);
+        }
 
-        if (!oldText.Equals(phaseManager.GetText())) {
+        if (!oldText.Equals(phaseManager.GetPhase())) {
             SoundManager.playTick();
             if(cycleStarted) ChangeProgressBar();
-            //Debug.Log("Changed from " + oldText + " to " + phaseManager.GetText() + " in " + Time.time);
+            phaseTimer = 0f;
         }
+
 
         if (cycleStarted && currentProgressBar == -1) ChangeProgressBar();
 
         //+0.25 So it stays red for a bit before losing
         phaseManager.UpdateColor(textColor);
+        phaseTimer += Time.deltaTime;
+        //phaseManager.UpdateTime(phaseTimer);
 
         //Update Timer and its color if necessary
         UpdateTimeText(textColor);
@@ -417,13 +430,53 @@ public class KiteMovementScript : MonoBehaviour
         if(!cycleStarted && Mathf.Abs(predicted.position.y) > 0) cycleStarted = true;
 
         var diff = Mathf.Abs(Mathf.Abs(breath.position.y) - Mathf.Abs(predicted.position.y));
-        if (diff > 3)
+        string currentPhase = instructionsTextFromIlias.text;
+
+        float relativeError = 0f;
+        if (predicted.position.y != 0) relativeError = Mathf.Abs((breath.position.y - predicted.position.y) / predicted.position.y);
+
+        var old = errorAmp;
+
+        switch (currentPhase.ToLower())
         {
-            Debug.Log("GOT ERROR BIG WITH " + diff /10 + " Added. From " + breath.position.y + " " + predicted.position.y);
-            Error += diff/200;
+            case "hold":
+                if (!Util.IsWithinThreshold(diff, 0f, 1f))
+                {
+                    Error += diff / 250;
+                }
+                break;
+
+            case "inhale":
+                if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
+                {
+                    if (breath.position.y <= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
+                    {
+                        Error += diff / 1000 * errorAmp;
+                        errorAmp += errorAmpIncrease;
+                    }
+                    else errorAmp = errorAmpConst;
+                }
+                break;
+
+            case "exhale":
+                if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
+                {
+                    if (breath.position.y >= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
+                    {
+                        Error += diff / 1000 * errorAmp;
+                        errorAmp += errorAmpIncrease;
+                    }
+                    else errorAmp = errorAmpConst;
+                }
+                break;
+
+            default:
+                break;
         }
+
         lastErrorUpdate = Time.time;
-        Debug.Log(Error);
+
+        Debug.Log(Time.time + " " + currentPhase.ToLower() + " breath.y " + breath.position.y + " asdasdqdwqdqddwq" + " amp " + errorAmp + " const " + errorAmpConst);
     }
 
     public float CalculateY()
@@ -648,7 +701,13 @@ public class KiteMovementScript : MonoBehaviour
 
     private int CalculateScore()
     {
-        Score = (int) (LoseThreshold - Error) + (int) (timerManager.totalTime / (wonTime/5));
+        //Score = (int) (timerManager.totalTime / (wonTime/5));
+        //Score = (int) ((100 * timerManager.currentTime / wonTime) + ((LoseThreshold - Error)*10));
+        //Score = (int)(100 * timerManager.currentTime / wonTime);
+
+        int cycleTime = (int) (inhaleDuration + holdDuration + exhaleDuration);
+        Score = Mathf.FloorToInt(((Mathf.Abs(Time.time - StartTime) - 0.5f) / cycleTime)) - 1;
+        if(Score < 0) Score = 0;
         return Score;
     }
 
