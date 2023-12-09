@@ -11,6 +11,6 @@ public static class SharedConsts
     public static int Game = 2;
     public static int EndGame = 3;
     public static int Breath = 4;
-    public static int LateSressScene = 5;
+    public static int LoadingEndGame = 5;
 
 }

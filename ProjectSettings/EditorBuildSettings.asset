@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SoundTesting.unity
     guid: da3d2425fc8ede0448249f4739fde0fe
+  - enabled: 1
+    path: Assets/Scenes/LoadingEndGame.unity
+    guid: b37c524b32e06bd4e87cdaa1525b8496
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
       guid: 3041fb3115ef4d24396dba71db2aef1f, type: 2}

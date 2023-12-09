@@ -16,13 +16,15 @@ public class PhaseManager
 
     public void Update(string Text, float time)
     {
-        phaseText.text = Text + " (" + time.ToString("F1") + ")";
+        //phaseText.text = Text + " (" + time.ToString("F1") + ")";
+        phaseText.text = Text + " (" + ((int)time + 1) + " sec" + ")";
         phaseName = Text;
     }
 
     public void UpdateTime(float time)
     {
-        if(!phaseName.Equals("")) phaseText.text = phaseName + " (" + time.ToString("F1") + ")";
+        if(!phaseName.Equals("")) //phaseText.text = phaseName + " (" + time.ToString("F1") + ")";
+            phaseText.text = phaseName + " (" + ((int)time + 1) + " sec" + ")";
     }
 
     public void UpdateColor(Color color)

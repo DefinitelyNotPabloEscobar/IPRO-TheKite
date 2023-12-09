@@ -8,7 +8,7 @@ public class DontDestroyBtnSound: MonoBehaviour
     public int instanceId;
     private void Awake()
     {
-        if(!instances.ContainsKey(instanceId))
+        if (!instances.ContainsKey(instanceId))
         {
             instances.Add(instanceId, this);
             DontDestroyOnLoad(gameObject);
@@ -20,4 +20,6 @@ public class DontDestroyBtnSound: MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
+
 }

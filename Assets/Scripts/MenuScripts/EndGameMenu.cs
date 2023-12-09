@@ -46,17 +46,6 @@ public class EndGameMenu : MonoBehaviour
     {
         if (btnClickedSound != null) btnClickedSound.Play();
         SceneManager.LoadScene(SharedConsts.Game);
-
-        /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        // Unload the main menu scene (assuming it's not the first scene)
-        if (currentSceneIndex >= 0)
-        {
-            SceneManager.UnloadSceneAsync(currentSceneIndex);
-        }
-
-        // Load the new scene
-        SceneManager.LoadScene(currentSceneIndex);
-        */
     }
 
 
@@ -148,5 +137,11 @@ public class EndGameMenu : MonoBehaviour
                 btn.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
         }
+    }
+
+    public void BackToMenu()
+    {
+        if (btnClickedSound != null) btnClickedSound.Play();
+        SceneManager.LoadScene(SharedConsts.StartingMenu);
     }
 }

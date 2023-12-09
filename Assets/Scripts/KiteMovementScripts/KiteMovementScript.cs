@@ -6,7 +6,7 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class KiteMovementScript : MonoBehaviour
 {
@@ -48,6 +48,8 @@ public class KiteMovementScript : MonoBehaviour
     public TextMeshProUGUI gameResultText;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreLableText;
+    public Image scoreDiamond;
 
     public float ErrorCatchingTime = 0.1f;
 
@@ -133,26 +135,6 @@ public class KiteMovementScript : MonoBehaviour
             objectList.Add(indicatorObj);
         }
 
-        /*
-        for(int  i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
-        {
-            float x = radius * Mathf.Cos((angle + (((float)i / (float)numberOfIndicatores) * indicatorSpread)) * Mathf.Deg2Rad);
-            float z = radius * Mathf.Sin((angle + (((float)i / (float)numberOfIndicatores) * indicatorSpread)) * Mathf.Deg2Rad);
-            Vector3 drawVector = new Vector3(x, (((Mathf.Sin((elevationAngle - (((float)i / (float)numberOfIndicatores) * indicatorSpread)) * Mathf.Deg2Rad) + 1) / 2) * elevationHeightAmp) + 3, z);
-
-            GameObject indicatorObj = Instantiate(indicator, drawVector, Quaternion.Euler(0f, 0f, 0f));
-
-            Renderer objectRenderer = indicatorObj.GetComponent<Renderer>();
-            if (objectRenderer != null)
-            {
-                objectRenderer.material.color = greenColor;
-                objectRenderer.enabled = false;
-            }
-
-            reverseObjectList.Add(indicatorObj);
-        }
-        */
-
         timerManager = new TimerManager(timeText);
         phaseManager = new PhaseManager(instructionsText);
         scoreManager = new ScoreManager(scoreText);
@@ -160,9 +142,6 @@ public class KiteMovementScript : MonoBehaviour
 
     void Update()
     {
-        //if(angle > 360f || angle < -360f) angle = 0f;
-        // Increment the angle based on the angular speed
-
         CalculateAngles();
 
         Color textColor = GetErrorColor(Error, LoseThreshold + 0.25f);
@@ -189,6 +168,7 @@ public class KiteMovementScript : MonoBehaviour
             if (!lost)
             {
                 HideProgressBars();
+                HideText();
                 lastYPos = kite.position.y;
                 WriteIntToFile(SharedConsts.ScorePath, CalculateScore());
                 //RemoveIndicatores();
@@ -204,15 +184,10 @@ public class KiteMovementScript : MonoBehaviour
 
         // Update the object's position
         kite.position = new Vector3(x, CalculateY(), z);
-        //Debug.Log("Position: " + kite.position);
-
         kite.rotation = Quaternion.Euler(CalculateRotation(), -angle, secAngle + shakeLevel*shakeStrengh);
 
-        //Debug.Log("Rotation: " + kite.rotation);
 
-        //Debug.Log("Breath :" + breath.position + " vs " + predicted.position);
-
-        if (won || timerManager.currentTime > wonTime)
+        if (won || Time.time - StartTime > wonTime)
         {
 
             if (!won)
@@ -220,11 +195,12 @@ public class KiteMovementScript : MonoBehaviour
                 SoundManager.playWin();
                 WriteIntToFile(SharedConsts.ScorePath, CalculateScore());
                 HideProgressBars();
+                HideText();
             }
             won = true;
             WinAnimation();
 
-            if (timerManager.currentTime > wonTime + 10) SceneManager.LoadScene(SharedConsts.EndGame);
+            if (Time.time - StartTime > wonTime + 10) SceneManager.LoadScene(SharedConsts.LoadingEndGame);
             return;
         }
 
@@ -362,11 +338,8 @@ public class KiteMovementScript : MonoBehaviour
             SoundManager.playLose();
         }
 
-        if(kite.position.y > 150) SceneManager.LoadScene(SharedConsts.EndGame);
+        if(kite.position.y > 150) SceneManager.LoadScene(SharedConsts.LoadingEndGame);
 
-        phaseManager.HideText();
-        timerManager.HideText();
-        scoreManager.HideText();
         MoveIndicators();
     }
 
@@ -377,10 +350,6 @@ public class KiteMovementScript : MonoBehaviour
             Error -= Time.deltaTime;
         }
 
-        timerManager.Update();
-        phaseManager.HideText();
-        timerManager.HideText();
-        scoreManager.HideText();
         MoveIndicators();
 
         if (Error <= 0)
@@ -431,11 +400,6 @@ public class KiteMovementScript : MonoBehaviour
 
         var diff = Mathf.Abs(Mathf.Abs(breath.position.y) - Mathf.Abs(predicted.position.y));
         string currentPhase = instructionsTextFromIlias.text;
-
-        float relativeError = 0f;
-        if (predicted.position.y != 0) relativeError = Mathf.Abs((breath.position.y - predicted.position.y) / predicted.position.y);
-
-        var old = errorAmp;
 
         switch (currentPhase.ToLower())
         {
@@ -568,42 +532,6 @@ public class KiteMovementScript : MonoBehaviour
 
             objectList[i- numberOfObjNotDrawn].transform.position = drawVector;
         }
-
-        /*
-        for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
-        {
-            int updatedI = i - numberOfObjNotDrawn + 1;
-            futureTime = Time.time - StartTime + (updatedI * T);
-            float x = radius * Mathf.Cos((updatedAngle - ((updatedI * T) * angularSpeed)) * Mathf.Deg2Rad);
-            float y = (((Mathf.Sin(predictAngle(futureTime) * Mathf.Deg2Rad) + 2) / 2) * elevationHeightAmp) + 3;
-            float z = radius * Mathf.Sin((updatedAngle - ((updatedI * T) * angularSpeed)) * Mathf.Deg2Rad);
-            Vector3 drawVector = new Vector3(x, y, z);
-
-            reverseObjectList[i- numberOfObjNotDrawn].transform.position = drawVector;
-        }
-        */
-
-        /*
-        for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
-        {
-            if (IsMainObjectNearby(objectList[i - numberOfObjNotDrawn], 1.5f))
-            {
-                var discartedObject = objectList[i - numberOfObjNotDrawn];
-                objectList.Remove(objectList[i - numberOfObjNotDrawn]);
-                Destroy(discartedObject);
-
-                futureTime = Time.time - StartTime + ((numberOfIndicatores - 1) * T);
-                float x = radius * Mathf.Cos((updatedAngle + (((numberOfIndicatores - 1) * T) * angularSpeed)) * Mathf.Deg2Rad);
-                float y = (((Mathf.Sin(predictAngle(futureTime) * Mathf.Deg2Rad) + 2) / 2) * elevationHeightAmp) + 3;
-                float z = radius * Mathf.Sin((updatedAngle + (((numberOfIndicatores - 1) * T) * angularSpeed)) * Mathf.Deg2Rad);
-                Vector3 drawVector = new Vector3(x, y, z);
-
-                GameObject indicatorObj = Instantiate(indicator, drawVector, Quaternion.Euler(0f, 0f, 0f));
-                objectList.Add(indicatorObj);
-
-            }
-        }
-        */
     }
 
     private bool IsMainObjectNearby(GameObject indicatorObject, float distanceThreshold)
@@ -623,19 +551,7 @@ public class KiteMovementScript : MonoBehaviour
                 objectRenderer.enabled = true;
                 objectRenderer.material.color = color;
             }
-        }
-        /*
-        for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
-        {
-            Renderer objectRenderer = reverseObjectList[i - numberOfObjNotDrawn].GetComponent<Renderer>();
-            if (objectRenderer != null)
-            {
-                objectRenderer.enabled = true;
-                objectRenderer.material.color = color;
-            }
-        }
-        */
-        
+        }    
     }
 
     private void RemoveIndicatores()
@@ -679,6 +595,18 @@ public class KiteMovementScript : MonoBehaviour
         progressBar1.HideBar();
         progressBar2.HideBar();
         progressBar3.HideBar();
+    }
+
+    private void HideText()
+    {
+        var color = Color.white;
+        color.a = 0f;
+        scoreDiamond.color = color;
+        scoreManager.HideText();
+        phaseManager.HideText();
+        timerManager.HideText();
+        scoreManager.HideText();
+        scoreLableText.text = "";
     }
 
 
