@@ -204,9 +204,9 @@ public class KiteMovementScript : MonoBehaviour
             return;
         }
 
-        MoveIndicators();
         UpdateText(textColor);
         UpdateIndicatorsColors(textColor);
+        MoveIndicators();
         // Based on text, we update the progress bars
         UpdateProgressBars();
 
@@ -501,13 +501,16 @@ public class KiteMovementScript : MonoBehaviour
         {
             
             case "hold":
-                if (elevationAngle + angularElevSpeed * leftDuration < 0f) return elevationAngle + angularElevSpeed * leftDuration;
+                if (0f + angularElevSpeed * leftDuration < 0f) return 0f + angularElevSpeed * leftDuration;
                 else return 0f;
             case "inhale":
-                if (elevationAngle + angularElevSpeed * leftDuration < 0f) return elevationAngle + angularElevSpeed * leftDuration;
+                //The first one must be straight
+                if (Mathf.Abs(time) <= 2 * cycleTime) return 0f;
+
+                if (-90f + angularElevSpeed * leftDuration < 0f) return -90f + angularElevSpeed * leftDuration;
                 else return 0f;
             case "exhale":
-                if (elevationAngle - angularElevSpeed * leftDuration > -90f) return elevationAngle - angularElevSpeed * leftDuration;
+                if (0f - angularElevSpeed * leftDuration > -90f) return 0f - angularElevSpeed * leftDuration;
                 else return -90f;
             default:
                 return 0f;
@@ -518,7 +521,8 @@ public class KiteMovementScript : MonoBehaviour
 
         float T = indicatoresFowardTiming;
         float futureTime;
-        float updatedAngle = angle + numberOfObjNotDrawn * T * angularSpeed; 
+        float offset = 2.5f;
+        float updatedAngle = offset + angle + numberOfObjNotDrawn * T * angularSpeed; 
 
         
         for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
