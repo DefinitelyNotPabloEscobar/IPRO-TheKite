@@ -84,8 +84,8 @@
     <Compile Include="Assets\Scripts\Shared\JsonScore.cs" />
     <Compile Include="Assets\Scripts\Util\Util.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\KiteMovementScripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\UiScripts\ProgressBar.cs" />
+    <Compile Include="Assets\Scripts\KiteMovementScripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\UiScripts\StressPanelController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
@@ -136,6 +136,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Managers\AudioManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\TutorialMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Nature Sound FX\__Gift__\Weapons SFX\Weapons SFX Full Package.txt" />
@@ -421,11 +422,11 @@
     <Reference Include="Accord.Math">
       <HintPath>Assets\Plugins\Accord\Accord.Math.dll</HintPath>
     </Reference>
-    <Reference Include="Accord">
-      <HintPath>Assets\Plugins\Accord\Accord.dll</HintPath>
-    </Reference>
     <Reference Include="ScottPlot">
       <HintPath>Assets\Plugins\ScottPlot\ScottPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord">
+      <HintPath>Assets\Plugins\Accord\Accord.dll</HintPath>
     </Reference>
     <Reference Include="MathNet.Numerics">
       <HintPath>Assets\Plugins\MathNet.Numerics.dll</HintPath>
@@ -808,6 +809,9 @@
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Recorder.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -819,6 +823,9 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder.Base">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
     </Reference>
     <Reference Include="PPv2URPConverters">
       <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
@@ -945,6 +952,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

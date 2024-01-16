@@ -36,6 +36,12 @@ public class StartingMenu : MonoBehaviour
 #endif
     }
 
+    public void Tutorial()
+    {
+        if (btnClickedSound != null) btnClickedSound.Play();
+        SceneManager.LoadScene(SharedConsts.TutorialScene);
+    }
+
     public void MoveProgressBar()
     {
         if (stressBar == null) return;
