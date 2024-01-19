@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class TutorialMenu:MonoBehaviour
 {
+    [Header("Canvas")]
+    public Canvas canvasTutorial;
+    public Canvas canvasPlay;
+    public Canvas canvasInfo;
+
+    public static event System.Action CanvasLeavingTutorial;
+    public static event System.Action CanvasEnteringTutorial;
+
     public void Start()
     {
         //Screen.orientation = ScreenOrientation.Portrait;
@@ -18,9 +26,13 @@ public class TutorialMenu:MonoBehaviour
 
         //Screen.orientation = ScreenOrientation.AutoRotation;
         Screen.orientation = ScreenOrientation.Portrait;
+
+        canvasTutorial.enabled = false;
+        canvasInfo.enabled = false; 
+        canvasPlay.enabled = true;
     }
 
-    void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         //Screen.orientation = ScreenOrientation.LandscapeLeft;
 
@@ -33,5 +45,32 @@ public class TutorialMenu:MonoBehaviour
         Screen.autorotateToLandscapeRight = true;
 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+    }
+
+    public void ChangeToTutorial()
+    {
+        canvasTutorial.enabled = true;
+        canvasPlay.enabled = false;
+        canvasInfo.enabled = false;
+
+        CanvasEnteringTutorial?.Invoke();
+    }
+
+    public void ChangeToInfo()
+    {
+        canvasInfo.enabled = true;
+        canvasTutorial.enabled = false;
+        canvasPlay.enabled = false;
+
+        CanvasLeavingTutorial?.Invoke();
+    }
+
+    public void ChangeToPlay()
+    {
+        canvasPlay.enabled = true;
+        canvasTutorial.enabled = false;
+        canvasInfo.enabled = false;
+
+        CanvasLeavingTutorial?.Invoke();
     }
 }
