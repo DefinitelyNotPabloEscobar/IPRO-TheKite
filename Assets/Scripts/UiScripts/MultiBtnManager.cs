@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.UIElements;
 
 public class MultiBtnManager : MonoBehaviour
 {
+    public delegate void BtnPressedEventHandler(int d);
+    public static event BtnPressedEventHandler BtnPressed;
 
     public List<BtnVisualManager> multiBtns;
 
@@ -42,20 +45,21 @@ public class MultiBtnManager : MonoBehaviour
         {
             PlayOff.enabled = true;
             PlayOff.image.enabled = true;
-            PracticeOff.enabled = false;
-            PracticeOff.image.enabled = false;
+            PracticeOff.enabled = true;
+            PracticeOff.image.enabled = true;
         }
     }
 
     public void Pressed(BtnVisualManager btn)
     {
+
         if (!usable) return;
 
         var activeBtn = false;
 
         foreach (BtnVisualManager m in multiBtns)
         {
-            if(btn.Equals(m))
+            if (btn.Equals(m))
             {
                 m.normal.enabled = !m.normal.enabled;
                 m.hover.enabled = !m.hover.enabled;
@@ -80,6 +84,12 @@ public class MultiBtnManager : MonoBehaviour
             PracticeOn.enabled = activeBtn;
             PracticeOn.image.enabled = activeBtn;
         }
+
+        if(activeBtn)
+        {
+            BtnPressed?.Invoke(btn.d);
+        }
+
     }
 
 }

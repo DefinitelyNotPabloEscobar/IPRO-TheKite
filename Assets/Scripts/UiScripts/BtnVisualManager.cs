@@ -8,5 +8,6 @@ public class BtnVisualManager: MonoBehaviour
 
     public Image normal;
     public Image hover;
+    public int d;
 
 }
