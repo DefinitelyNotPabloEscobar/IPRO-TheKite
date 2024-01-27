@@ -73,4 +73,15 @@ public class TutorialMenu:MonoBehaviour
 
         CanvasLeavingTutorial?.Invoke();
     }
+
+    public void Play()
+    {
+        Screen.autorotateToPortrait = false;
+        Screen.autorotateToPortraitUpsideDown = false;
+        Screen.autorotateToLandscapeLeft = true;
+        Screen.autorotateToLandscapeRight = true;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+
+        SceneManager.LoadScene(SharedConsts.Game);
+    }
 }

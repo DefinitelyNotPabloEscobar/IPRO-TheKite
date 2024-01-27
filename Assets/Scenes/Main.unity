@@ -13205,6 +13205,8 @@ MonoBehaviour:
   angularSpeed: -15
   angularSecSpeed: -2
   angularElevSpeed: 45
+  angularElevSpeedInhale: 45
+  angularElevSpeedExhale: 45
   elevationAmp: 5
   numberOfIndicatores: 50
   numberOfObjNotDrawn: 5
@@ -13231,6 +13233,7 @@ MonoBehaviour:
   progressBar1: {fileID: 1221893382}
   progressBar2: {fileID: 1927501200}
   progressBar3: {fileID: 377512086}
+  objectManagerBreathing: {fileID: 939633809}
 --- !u!4 &1890834591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2d08659105e6f1643ba1692f6ee965d1,

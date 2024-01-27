@@ -11,9 +11,12 @@ using UnityEngine.UI;
 public class KiteMovementScript : MonoBehaviour
 {
     // Angle increment per frame
-    public float angularSpeed = -10f; // Adjust the speed as needed
+    public float angularSpeed = -10f;
     public float angularSecSpeed = -2f;
-    public float angularElevSpeed = 2f;
+
+    public float angularElevSpeed;
+    public float angularElevSpeedInhale;
+    public float angularElevSpeedExhale;
 
     public float elevationAmp = 10f;
 
@@ -76,6 +79,7 @@ public class KiteMovementScript : MonoBehaviour
     private int wonTime = 90;
 
     private float StartTime;
+    private float CycleStartTime = 0f;
     private float EarlySecSpeed;
     private float phaseTimer;
 
@@ -105,6 +109,14 @@ public class KiteMovementScript : MonoBehaviour
     private float holdDuration = 2f;
 
     private int Score = 0;
+
+    private bool starter1 = false;
+    private bool starter2 = false;
+    private bool starter3 = false;
+    private bool starter4 = false;
+    private string starterText = "";
+
+    public ObjectManager objectManagerBreathing;
 
     void Start()
     {
@@ -138,6 +150,66 @@ public class KiteMovementScript : MonoBehaviour
         timerManager = new TimerManager(timeText);
         phaseManager = new PhaseManager(instructionsText);
         scoreManager = new ScoreManager(scoreText);
+
+        SetBaseOnDifficulty(ReadFromFile(SharedConsts.DifficultyPath));
+        
+    }
+
+
+    private void SetBaseOnDifficulty(int d)
+    {
+        switch (d)
+        {
+            case 0:
+            default:
+
+                objectManagerBreathing.breathingPatternTime[0] = 1;
+                objectManagerBreathing.breathingPatternTime[1] = 3;
+                objectManagerBreathing.breathingPatternTime[2] = 4;
+
+                inhaleDuration = 1;
+                holdDuration = 3;
+                exhaleDuration = 4;
+
+                angularElevSpeedInhale = angularElevSpeedInhale * (2/inhaleDuration);
+                angularElevSpeedExhale = angularElevSpeedExhale * (3/exhaleDuration);
+
+                break;
+
+            case 1:
+
+                objectManagerBreathing.breathingPatternTime[0] = 4;
+                objectManagerBreathing.breathingPatternTime[1] = 7;
+                objectManagerBreathing.breathingPatternTime[2] = 8;
+
+                inhaleDuration = 4;
+                holdDuration = 7;
+                exhaleDuration = 8;
+
+                angularElevSpeedInhale = angularElevSpeedInhale * (2/inhaleDuration);
+                angularElevSpeedExhale = angularElevSpeedExhale * (3 / exhaleDuration);
+
+                break;
+
+            case 2:
+
+                objectManagerBreathing.breathingPatternTime[0] = 5;
+                objectManagerBreathing.breathingPatternTime[1] = 8;
+                objectManagerBreathing.breathingPatternTime[2] = 8;
+
+                inhaleDuration = 5;
+                holdDuration = 8;
+                exhaleDuration = 8;
+
+                angularElevSpeedInhale = angularElevSpeedInhale * (2/inhaleDuration);
+                angularElevSpeedExhale = angularElevSpeedExhale * (3 / exhaleDuration);
+
+                break;
+        }
+
+        progressBar1.duration = inhaleDuration;
+        progressBar2.duration = holdDuration;
+        progressBar3.duration = exhaleDuration;
     }
 
     void Update()
@@ -211,7 +283,49 @@ public class KiteMovementScript : MonoBehaviour
         UpdateProgressBars();
 
         if (Time.time - lastErrorUpdate > ErrorCatchingTime) CalculateError();
-       
+
+        if(!cycleStarted) CycleStarter();
+    }
+
+    public void CycleStarter()
+    {
+        string currentPhase = instructionsTextFromIlias.text;
+
+        switch (currentPhase.ToLower())
+        {
+            case "hold":
+                if (!starterText.Equals("hold"))
+                {
+                    starter1 = true;
+                    starterText = "hold";
+                }
+                break;
+
+            case "inhale":
+                if (!starterText.Equals("inhale"))
+                {
+                    if (starter2) starter4 = true;
+                    starter2 = true;
+                    starterText = "inhale";
+                }
+                break;
+
+            case "exhale":
+                if (!starterText.Equals("exhale"))
+                {
+                    starter3 = true;
+                    starterText = "exhale";
+                }
+                break;
+            default:
+                break;
+        }
+
+        if (starter1 && starter2 && starter3 && starter4)
+        {
+            CycleStartTime = Time.time;
+            cycleStarted = true;
+        }
     }
 
     public void UpdateProgressBars()
@@ -220,30 +334,27 @@ public class KiteMovementScript : MonoBehaviour
             subError += Error - oldError;
         oldError = Error;
 
-        Color errorColor = GetErrorColor(subError, subErrorThreshold);
-
-
         switch (currentProgressBar)
         {
             case -1:
                 break;
             case 0:
                 progressBar1.StartBar();
-                progressBar1.ChangeColor(errorColor);
+                progressBar1.ChangeColor(GetErrorColor(subError, subErrorThreshold * (2 / inhaleDuration)));
                 break;
-            case 1: 
+            case 1:
                 progressBar2.StartBar();
-                progressBar2.ChangeColor(errorColor);
+                progressBar2.ChangeColor(GetErrorColor(subError, subErrorThreshold * (2 / holdDuration)));
                 break;
             case 2:
                 progressBar3.StartBar();
-                progressBar3.ChangeColor(errorColor);
+                progressBar3.ChangeColor(GetErrorColor(subError, subErrorThreshold * (2 / exhaleDuration)));
                 break;
             default:
                 HideProgressBars();
                 currentProgressBar = 0;
                 progressBar1.StartBar();
-                progressBar1.ChangeColor(errorColor);
+                progressBar1.ChangeColor(GetErrorColor(subError, subErrorThreshold * (2 / inhaleDuration)));
                 break;
         }
     }
@@ -280,8 +391,8 @@ public class KiteMovementScript : MonoBehaviour
                 if (cycleStarted)
                 {
                     if (Util.IsWithinThreshold(elevationAngle, 0f, 0.5f)) elevationAngle = 0f;
-                    else if (elevationAngle < 0) elevationAngle += angularElevSpeed * Time.deltaTime;
-                    else if (elevationAngle > 0) elevationAngle -= angularElevSpeed * Time.deltaTime;
+                    else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
+                    else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
                 }
                 else
                 {
@@ -292,16 +403,16 @@ public class KiteMovementScript : MonoBehaviour
                 if (cycleStarted)
                 {
                     if (Util.IsWithinThreshold(elevationAngle, 0, 0.5f)) elevationAngle = 0f;
-                    else if (elevationAngle < 0) elevationAngle += angularElevSpeed * Time.deltaTime;
-                    else if (elevationAngle > 0) elevationAngle -= angularElevSpeed * Time.deltaTime;
+                    else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
+                    else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
                 }
                 break;
             case "exhale":
                 if (cycleStarted)
                 {
                     if (Util.IsWithinThreshold(elevationAngle, -90f, 0.5f)) elevationAngle = -90f;
-                    else if (elevationAngle < -90) elevationAngle += angularElevSpeed * Time.deltaTime;
-                    else if (elevationAngle > -90) elevationAngle -= angularElevSpeed * Time.deltaTime;
+                    else if (elevationAngle < -90) elevationAngle += angularElevSpeedExhale * Time.deltaTime;
+                    else if (elevationAngle > -90) elevationAngle -= angularElevSpeedExhale * Time.deltaTime;
                 }
                 break;
             default:
@@ -396,8 +507,6 @@ public class KiteMovementScript : MonoBehaviour
 
     public void CalculateError()
     {
-        if(!cycleStarted && Mathf.Abs(predicted.position.y) > 0) cycleStarted = true;
-
         var diff = Mathf.Abs(Mathf.Abs(breath.position.y) - Mathf.Abs(predicted.position.y));
         string currentPhase = instructionsTextFromIlias.text;
 
@@ -440,7 +549,7 @@ public class KiteMovementScript : MonoBehaviour
 
         lastErrorUpdate = Time.time;
 
-        Debug.Log(Time.time + " " + currentPhase.ToLower() + " breath.y " + breath.position.y + " asdasdqdwqdqddwq" + " amp " + errorAmp + " const " + errorAmpConst);
+        //Debug.Log(Time.time + " " + currentPhase.ToLower() + " breath.y " + breath.position.y + " asdasdqdwqdqddwq" + " amp " + errorAmp + " const " + errorAmpConst);
     }
 
     public float CalculateY()
@@ -478,6 +587,7 @@ public class KiteMovementScript : MonoBehaviour
         // Phase inspire2 - hold2 - expire3
         float cycleTime = inhaleDuration + holdDuration + exhaleDuration;
         float normalizedTime = Mathf.Abs(time) % cycleTime;
+        
         string phase;
         float leftDuration;
 
@@ -497,20 +607,20 @@ public class KiteMovementScript : MonoBehaviour
             leftDuration = normalizedTime - (inhaleDuration + holdDuration);
         }
 
+
         switch (phase.ToLower())
         {
-            
             case "hold":
-                if (0f + angularElevSpeed * leftDuration < 0f) return 0f + angularElevSpeed * leftDuration;
+                if (0f + angularElevSpeedInhale * leftDuration < 0f) return 0f + angularElevSpeedInhale * leftDuration;
                 else return 0f;
             case "inhale":
                 //The first one must be straight
-                if (Mathf.Abs(time) <= 2 * cycleTime) return 0f;
+                if (Mathf.Abs(time) <= cycleTime) return 0f;
 
-                if (-90f + angularElevSpeed * leftDuration < 0f) return -90f + angularElevSpeed * leftDuration;
+                if (-90f + angularElevSpeedInhale * leftDuration < 0f) return -90f + angularElevSpeedInhale * leftDuration;
                 else return 0f;
             case "exhale":
-                if (0f - angularElevSpeed * leftDuration > -90f) return 0f - angularElevSpeed * leftDuration;
+                if (0f - angularElevSpeedExhale * leftDuration > -90f) return 0f - angularElevSpeedExhale * leftDuration;
                 else return -90f;
             default:
                 return 0f;
@@ -528,7 +638,7 @@ public class KiteMovementScript : MonoBehaviour
         for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
         {
             int updatedI = i - numberOfObjNotDrawn + 1;
-            futureTime = Time.time - StartTime + (updatedI * T);
+            futureTime = Time.time - CycleStartTime + (updatedI * T);
             float x = radius * Mathf.Cos((updatedAngle + ((updatedI * T) * angularSpeed)) * Mathf.Deg2Rad);
             float y = (((Mathf.Sin(predictAngle(futureTime) * Mathf.Deg2Rad) + 2) / 2) * elevationHeightAmp) + 3;
             float z = radius * Mathf.Sin((updatedAngle + ((updatedI * T) * angularSpeed)) * Mathf.Deg2Rad);
@@ -631,6 +741,41 @@ public class KiteMovementScript : MonoBehaviour
         }
     }
 
+
+    private int ReadFromFile(string filePath)
+    {
+        try
+        {
+            string jsonResult = ReadJsonFromFile(filePath);
+            DataContainerDifficulty dataContainer = JsonToData(jsonResult);
+            int integerValue = dataContainer.d;
+
+            Debug.Log("Read integer value from JSON file: " + integerValue + " at " + filePath);
+            return integerValue;
+        }
+        catch
+        {
+            Debug.Log("Error while writting Int to File at " + filePath);
+        }
+
+        return -1;
+    }
+
+    string ReadJsonFromFile(string filePath)
+    {
+        // Read the JSON string from the file
+        string jsonResult = File.ReadAllText(filePath);
+
+        return jsonResult;
+    }
+
+    DataContainerDifficulty JsonToData(string jsonData)
+    {
+        DataContainerDifficulty dataContainer = JsonUtility.FromJson<DataContainerDifficulty>(jsonData);
+
+        return dataContainer;
+    }
+
     private int CalculateScore()
     {
         //Score = (int) (timerManager.totalTime / (wonTime/5));
@@ -638,7 +783,7 @@ public class KiteMovementScript : MonoBehaviour
         //Score = (int)(100 * timerManager.currentTime / wonTime);
 
         int cycleTime = (int) (inhaleDuration + holdDuration + exhaleDuration);
-        Score = Mathf.FloorToInt(((Mathf.Abs(Time.time - StartTime) - 0.5f) / cycleTime)) - 1;
+        Score = Mathf.FloorToInt(((Mathf.Abs(Time.time - CycleStartTime) - 0.5f) / cycleTime)) - 1;
         if(Score < 0) Score = 0;
         return Score;
     }

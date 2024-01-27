@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -88,8 +89,27 @@ public class MultiBtnManager : MonoBehaviour
         if(activeBtn)
         {
             BtnPressed?.Invoke(btn.d);
+            WriteIntToFile(SharedConsts.DifficultyPath, btn.d);
         }
 
+    }
+
+
+    private void WriteIntToFile(string filePath, int data)
+    {
+        try
+        {
+            DataContainerDifficulty dataContainer = new DataContainerDifficulty();
+            dataContainer.d = data;
+
+            string jsonResult = JsonUtility.ToJson(dataContainer);
+
+            File.WriteAllText(filePath, jsonResult);
+        }
+        catch
+        {
+            Debug.Log("Error while writting Int to File at " + filePath);
+        }
     }
 
 }
