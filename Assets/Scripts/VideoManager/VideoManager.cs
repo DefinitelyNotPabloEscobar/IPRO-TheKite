@@ -96,4 +96,9 @@ public class VideoManager : MonoBehaviour
         currentPlayer.enabled = true;
     }
 
+    public bool isPlaying()
+    {
+        return currentPlayer != null && currentPlayer.isPlaying;
+    }
+
 }

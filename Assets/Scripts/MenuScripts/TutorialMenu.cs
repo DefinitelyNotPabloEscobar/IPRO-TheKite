@@ -13,6 +13,8 @@ public class TutorialMenu:MonoBehaviour
     public static event System.Action CanvasLeavingTutorial;
     public static event System.Action CanvasEnteringTutorial;
 
+    public AudioSource btnAudioSource;
+
     public void Start()
     {
         //Screen.orientation = ScreenOrientation.Portrait;
@@ -35,16 +37,15 @@ public class TutorialMenu:MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         //Screen.orientation = ScreenOrientation.LandscapeLeft;
-
         Screen.autorotateToPortrait = false;
 
         Screen.autorotateToPortraitUpsideDown = false;
 
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+
         Screen.autorotateToLandscapeLeft = true;
 
         Screen.autorotateToLandscapeRight = true;
-
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
     public void ChangeToTutorial()
@@ -76,12 +77,31 @@ public class TutorialMenu:MonoBehaviour
 
     public void Play()
     {
+        MakeScreenHorizontal();
+        SceneManager.LoadScene(SharedConsts.Game);
+    }
+
+    public void Practice()
+    {
+        MakeScreenHorizontal();
+        SceneManager.LoadScene(SharedConsts.PracticeScene);
+    }
+
+    private void MakeScreenHorizontal()
+    {
         Screen.autorotateToPortrait = false;
         Screen.autorotateToPortraitUpsideDown = false;
         Screen.autorotateToLandscapeLeft = true;
         Screen.autorotateToLandscapeRight = true;
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+    }
 
-        SceneManager.LoadScene(SharedConsts.Game);
+
+    public void BtnClickedSound()
+    {
+        if(btnAudioSource != null)
+        {
+            btnAudioSource.Play();
+        }
     }
 }

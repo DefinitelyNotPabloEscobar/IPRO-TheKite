@@ -522,6 +522,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8548410379131770240, guid: 8c57eb0d609b082448cb97c797ae9eef,
         type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548410379131770240, guid: 8c57eb0d609b082448cb97c797ae9eef,
+        type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -545,6 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d487c35ddd04174289ca2cff91cb7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instanceId: 0
 --- !u!82 &748784060 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8548410379131770240, guid: 8c57eb0d609b082448cb97c797ae9eef,
