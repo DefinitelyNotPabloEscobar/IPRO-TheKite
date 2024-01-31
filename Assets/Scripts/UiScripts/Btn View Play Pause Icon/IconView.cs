@@ -38,4 +38,20 @@ public class IconView : MonoBehaviour
         }
 
     }
+
+    public void StopAppearing()
+    {
+        if (appearing)
+        {
+            appearing = false;
+            Color color = image.color;
+            color.a = 0;
+            image.color = color;
+        }
+    }
+
+    public bool isAppearing()
+    {
+        return appearing;
+    }
 }

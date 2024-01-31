@@ -761,7 +761,7 @@ public class KiteMovementScript : MonoBehaviour
         return -1;
     }
 
-    string ReadJsonFromFile(string filePath)
+    private string ReadJsonFromFile(string filePath)
     {
         // Read the JSON string from the file
         string jsonResult = File.ReadAllText(filePath);
@@ -769,7 +769,7 @@ public class KiteMovementScript : MonoBehaviour
         return jsonResult;
     }
 
-    DataContainerDifficulty JsonToData(string jsonData)
+    private DataContainerDifficulty JsonToData(string jsonData)
     {
         DataContainerDifficulty dataContainer = JsonUtility.FromJson<DataContainerDifficulty>(jsonData);
 

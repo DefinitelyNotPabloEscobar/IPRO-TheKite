@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,14 @@ public class StartingMenu : MonoBehaviour
 {
     public StressBar stressBar;
     public AudioSource btnClickedSound;
+
+    public void Awake()
+    {
+        if (ReadFromFile(SharedConsts.FirstTimePath))
+        {
+            Debug.Log("Must Calibrate");
+        }
+    }
     public void PlayGame(){
 
         if(btnClickedSound != null) btnClickedSound.Play();
@@ -40,6 +49,7 @@ public class StartingMenu : MonoBehaviour
     {
         if (btnClickedSound != null) btnClickedSound.Play();
         SceneManager.LoadScene(SharedConsts.TutorialScene);
+
     }
 
     public void MoveProgressBar()
@@ -66,6 +76,8 @@ public class StartingMenu : MonoBehaviour
 
     public void MoveToMicTesting()
     {
+        WriteBoolFile(SharedConsts.FirstTimePath, false);
+
         if (btnClickedSound != null) btnClickedSound.Play();
         try
         {
@@ -76,4 +88,57 @@ public class StartingMenu : MonoBehaviour
             Debug.Log("Error while changing to mic testing");
         }
     }
+
+    private void WriteBoolFile(string filePath, bool data)
+    {
+        try
+        {
+            FirstTimeContainer firstTimeContainer = new FirstTimeContainer();
+            firstTimeContainer.firstTime = data;
+
+            string jsonResult = JsonUtility.ToJson(firstTimeContainer);
+
+            File.WriteAllText(filePath, jsonResult);
+
+            Debug.Log("Wrote " + jsonResult + " in file");
+        }
+        catch
+        {
+            Debug.Log("Error while writting Int to File at " + filePath);
+        }
+    }
+
+    private bool ReadFromFile(string filePath)
+    {
+        try
+        {
+            string jsonResult = ReadJsonFromFile(filePath);
+            FirstTimeContainer firstTimeContainer = JsonToData(jsonResult);
+            bool firstTime = firstTimeContainer.firstTime;
+
+            Debug.Log("Read bool value from JSON file: " + firstTime + " at " + filePath);
+            return firstTime;
+        }
+        catch
+        {
+            Debug.Log("Error while writting Int to File at " + filePath);
+        }
+
+        return true;
+    }
+
+    private string ReadJsonFromFile(string filePath)
+    {
+
+        string jsonResult = File.ReadAllText(filePath);
+
+        return jsonResult;
+    }
+
+    private FirstTimeContainer JsonToData(string jsonData)
+    {
+        FirstTimeContainer firstTimeContainer = JsonUtility.FromJson<FirstTimeContainer>(jsonData);
+        return firstTimeContainer;
+    }
+
 }

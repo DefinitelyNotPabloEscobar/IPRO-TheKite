@@ -13,10 +13,12 @@ public class IconViewManagerPlayAndPause : MonoBehaviour
     {
         if (player.isPlaying())
         {
+            if(iconPause.isAppearing()) iconPause.StopAppearing();
             iconPlay.Appear();
         }
         else
         {
+            if (iconPlay.isAppearing()) iconPlay.StopAppearing();
             iconPause.Appear();
         }
     }

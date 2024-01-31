@@ -99,6 +99,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\AudioProcessor.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
+    <Compile Include="Assets\Scripts\Shared\JsonLevelDone.cs" />
     <Compile Include="Assets\Scripts\UiScripts\MultiBtnManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
@@ -110,10 +111,12 @@
     <Compile Include="Assets\Scripts\Breathing Algorithm\SavWav.cs" />
     <Compile Include="Assets\Scripts\Shared\JsonDifficulty.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\Permutations.cs" />
+    <Compile Include="Assets\Scripts\Shared\JsonFirstTime.cs" />
     <Compile Include="Assets\Scripts\Environment\TerrainGenerator.cs" />
     <Compile Include="Assets\Scripts\SoundManager\SoundManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\Scripts\UiScripts\Btn View Play Pause Icon\IconView.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\UiScripts\TimerManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
@@ -128,6 +131,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\CameraController.cs" />
     <Compile Include="Assets\Scripts\UiScripts\StressBar.cs" />
+    <Compile Include="Assets\Scripts\UiScripts\Btn View Play Pause Icon\IconViewManagerPlayAndPause.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\IIR_Butterworth.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\Variations.cs" />
@@ -143,8 +147,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Managers\AudioManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\Scripts\UiScripts\Btn View Play Pause Icon\IconView.cs" />
-    <Compile Include="Assets\Scripts\UiScripts\Btn View Play Pause Icon\IconViewManagerPlayAndPause.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Nature Sound FX\__Gift__\Weapons SFX\Weapons SFX Full Package.txt" />
