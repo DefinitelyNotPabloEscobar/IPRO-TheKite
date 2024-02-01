@@ -7,6 +7,7 @@ public class SoundManager: MonoBehaviour
     public AudioSource winningSound;
     public AudioSource losingSound;
     public AudioSource tickSound;
+    public AudioSource crashSound;
 
     private bool playedItOnce = false;
     
@@ -33,6 +34,14 @@ public class SoundManager: MonoBehaviour
         if (tickSound != null)
         {
             tickSound.Play();
+        }
+    }
+
+    public void playCrash()
+    {
+        if (crashSound != null)
+        {
+            crashSound.Play();
         }
     }
 }

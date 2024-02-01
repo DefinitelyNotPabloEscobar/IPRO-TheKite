@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class KiteMovementScript : MonoBehaviour
 {
     // Angle increment per frame
+    [Header("Kite Inner Stats")]
     public float angularSpeed = -10f;
     public float angularSecSpeed = -2f;
 
@@ -44,7 +45,12 @@ public class KiteMovementScript : MonoBehaviour
 
     private List<GameObject> objectList = new List<GameObject>();
     private List<GameObject> reverseObjectList = new List<GameObject>();
+
+    [Header("Indicator Game Object")]
+
     public GameObject indicator;
+
+    [Header("Text")]
 
     public TextMeshProUGUI instructionsTextFromIlias;
     public TextMeshProUGUI instructionsText;
@@ -83,6 +89,8 @@ public class KiteMovementScript : MonoBehaviour
     private float EarlySecSpeed;
     private float phaseTimer;
 
+    [Header("Sound Manager")]
+
     public SoundManager SoundManager;
 
     private Color greenColor = new Color(.1f, .8f, .1f); // Green
@@ -93,6 +101,8 @@ public class KiteMovementScript : MonoBehaviour
     private TimerManager timerManager;
     private PhaseManager phaseManager;
     private ScoreManager scoreManager;
+
+    [Header("Progress Bars to be Used")]
 
     public ProgressBar progressBar1;
     public ProgressBar progressBar2;
@@ -116,7 +126,30 @@ public class KiteMovementScript : MonoBehaviour
     private bool starter4 = false;
     private string starterText = "";
 
+    private int loseAnimationPicked;
+
+    [Header("Breathing Algorithm")]
+
     public ObjectManager objectManagerBreathing;
+
+    [Header("Particle System")]
+
+    public ParticleSystem CrashParticleSystem;
+    private bool CrashParticleSystemPlayed = false;
+    private float LosingAnimation2TimerEnd = 0f;
+
+    [Header("Lose Animation 2 Timer to End")]
+
+    public float LosingAnimation2End;
+    public float LosingAnimation2PlayEndSound;
+
+    [Header("Camera Control")]
+
+    public CameraMovement cameraMovement;
+
+    [Header("Kite Object Group")]
+
+    public GameObject objectGroup;
 
     void Start()
     {
@@ -239,14 +272,30 @@ public class KiteMovementScript : MonoBehaviour
         {
             if (!lost)
             {
+                float randomNumber = Random.Range(0f, 2f);
+                loseAnimationPicked = Mathf.RoundToInt(randomNumber);
+
                 HideProgressBars();
                 HideText();
                 lastYPos = kite.position.y;
                 WriteIntToFile(SharedConsts.ScorePath, CalculateScore());
                 //RemoveIndicatores();
+
+                if(loseAnimationPicked == 1) cameraMovement.DontLookAtKite();
             }
             lost = true;
-            LoseAnimation();
+
+            switch (loseAnimationPicked)
+            {
+                case 0:
+                default:
+                    LoseAnimation();
+                    break;
+                case 1:
+                    LoseAnimation2();
+                    break;
+            }
+
             return;
         }
 
@@ -452,6 +501,47 @@ public class KiteMovementScript : MonoBehaviour
         if(kite.position.y > 150) SceneManager.LoadScene(SharedConsts.LoadingEndGame);
 
         MoveIndicators();
+    }
+
+    public void LoseAnimation2()
+    {
+
+        if (kite.position.y > 5)
+        {
+            float x = radius * Mathf.Cos(angle * Mathf.Deg2Rad);
+            float z = radius * Mathf.Sin(angle * Mathf.Deg2Rad);
+            float y = kite.position.y - 2 * Time.deltaTime;
+            kite.position = new Vector3(x, y, z);
+
+            kite.rotation = Quaternion.Euler(kite.rotation.x - 5 * Time.deltaTime, -angle - 180f, secAngle + shakeLevel * shakeStrengh);
+        }
+        else
+        {
+            if(!CrashParticleSystemPlayed)
+            {
+                CrashParticleSystem.Play();
+                CrashParticleSystemPlayed = true;
+                gameResultText.text = "Loss";
+                SoundManager.playCrash();
+                LosingAnimation2TimerEnd = Time.time;
+
+                objectGroup.SetActive(false);
+            }
+        }
+
+        CrashParticleSystem.transform.position = kite.position;
+
+        MoveIndicators();
+
+        if (LosingAnimation2TimerEnd + LosingAnimation2PlayEndSound < Time.time && LosingAnimation2TimerEnd > 0)
+        {
+            SoundManager.playLose();
+        }
+
+        if (LosingAnimation2TimerEnd + LosingAnimation2End < Time.time && LosingAnimation2TimerEnd > 0)
+        {
+            SceneManager.LoadScene(SharedConsts.LoadingEndGame);
+        }
     }
 
     public void WinAnimation()

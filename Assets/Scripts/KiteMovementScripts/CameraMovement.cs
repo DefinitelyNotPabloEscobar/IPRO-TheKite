@@ -8,6 +8,12 @@ public class CameraMovement : MonoBehaviour
     public KiteMovementScript kite;
     public float kiteScreanPosition;
 
+    private bool dontLookAtKite = false;
+    private float yStopped;
+    private float angleReduce;
+
+    public float angleReduceSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +22,9 @@ public class CameraMovement : MonoBehaviour
 
     void LateUpdate()
     {
-        if (kite != null)
+        if(kite == null) return;
+
+        if (!dontLookAtKite)
         {
             float x = kite.getRadius() * Mathf.Cos((kite.getAngle() - kiteScreanPosition) * Mathf.Deg2Rad); 
             float y = kite.transform.position.y + cameraHeight;
@@ -27,5 +35,20 @@ public class CameraMovement : MonoBehaviour
             // Make the camera look at the kite's position
             transform.LookAt(kiteViewPosition);
         }
+        else
+        {
+            float x = kite.getRadius() * Mathf.Cos((kite.getAngle() - kiteScreanPosition + angleReduce) * Mathf.Deg2Rad);
+            float z = kite.getRadius() * Mathf.Sin((kite.getAngle() - kiteScreanPosition + angleReduce) * Mathf.Deg2Rad);
+            angleReduce += angleReduceSpeed * Time.deltaTime;
+
+            Vector3 kiteViewPosition = new Vector3(x, yStopped, z);
+             transform.LookAt(kiteViewPosition);
+        }
+    }
+
+    public void DontLookAtKite()
+    {
+        dontLookAtKite=true;
+        yStopped = kite.transform.position.y;
     }
 }
