@@ -24,11 +24,11 @@ public class MultiBtnManager : MonoBehaviour
 
 
     [Header("Practice")]
-    public UnityEngine.UI.Button PracticeOff;
-    public UnityEngine.UI.Button PracticeOn;
+    public UnityEngine.UI.Button TutorialOff;
+    public UnityEngine.UI.Button TutorialOn;
 
-    public TextMeshProUGUI PracticeOffText;
-    public TextMeshProUGUI PracticeOnText;
+    public TextMeshProUGUI TutorialOffText;
+    public TextMeshProUGUI TutorialOnText;
 
 
     [Header("Level 1")]
@@ -66,9 +66,9 @@ public class MultiBtnManager : MonoBehaviour
             if (m.normal == null || m.hover == null) usable = false;
         }
 
-        if (PlayOffText == null || PlayOnText == null || PracticeOffText == null || PracticeOnText == null) usable = false;
+        if (PlayOffText == null || PlayOnText == null || TutorialOffText == null || TutorialOnText == null) usable = false;
 
-        usableLowerBtn = (PlayOn != null && PlayOff != null && PracticeOn != null && PracticeOff != null);
+        usableLowerBtn = (PlayOn != null && PlayOff != null && TutorialOn != null && TutorialOff != null);
 
         if(usable)
         {
@@ -83,8 +83,10 @@ public class MultiBtnManager : MonoBehaviour
         {
             PlayOff.enabled = true;
             PlayOff.image.enabled = true;
-            PracticeOff.enabled = true;
-            PracticeOff.image.enabled = true;
+            /*
+            TutorialOff.enabled = true;
+            TutorialOff.image.enabled = true;
+            */
         }
 
         levelDone = ReadFromFile(SharedConsts.DifficultyDonePath);
@@ -154,16 +156,20 @@ public class MultiBtnManager : MonoBehaviour
             PlayOff.enabled = !activeBtn;
             PlayOff.image.enabled = !activeBtn;
             PlayOffText.enabled = !activeBtn;
-            PracticeOff.enabled = !activeBtn;
-            PracticeOff.image.enabled = !activeBtn;
-            PracticeOffText.enabled = !activeBtn;
+            /*
+            TutorialOff.enabled = !activeBtn;
+            TutorialOff.image.enabled = !activeBtn;
+            TutorialOffText.enabled = !activeBtn;
+            */
 
             PlayOn.enabled = activeBtn;
             PlayOn.image.enabled = activeBtn;
             PlayOnText.enabled = activeBtn;
-            PracticeOn.enabled = activeBtn;
-            PracticeOn.image.enabled = activeBtn;
-            PracticeOnText.enabled = activeBtn;
+            /*
+            TutorialOn.enabled = activeBtn;
+            TutorialOn.image.enabled = activeBtn;
+            TutorialOnText.enabled = activeBtn;
+            */
         }
 
         if(activeBtn)

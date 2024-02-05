@@ -19,7 +19,7 @@ public class StartingMenu : MonoBehaviour
     public void PlayGame(){
 
         if(btnClickedSound != null) btnClickedSound.Play();
-        SceneManager.LoadScene(SharedConsts.Game);
+        SceneManager.LoadScene(SharedConsts.PlayTutorialScene);
         
         /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         // Unload the main menu scene (assuming it's not the first scene)

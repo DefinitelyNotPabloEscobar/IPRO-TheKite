@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Breathing Algorithm\MicrophoneCheck.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\KiteMovementScripts\KiteMovementScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\Tutorial Menus\TutorialPlayMenu.cs" />
     <Compile Include="Assets\Scripts\UiScripts\BtnVisualManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Assets\Scripts\UiScripts\MultiBtnManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+    <Compile Include="Assets\Scripts\Shared\JsonFirstTutorial.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\KiteMovementInMenu.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scripts\UiScripts\ScoreManager.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="Assets\Scripts\UiScripts\Btn View Play Pause Icon\IconView.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\UiScripts\TimerManager.cs" />
+    <Compile Include="Assets\Scripts\UiScripts\SwiperTools\PageSwipper.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\SmallPrimeUtility.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\Combinations.cs" />
@@ -136,6 +139,8 @@
     <Compile Include="Assets\Scripts\Breathing Algorithm\IIR_Butterworth.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\Variations.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\CorrelationFromGraphs.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\Tutorial Menus\TutorialUIMenu.cs" />
+    <Compile Include="Assets\Scripts\KiteMovementScripts\DefeatAnimationCrash.cs" />
     <Compile Include="Assets\Scripts\KiteMovementScripts\CameraInSceneUi.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
@@ -147,7 +152,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Managers\AudioManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\Scripts\KiteMovementScripts\DefeatAnimationCrash.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Nature Sound FX\__Gift__\Weapons SFX\Weapons SFX Full Package.txt" />
