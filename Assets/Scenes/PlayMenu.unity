@@ -1105,8 +1105,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tutorial
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1301,8 +1301,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Level 3: Advanced'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1457,8 +1457,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2325,8 +2325,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Level 1: Beginner'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2583,7 +2583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 835553232}
   m_Layer: 5
-  m_Name: Content
+  m_Name: Secondary Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2824,8 +2824,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3141,7 +3141,7 @@ GameObject:
   - component: {fileID: 1391458776}
   - component: {fileID: 1391458775}
   m_Layer: 5
-  m_Name: Scroll View 2
+  m_Name: 'Scroll View '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3699,8 +3699,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Level 3: Advanced'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4205,8 +4205,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Level 2: Intermediate'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4341,8 +4341,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tutorial
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4591,8 +4591,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Select the level that best suits you
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4617,8 +4617,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 58
-  m_fontSizeBase: 58
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4759,7 +4759,7 @@ GameObject:
   - component: {fileID: 1961584788}
   - component: {fileID: 1961584787}
   m_Layer: 5
-  m_Name: Canvas Play
+  m_Name: 'Canvas '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5035,8 +5035,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Level 4: Expert'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5151,8 +5151,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Level 2: Intermediate'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5287,8 +5287,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Level 1: Beginner'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c80fa0a300f16c444835e66c0b03e57e, type: 2}
-  m_sharedMaterial: {fileID: -1120230433943128308, guid: c80fa0a300f16c444835e66c0b03e57e,
+  m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
+  m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

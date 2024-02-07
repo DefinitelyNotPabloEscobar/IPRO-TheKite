@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\UiScripts\BtnVisualManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+    <Compile Include="Assets\Scripts\UiScripts\Lower Indicatores\LowerIndicatorPlacer.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\StartingMenu.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\FollowGraphDraw.cs" />
     <Compile Include="Assets\Scripts\UiScripts\PanelScroller.cs" />
