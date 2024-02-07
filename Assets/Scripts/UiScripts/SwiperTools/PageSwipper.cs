@@ -16,8 +16,8 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
 
     private Vector3 panelLocation;
 
-    private List<GameObject> lowerIconLight;
-    private List<GameObject> lowerIconDark;
+    public List<GameObject> lowerIconLight;
+    public List<GameObject> lowerIconDark;
 
     private int currentPage;
 
@@ -95,6 +95,8 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
 
     IEnumerator SmoothMove(Vector3 startPos,  Vector3 endPos, float seconds)
     {
+        SwippeBtnChecker();
+
         float t = 0f;
 
         while(t <= 1.0f)
@@ -104,7 +106,6 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
             yield return null;
         }
 
-        SwippeBtnChecker();
     }
 
     public void SwippeBtnChecker()

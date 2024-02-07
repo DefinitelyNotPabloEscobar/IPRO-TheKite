@@ -9,7 +9,7 @@ public class LowerIndicatorPlacer : MonoBehaviour
     public GameObject objGroup;
 
     public int number = 0;
-    public int spacing = 25;
+    public float spacing = 0.05f;
 
     public bool darker = false;
 
@@ -36,6 +36,12 @@ public class LowerIndicatorPlacer : MonoBehaviour
             gameObjectList[0].SetActive(true);
             pageSwipper.AddDarkIcons(gameObjectList);
         }
+
+        Debug.Log("Screeen " + Screen.width);
+        if (Screen.width < 1500)
+        {
+            spacing = 0.001f;
+        }
     }
 
     private void Impar()
@@ -59,7 +65,7 @@ public class LowerIndicatorPlacer : MonoBehaviour
 
         for (int i = 0; i < parNumber; i++)
         {
-            Vector3 position = new Vector3(originalX - (spacing * (i + 1)), originalY, originalZ);
+            Vector3 position = new Vector3(originalX - (spacing * Screen.width * (i + 1)), originalY, originalZ);
             var obj = Instantiate(ellipse, position, Quaternion.identity, objGroup.transform);
             obj.SetActive(!darker);
             gameObjectList.Add(obj);
@@ -67,7 +73,7 @@ public class LowerIndicatorPlacer : MonoBehaviour
 
         for (int i = 0; i < parNumber; i++)
         {
-            Vector3 position = new Vector3(originalX + (spacing * (i + 1)), originalY, originalZ);
+            Vector3 position = new Vector3(originalX + (spacing * Screen.width * (i + 1)), originalY, originalZ);
             var obj = Instantiate(ellipse, position, Quaternion.identity, objGroup.transform);
             obj.SetActive(!darker);
             gameObjectList.Add(obj);
