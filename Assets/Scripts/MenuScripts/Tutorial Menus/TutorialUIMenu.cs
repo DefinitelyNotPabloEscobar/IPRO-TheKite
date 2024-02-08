@@ -44,6 +44,7 @@ public class TutorialUIMenu:MonoBehaviour
 
     public void Practice()
     {
+        MakeScreenHorizontal();
         SceneManager.LoadScene(SharedConsts.PracticeScene);
     }
 

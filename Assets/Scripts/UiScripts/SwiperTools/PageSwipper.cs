@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,10 +15,19 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
     public Button fowardBtn;
     public Button backBtn;
 
+    public Button skipBtn;
+    public TextMeshProUGUI skipText;
+    public Button practiceBtn;
+    public TextMeshProUGUI practiceText;
+
     private Vector3 panelLocation;
 
     public List<GameObject> lowerIconLight;
     public List<GameObject> lowerIconDark;
+
+    public VideoManager videoManager;
+    public int videoPageNumber;
+    public IconViewManagerPlayAndPause iconViewManager;
 
     private int currentPage;
 
@@ -58,32 +68,14 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
         float percentage = (eventData.pressPosition.x - eventData.position.x) / Screen.width;
         if(Mathf.Abs(percentage) >= percentThreshold) 
         {
-            Vector3 newLocation = panelLocation;
-            if (percentage > 0 && currentPage < pages.Count - 1)
+            if (percentage > 0)
             {
-                newLocation += new Vector3(-Screen.width, 0, 0);
-                currentPage += 1;
-
-                lowerIconLight[currentPage].SetActive(false);
-                lowerIconDark[currentPage].SetActive(true);
-
-                lowerIconLight[currentPage - 1].SetActive(true);
-                lowerIconDark[currentPage - 1].SetActive(false);
+                GoFoward();
             }
-            else if(percentage < 0 && currentPage > 0)
+            else if(percentage < 0)
             {
-                newLocation += new Vector3(Screen.width, 0, 0);
-                currentPage -= 1;
-
-                lowerIconLight[currentPage].SetActive(false);
-                lowerIconDark[currentPage].SetActive(true);
-
-                lowerIconLight[currentPage + 1].SetActive(true);
-                lowerIconDark[currentPage + 1].SetActive(false);
+                GoBack();
             }
-
-            StartCoroutine(SmoothMove(transform.position, newLocation, easing));
-            panelLocation = newLocation;
         }
         else
         {
@@ -114,11 +106,15 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             backBtn.enabled = false;
             backBtn.image.enabled = false;
+
+            switchToSkipBtn();
         }
         else if (currentPage >= pages.Count - 1)
         {
             fowardBtn.enabled = false;
             fowardBtn.image.enabled = false;
+
+            switchToPracticeBtn();
         }
         else
         {
@@ -126,7 +122,21 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
             backBtn.image.enabled = true;
             fowardBtn.enabled = true;
             fowardBtn.image.enabled = true;
+
+            switchToSkipBtn();
         }
+    }
+
+    public void SwipperSkipBtnsUpdate()
+    {
+        backBtn.enabled = true;
+        backBtn.image.enabled = true;
+        fowardBtn.enabled = false;
+        fowardBtn.image.enabled = false;
+
+        lowerIconLight[currentPage].SetActive(false);
+        lowerIconDark[currentPage].SetActive(true);
+
     }
 
     public void AddLightIcons(List<GameObject> list)
@@ -155,6 +165,8 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         StartCoroutine(SmoothMove(transform.position, newLocation, easing));
         panelLocation = newLocation;
+
+        manageVideoPage();
     }
 
     public void GoBack()
@@ -174,15 +186,64 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
 
         StartCoroutine(SmoothMove(transform.position, newLocation, easing));
         panelLocation = newLocation;
+
+        manageVideoPage();
     }
 
+    public void manageVideoPage()
+    {
+        if (currentPage == videoPageNumber)
+        {
+            videoManager.PlayVideo();
+            iconViewManager.iconPlay.Appear();
+        }
+        else videoManager.StopVideo();
+    }
+
+    public void switchToPracticeBtn()
+    {
+        skipBtn.enabled = false;
+        skipBtn.image.enabled = false;
+        skipText.enabled = false;
+
+        practiceBtn.enabled = true;
+        practiceBtn.image.enabled = true;
+        practiceText.enabled = true;
+    }
+
+    public void switchToSkipBtn()
+    {
+        skipBtn.enabled = true;
+        skipBtn.image.enabled = true;
+        skipText.enabled = true;
+
+        practiceBtn.enabled = false;
+        practiceBtn.image.enabled = false;
+        practiceText.enabled = false;
+    }
 
     public void Skip()
     {
-        currentPage = pages.Count - 1;
-        panelLocation = pages[pages.Count - 1].transform.position;
+        //currentPage = pages.Count - 1;
+        //panelLocation = pages[pages.Count - 1].transform.position;
 
-        StartCoroutine(SmoothMove(transform.position, panelLocation, easing*3));
+        lowerIconLight[currentPage].SetActive(true);
+        lowerIconDark[currentPage].SetActive(false);
+
+
+        while (currentPage < pages.Count - 1)
+        {
+            panelLocation += new Vector3(-Screen.width, 0, 0);
+            currentPage += 1;
+        }
+
+        lowerIconLight[currentPage].SetActive(true);
+        lowerIconDark[currentPage].SetActive(false);
+
+        StartCoroutine(SmoothMove(transform.position, panelLocation, 3 * easing));
+
+        SwipperSkipBtnsUpdate();
+
     }
 
 

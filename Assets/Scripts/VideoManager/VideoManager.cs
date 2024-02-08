@@ -19,13 +19,16 @@ public class VideoManager : MonoBehaviour
 
     public RawImage image;
 
+    public AudioSource audioSource;
     
 
     public void Start()
     {
+        /*
         //Make sure there is only one tutorial menu at the time
         TutorialMenu.CanvasLeavingTutorial += LeavingCanvas;
         TutorialMenu.CanvasEnteringTutorial += EnteringCanvas;
+        */
 
         currentPlayer = player;
 
@@ -35,26 +38,46 @@ public class VideoManager : MonoBehaviour
     {
         if (currentPlayer == null) return;
 
-        if(currentPlayer.isPlaying) currentPlayer.Pause();
-        else currentPlayer.Play();
+        if (currentPlayer.isPlaying)
+        {
+            if (!audioSource.isPlaying) audioSource.Play();
+            currentPlayer.Pause();
+        }
+        else
+        {
+            if (audioSource.isPlaying) audioSource.Stop();
+            currentPlayer.Play();
+        }
     }
 
     public void StopVideo()
     {
         if (currentPlayer == null) return;
-        if (currentPlayer.isPlaying) currentPlayer.Stop();
+        if (currentPlayer.isPlaying)
+        {
+            if(!audioSource.isPlaying) audioSource.Play();
+            currentPlayer.Stop();
+        }
     }
 
     public void PauseVideo()
     {
         if (currentPlayer == null) return;
-        if (currentPlayer.isPlaying) currentPlayer.Pause();
+        if (currentPlayer.isPlaying)
+        {
+            if (!audioSource.isPlaying) audioSource.Play();
+            currentPlayer.Pause();
+        }
     }
 
     public void PlayVideo()
     {
         if (currentPlayer == null) return;
-        if(!currentPlayer.isPlaying) currentPlayer.Play();
+        if (!currentPlayer.isPlaying)
+        {
+            if (audioSource.isPlaying) audioSource.Stop();
+            currentPlayer.Play();
+        }
     }
 
     public void LeavingCanvas()

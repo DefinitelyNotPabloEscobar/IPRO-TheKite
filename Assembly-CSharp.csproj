@@ -139,6 +139,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\IIR_Butterworth.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\Variations.cs" />
+    <Compile Include="Assets\Scripts\SoundManager\SoundManager2.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\CorrelationFromGraphs.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\Tutorial Menus\TutorialUIMenu.cs" />
     <Compile Include="Assets\Scripts\KiteMovementScripts\DefeatAnimationCrash.cs" />
