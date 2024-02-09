@@ -16,6 +16,7 @@ public class LoadingEndGame : MonoBehaviour
     public TextMeshProUGUI complementText3;
     public AudioSource btnSoundEffect;
     public Image fill;
+    public Image backGround;
     public float increaseSpeed = 4.0f;
     public float colorLerpSpeed = 5.0f;
 
@@ -69,6 +70,7 @@ public class LoadingEndGame : MonoBehaviour
 
     public void Update()
     {
+
         if (currentScore < Score)
         {
             currentScore += Time.deltaTime * increaseSpeed;
@@ -90,11 +92,12 @@ public class LoadingEndGame : MonoBehaviour
             Color color = Color.white;
             color.a = 0;
             fill.color = color;
+            backGround.color = color;
         }
 
         if(Score == 0)
         {
-            scoreText.text = "x" + ((int)(currentScore + 0.5)).ToString();
+            scoreText.text = ((int)(currentScore + 0.5)).ToString();
             Color c = complementText1.color;
             c.a = 1;
             complementText1.color = c;
@@ -111,13 +114,15 @@ public class LoadingEndGame : MonoBehaviour
 
     public void UpdateScoreUI()
     {
-        scoreText.text = "x" + ((int)(currentScore + 0.5)).ToString();
+        scoreText.text = ((int)(currentScore + 0.5)).ToString();
         bar.value = Mathf.InverseLerp(0, Score, currentScore);
         float t = Mathf.PingPong(Time.time * colorLerpSpeed, 1f);
 
+        /*
         hue = Mathf.Repeat(hue + Time.deltaTime * colorLerpSpeed, 1.0f);
         Color lerpedColor = Color.HSVToRGB(hue, 1.0f, 1.0f);
         fill.color = lerpedColor;
+        */
     }
 
 

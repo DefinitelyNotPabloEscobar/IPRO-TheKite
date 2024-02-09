@@ -6,7 +6,6 @@ public class HorizontalManager : MonoBehaviour
 {
     void Awake()
     {
-        /*
         Screen.autorotateToPortrait = false;
 
         Screen.autorotateToPortraitUpsideDown = false;
@@ -16,7 +15,7 @@ public class HorizontalManager : MonoBehaviour
         Screen.autorotateToLandscapeRight = true;
 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-        */
+        
     }
 
 

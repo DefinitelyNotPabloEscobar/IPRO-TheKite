@@ -20,7 +20,7 @@ public class EndGameMenu : MonoBehaviour
     {
         string filePath = SharedConsts.ScorePath;
         Score = ReadFromFile(filePath);
-        intScoreText.text = "x" + Score;
+        intScoreText.text = "" + Score;
 
     }
 

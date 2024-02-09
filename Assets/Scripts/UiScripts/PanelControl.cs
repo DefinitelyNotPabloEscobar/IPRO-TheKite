@@ -40,7 +40,7 @@ public class PanelControl : MonoBehaviour
         {
             if (panelScroller.isOnBottomHalf())
             {
-                btn.transform.rotation = Quaternion.Euler(0f, 0f, 1800f);
+                btn.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
             }
             else
             {

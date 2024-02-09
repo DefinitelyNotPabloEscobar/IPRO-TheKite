@@ -12,8 +12,8 @@ public class PanelScroller : MonoBehaviour
     private bool MoveUp = false;
     private bool MoveDown = false;
 
-    private float upPercentage = 0.07f;
-    private float downPercentage = -0.0285f;
+    public float upPercentage = 0.07f;
+    public float downPercentage = -0.0285f;
     private float upPosition;
     private float downPosition;
 
@@ -22,6 +22,8 @@ public class PanelScroller : MonoBehaviour
 
     private static float screenHeight;
     private static float screenWidth;
+
+    private bool isUp = false;
 
     private void Start()
     {
@@ -40,6 +42,40 @@ public class PanelScroller : MonoBehaviour
 
     private void Update()
     {
+       
+        if(screenHeight != Screen.height || screenWidth != Screen.width)
+        {
+            screenHeight = Screen.height;
+            screenWidth = Screen.width;
+
+            upPosition = screenHeight * upPercentage;
+            downPosition = screenHeight * downPercentage;
+
+            Debug.Log("Down " + panel.transform.position + screenWidth/2 + " " + downPosition + " " + panel.transform.position.z);
+
+            MoveDown = false ; MoveUp = false ;
+
+        }
+
+        if(!MoveDown && !MoveUp)
+        {
+            if(isUp)
+            {
+                panel.transform.position = new Vector3(
+                screenWidth / 2,
+                upPosition,
+                panel.transform.position.z);
+            }
+            else
+            {
+                panel.transform.position = new Vector3(
+                screenWidth / 2,
+                downPosition,
+                panel.transform.position.z);
+            }
+
+        }
+
         if (MoveUp)
         {
             panel.transform.position = new Vector3(
@@ -53,6 +89,8 @@ public class PanelScroller : MonoBehaviour
                 panel.transform.position.x,
                 upPosition,
                 panel.transform.position.z);
+
+                isUp = true;
             }
         }
 
@@ -70,8 +108,11 @@ public class PanelScroller : MonoBehaviour
                 downPosition,
                 panel.transform.position.z);
 
+                isUp = false;
+
             }
         }
+        
     }
 
     public void PanelGoDown()

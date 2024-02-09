@@ -244,6 +244,8 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
 
         SwipperSkipBtnsUpdate();
 
+        manageVideoPage();
+
     }
 
 
