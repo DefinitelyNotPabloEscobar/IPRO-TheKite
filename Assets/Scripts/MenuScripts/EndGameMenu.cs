@@ -16,7 +16,7 @@ public class EndGameMenu : MonoBehaviour
     public Button btn;
     private int Score;
 
-    public void Start()
+    public void Awake()
     {
         string filePath = SharedConsts.ScorePath;
         Score = ReadFromFile(filePath);

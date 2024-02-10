@@ -82,7 +82,7 @@ public class KiteMovementScript : MonoBehaviour
     private float lastYPos;
 
     private bool won = false;
-    private int wonTime = 90;
+    private int wonTime;
 
     private float StartTime;
     private float CycleStartTime = 0f;
@@ -155,6 +155,8 @@ public class KiteMovementScript : MonoBehaviour
     {
         StartTime = Time.time;
         EarlySecSpeed = angularSecSpeed;
+        wonTime = SharedConsts.WinTime;
+
         if (kite != null){
             radius = kite.position.z;
         }

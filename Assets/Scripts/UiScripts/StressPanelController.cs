@@ -24,13 +24,13 @@ public class StressPanelController : MonoBehaviour
     private static float screenHeight;
     private static float screenWidth;
 
+    public PageSwipperSimple pageManager;
+
     private void Start()
     {
 
         screenHeight = Screen.height;
         screenWidth = Screen.width;
-
-        Debug.Log("asdasasd " + screenWidth / screenHeight);
 
         if (screenWidth/screenHeight < 1.7f)
         {
@@ -77,28 +77,11 @@ public class StressPanelController : MonoBehaviour
 
     private void Update()
     {
-        /*
-        if (MoveUp)
+        if(screenHeight != Screen.height || screenWidth != Screen.width)
         {
-            panel.anchoredPosition = new Vector2(0, panel.anchoredPosition.y + Time.deltaTime * speed);
-            if (panel.anchoredPosition.y >= upPosition)
-            {
-                MoveUp = false;
-                panel.anchoredPosition = new Vector2(0,upPosition);
-            }
+            ReAjust();
         }
-
-        else if (MoveDown)
-        {
-            panel.anchoredPosition = new Vector2(0, panel.anchoredPosition.y - Time.deltaTime * speed);
-            if (panel.anchoredPosition.y <= downPosition)
-            {
-                MoveDown = false;
-                panel.anchoredPosition = new Vector2(0, downPosition);
-
-            }
-        }
-        */
+            
 
         if (MoveUp)
         {
@@ -114,6 +97,7 @@ public class StressPanelController : MonoBehaviour
                 upPosition,
                 panel.transform.position.z);
             }
+            pageManager.ChangeY();
         }
 
         else if (MoveDown)
@@ -129,8 +113,8 @@ public class StressPanelController : MonoBehaviour
                 panel.transform.position.x,
                 downPosition,
                 panel.transform.position.z);
-
             }
+            pageManager.ChangeY();
         }
     }
 
@@ -160,4 +144,40 @@ public class StressPanelController : MonoBehaviour
     {
         return Util.IsWithinThreshold(panel.transform.position.y, downPosition, 10f);
     }
+
+    private void ReAjust()
+    {
+        screenHeight = Screen.height;
+        screenWidth = Screen.width;
+
+        if (screenWidth / screenHeight < 1.7f)
+        {
+            speed = 1000f;
+            upPercentage = 0.4f;
+            downPercentage = -0.5f;
+        }
+        else if (screenWidth / screenHeight < 1.8f)
+        {
+            upPercentage = 0.36f;
+            downPercentage = -0.515f;
+        }
+        else if (screenWidth / screenHeight <= 2.05f)
+        {
+            upPercentage = 0.28f;
+            downPercentage = -0.6f;
+        }
+        else if (screenWidth / screenHeight <= 2.2f)
+        {
+            upPercentage = 0.26f;
+            downPercentage = -0.625f;
+        }
+
+        upPosition = screenHeight * upPercentage;
+        downPosition = screenHeight * downPercentage;
+
+        panel.transform.position = new Vector3(
+            screenWidth / 2,
+            downPosition,
+            panel.transform.position.z);
+        }
 }

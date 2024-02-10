@@ -12,9 +12,13 @@ public class TutorialPlayMenu:MonoBehaviour
     public AudioSource btnAudioSource;
 
     public Image SkipTutorial;
+    public GameObject SkipTutorialGameObject;
     public Image Mask;
     public UnityEngine.UI.Button Btn1;
     public UnityEngine.UI.Button Btn2;
+
+    public UnityEngine.UI.Button BtnPlay;
+    public UnityEngine.UI.Button BtnTutorial;
 
     private bool firstTutorial;
 
@@ -163,5 +167,8 @@ public class TutorialPlayMenu:MonoBehaviour
         Mask.enabled = change;
         Btn1.enabled = change;
         Btn2.enabled = change;
+        SkipTutorialGameObject.SetActive(change);
+        BtnPlay.enabled = !change;
+        BtnTutorial.enabled = !change;
     }
 }

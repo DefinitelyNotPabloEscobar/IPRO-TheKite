@@ -24,4 +24,6 @@ public static class SharedConsts
     public static int PracticeScene = 7;
     public static int PlayTutorialScene = 8;
 
+    public static int WinTime = 90;
+
 }
