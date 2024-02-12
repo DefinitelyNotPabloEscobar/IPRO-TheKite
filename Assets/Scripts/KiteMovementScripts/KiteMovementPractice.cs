@@ -36,7 +36,7 @@ public class KiteMovementPractice : MonoBehaviour
     private float angle = 0f;
     private float secAngle = 0f;
 
-    private float elevationAngle = 0f;
+    private float elevationAngle = -45f;
     private float loseElevationAngle = 0f;
     private float secMax = 2f;
     private float secMin = -15f;
@@ -68,6 +68,7 @@ public class KiteMovementPractice : MonoBehaviour
     //New//
 
     private int practiceCounter = 0;
+    private float realTimeCounter = 0f;
     private bool moving = false;
 
     [Header("Panel1")]
@@ -117,6 +118,18 @@ public class KiteMovementPractice : MonoBehaviour
     public PanelControl panelControl8;
     private bool firstP8 = true;
 
+    [Header("PanelInhale")]
+
+    public GameObject panelInhale;
+    public PanelControl panelControlInhale;
+    private bool firstPInhale = true;
+    public Image fillInhale;
+
+    [Header("Panel9")]
+
+    public GameObject panel9;
+    public PanelControl panelControl9;
+
     void Start()
     {
         panel1.SetActive(false);
@@ -127,6 +140,7 @@ public class KiteMovementPractice : MonoBehaviour
         panel6.SetActive(false);
         panel7.SetActive(false);
         panel8.SetActive(false);
+        panelInhale.SetActive(false);
 
 
         StartTime = Time.time;
@@ -193,6 +207,9 @@ public class KiteMovementPractice : MonoBehaviour
             case 7:
                 Practice8();
                 break;
+            case 8:
+                PracticeInhale();
+                break;
         }
 
         MoveIndicators();
@@ -220,7 +237,7 @@ public class KiteMovementPractice : MonoBehaviour
         for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
         {
             int updatedI = i - numberOfObjNotDrawn + 1;
-            futureTime = Time.time - CycleStartTime + (updatedI * T);
+            futureTime = realTimeCounter - CycleStartTime + (updatedI * T) + 0.5f;
             float x = radius * Mathf.Cos((updatedAngle + ((updatedI * T) * angularSpeed)) * Mathf.Deg2Rad);
             float y = 0f;
             if(moving) y = (((Mathf.Sin(predictAngle(futureTime) * Mathf.Deg2Rad) + 2) / 2) * elevationHeightAmp) + 3;
@@ -282,8 +299,6 @@ public class KiteMovementPractice : MonoBehaviour
                 if (0f + angularElevSpeedInhale * leftDuration < 0f) return 0f + angularElevSpeedInhale * leftDuration;
                 else return 0f;
             case "inhale":
-                //The first one must be straight
-                if (Mathf.Abs(time) <= cycleTime) return 0f;
 
                 if (-90f + angularElevSpeedInhale * leftDuration < 0f) return -90f + angularElevSpeedInhale * leftDuration;
                 else return 0f;
@@ -295,6 +310,18 @@ public class KiteMovementPractice : MonoBehaviour
         }
     }
 
+    public void MoveKite()
+    {
+        // Calculate the new position using polar coordinates
+        float x = radius * Mathf.Cos(angle * Mathf.Deg2Rad);
+        float z = radius * Mathf.Sin(angle * Mathf.Deg2Rad);
+
+        // Update the object's position
+        transform.position = new Vector3(x, CalculateY(), z);
+        transform.rotation = Quaternion.Euler(CalculateRotation(), -angle, secAngle + shakeLevel * shakeStrengh);
+
+        angle += angularSpeed * Time.deltaTime;
+    }
 
     private void Practice1()
     {
@@ -425,4 +452,38 @@ public class KiteMovementPractice : MonoBehaviour
     }
 
 
+    public void PracticeInhale()
+    {
+        if (firstPInhale)
+        {
+            panelInhale.SetActive(true);
+            panelControlInhale.MovePanel();
+            moving = true;
+            MoveKite();
+
+            firstPInhale = false;
+            return;
+        }
+
+        realTimeCounter += Time.deltaTime;
+
+        MoveKite();
+
+        if (Util.IsWithinThreshold(elevationAngle, 0, 0.5f)) elevationAngle = 0f;
+        else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
+        else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
+
+
+        fillInhale.fillAmount = (realTimeCounter) / inhaleDuration;
+
+        if(realTimeCounter >= inhaleDuration) EndPracticeInhale();
+        
+    }
+
+
+    public void EndPracticeInhale()
+    {
+        moving = false;
+        practiceCounter++;
+    }
 }
