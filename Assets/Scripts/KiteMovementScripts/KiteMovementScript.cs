@@ -58,7 +58,6 @@ public class KiteMovementScript : MonoBehaviour
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI scoreLableText;
-    public Image scoreDiamond;
 
     public float ErrorCatchingTime = 0.1f;
 
@@ -807,7 +806,6 @@ public class KiteMovementScript : MonoBehaviour
     {
         var color = Color.white;
         color.a = 0f;
-        scoreDiamond.color = color;
         scoreManager.HideText();
         phaseManager.HideText();
         timerManager.HideText();
@@ -875,7 +873,7 @@ public class KiteMovementScript : MonoBehaviour
         //Score = (int)(100 * timerManager.currentTime / wonTime);
 
         int cycleTime = (int) (inhaleDuration + holdDuration + exhaleDuration);
-        Score = Mathf.FloorToInt(((Mathf.Abs(Time.time - CycleStartTime) - 0.5f) / cycleTime)) - 1;
+        Score = Mathf.FloorToInt(((Mathf.Abs(Time.time - CycleStartTime) - 0.5f) / cycleTime));
         if(Score < 0) Score = 0;
         return Score;
     }

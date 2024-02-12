@@ -27,7 +27,7 @@ public class ScoreManager
 
     public void setText(int score)
     {
-        scoreTime.text = "x" + score;
+        scoreTime.text = "Score: " + score;
     }
 
     public string GetText()
