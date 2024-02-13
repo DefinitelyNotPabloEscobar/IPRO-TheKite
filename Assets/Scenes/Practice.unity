@@ -4929,7 +4929,7 @@ RectTransform:
   - {fileID: 672105470}
   - {fileID: 1959050723}
   m_Father: {fileID: 1635475789}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5279,7 +5279,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1635475789}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15948,7 +15948,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2120078546}
         m_TargetAssemblyTypeName: PracticeMenu, Assembly-CSharp
-        m_MethodName: MoveToPausePanel
+        m_MethodName: PauseGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21097,7 +21097,7 @@ RectTransform:
   - {fileID: 1482331053}
   - {fileID: 260527537}
   m_Father: {fileID: 1635475789}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -35452,10 +35452,10 @@ RectTransform:
   - {fileID: 1339857399}
   - {fileID: 255932866}
   - {fileID: 1809918493}
+  - {fileID: 211347232}
   - {fileID: 198388960}
   - {fileID: 891539318}
   - {fileID: 1752391899}
-  - {fileID: 211347232}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46749,7 +46749,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1635475789}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
