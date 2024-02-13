@@ -49864,7 +49864,7 @@ MonoBehaviour:
   indicatoresFowardTiming: 0.075
   elevationHeightAmp: 15
   indicatorSpread: 40
-  shakeStrengh: 0.1
+  shakeStrengh: 0
   scoreText: {fileID: 416864137}
   timeText: {fileID: 1371577174}
   panel1: {fileID: 597062342}

@@ -192,6 +192,10 @@ public class KiteMovementPractice : MonoBehaviour
     public Image fillFull1;
     public Image fillFull2;
     public Image fillFull3;
+    private bool inhaleDone = false;
+    private bool holdDone = false;
+    private bool exhaleDone = false;
+
 
 
     [Header("Panel15")]
@@ -616,10 +620,7 @@ public class KiteMovementPractice : MonoBehaviour
         moving = false;
         practiceCounter++;
 
-        if(Ticking != null && !Ticking.isPlaying) 
-        { 
-            Ticking.Play();
-        }
+        TickingSound();
     }
 
     private void Practice9()
@@ -676,7 +677,6 @@ public class KiteMovementPractice : MonoBehaviour
         else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
 
         fillHold.fillAmount = (realTimeCounter - inhaleDuration) / holdDuration;
-        Debug.Log("DEBUG " + (realTimeCounter - inhaleDuration) / holdDuration);
 
         if ((realTimeCounter - inhaleDuration) >= holdDuration) EndMovingPhase();
 
@@ -803,7 +803,7 @@ public class KiteMovementPractice : MonoBehaviour
             else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
             else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
 
-            fillFull1.fillAmount = realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) / inhaleDuration;
+            fillFull1.fillAmount = (realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration)) / inhaleDuration;
         }
         else if (realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) < inhaleDuration + holdDuration)
         {
@@ -811,7 +811,13 @@ public class KiteMovementPractice : MonoBehaviour
             else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
             else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
 
-            fillFull1.fillAmount = realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) - inhaleDuration / holdDuration;
+            if(!inhaleDone)
+            {
+                inhaleDone = true;
+                TickingSound();
+            }
+
+            fillFull2.fillAmount = (realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) - inhaleDuration) / holdDuration;
         }
         else
         {
@@ -819,7 +825,13 @@ public class KiteMovementPractice : MonoBehaviour
             else if (elevationAngle < -90) elevationAngle += angularElevSpeedExhale * Time.deltaTime;
             else if (elevationAngle > -90) elevationAngle -= angularElevSpeedExhale * Time.deltaTime;
 
-            fillFull1.fillAmount = realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) - inhaleDuration - holdDuration / exhaleDuration;
+            if (!holdDone)
+            {
+                holdDone = true;
+                TickingSound();
+            }
+
+            fillFull3.fillAmount = (realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) - inhaleDuration - holdDuration) / exhaleDuration;
         }
 
         if (realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) >= inhaleDuration + exhaleDuration + holdDuration)
@@ -866,6 +878,14 @@ public class KiteMovementPractice : MonoBehaviour
     public void EndPractice16()
     {
         SceneManager.LoadScene(SharedConsts.Breath);    
+    }
+
+    private void TickingSound()
+    {
+        if (Ticking != null && !Ticking.isPlaying)
+        {
+            Ticking.Play();
+        }
     }
 
 }
