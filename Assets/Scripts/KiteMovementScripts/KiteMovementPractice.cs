@@ -8,6 +8,7 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class KiteMovementPractice : MonoBehaviour
 {
@@ -66,6 +67,9 @@ public class KiteMovementPractice : MonoBehaviour
     private float Error = 0;
 
     //New//
+
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timeText;
 
     private int practiceCounter = 0;
     private float realTimeCounter = 0f;
@@ -129,6 +133,85 @@ public class KiteMovementPractice : MonoBehaviour
 
     public GameObject panel9;
     public PanelControl panelControl9;
+    private bool firstP9 = true;
+
+    [Header("Panel10")]
+
+    public GameObject panel10;
+    public PanelControl panelControl10;
+    private bool firstP10 = true;
+
+
+    [Header("PanelHold")]
+
+    public GameObject panelHold;
+    public PanelControl panelControlHold;
+    private bool firstPHold = true;
+    public Image fillHold;
+
+
+    [Header("Panel11")]
+
+    public GameObject panel11;
+    public PanelControl panelControl11;
+    private bool firstP11 = true;
+
+    [Header("Panel12")]
+
+    public GameObject panel12;
+    public PanelControl panelControl12;
+    private bool firstP12 = true;
+
+
+    [Header("PanelExhale")]
+
+    public GameObject panelExhale;
+    public PanelControl panelControlExhale;
+    private bool firstPExhale = true;
+    public Image fillExhale;
+
+
+    [Header("Panel13")]
+
+    public GameObject panel13;
+    public PanelControl panelControl13;
+    private bool firstP13 = true;
+
+    [Header("Panel14")]
+
+    public GameObject panel14;
+    public PanelControl panelControl14;
+    private bool firstP14 = true;
+
+
+    [Header("PanelFull")]
+
+    public GameObject panelFull;
+    public PanelControl panelControlFull;
+    private bool firstPFull = true;
+    public Image fillFull1;
+    public Image fillFull2;
+    public Image fillFull3;
+
+
+    [Header("Panel15")]
+
+    public GameObject panel15;
+    public PanelControl panelControl15;
+    private bool firstP15 = true;
+    private float timeP15 = 0;
+    private const float waitTimeP15 = 3;
+
+    [Header("Panel16")]
+
+    public GameObject panel16;
+    public PanelControl panelControl16;
+    private bool firstP16 = true;
+
+    [Header("Audio")]
+    public AudioSource Ticking;
+
+
 
     void Start()
     {
@@ -141,7 +224,17 @@ public class KiteMovementPractice : MonoBehaviour
         panel7.SetActive(false);
         panel8.SetActive(false);
         panelInhale.SetActive(false);
-
+        panel9.SetActive(false);
+        panel10.SetActive(false);    
+        panelHold.SetActive(false);
+        panel11.SetActive(false);
+        panel12.SetActive(false);
+        panelExhale.SetActive(false);
+        panel13.SetActive(false);
+        panel14.SetActive(false);
+        panelFull.SetActive(false);
+        panel15.SetActive(false);
+        panel16.SetActive(false);
 
         StartTime = Time.time;
         EarlySecSpeed = angularSecSpeed;
@@ -181,7 +274,11 @@ public class KiteMovementPractice : MonoBehaviour
 
     void Update()
     {
-        switch(practiceCounter)
+        int minutes = Mathf.FloorToInt(realTimeCounter / 60);
+        int seconds = Mathf.FloorToInt(realTimeCounter % 60);
+        timeText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+
+        switch (practiceCounter)
         {
             case 0:
                 Practice1();
@@ -209,6 +306,39 @@ public class KiteMovementPractice : MonoBehaviour
                 break;
             case 8:
                 PracticeInhale();
+                break;
+            case 9:
+                Practice9();
+                break;
+            case 10:
+                Practice10();
+                break;
+            case 11:
+                PracticeHold();
+                break;
+            case 12:
+                Practice11();
+                break;
+            case 13:
+                Practice12();
+                break;
+            case 14:
+                PracticeExhale();
+                break;
+            case 15:
+                Practice13();
+                break;
+            case 16:
+                Practice14();
+                break;
+            case 17:
+                PracticeFullCycle();
+                break;
+            case 18:
+                Practice15();
+                break;
+            case 19:
+                Practice16();
                 break;
         }
 
@@ -476,14 +606,266 @@ public class KiteMovementPractice : MonoBehaviour
 
         fillInhale.fillAmount = (realTimeCounter) / inhaleDuration;
 
-        if(realTimeCounter >= inhaleDuration) EndPracticeInhale();
+        if(realTimeCounter >= inhaleDuration) EndMovingPhase();
         
     }
 
 
-    public void EndPracticeInhale()
+    public void EndMovingPhase()
     {
         moving = false;
         practiceCounter++;
+
+        if(Ticking != null && !Ticking.isPlaying) 
+        { 
+            Ticking.Play();
+        }
     }
+
+    private void Practice9()
+    {
+        if (firstP9)
+        {
+            panel9.SetActive(true);
+            panelControl9.MovePanel();
+            firstP9 = false;
+        }
+    }
+
+    public void EndPractice9()
+    {
+        panel9.SetActive(false);
+        practiceCounter++;
+    }
+
+    private void Practice10()
+    {
+        if (firstP10)
+        {
+            panel10.SetActive(true);
+            panelControl10.MovePanel();
+            firstP10 = false;
+        }
+    }
+
+    public void EndPractice10()
+    {
+        panel10.SetActive(false);
+        practiceCounter++;
+    }
+
+    public void PracticeHold()
+    {
+        if (firstPHold)
+        {
+            panelHold.SetActive(true);
+            panelControlHold.MovePanel();
+            moving = true;
+            MoveKite();
+
+            firstPHold = false;
+            return;
+        }
+
+        realTimeCounter += Time.deltaTime;
+
+        MoveKite();
+
+        if (Util.IsWithinThreshold(elevationAngle, 0f, 0.5f)) elevationAngle = 0f;
+        else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
+        else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
+
+        fillHold.fillAmount = (realTimeCounter - inhaleDuration) / holdDuration;
+        Debug.Log("DEBUG " + (realTimeCounter - inhaleDuration) / holdDuration);
+
+        if ((realTimeCounter - inhaleDuration) >= holdDuration) EndMovingPhase();
+
+    }
+
+
+    private void Practice11()
+    {
+        if (firstP11)
+        {
+            panel11.SetActive(true);
+            panelControl11.MovePanel();
+            firstP11 = false;
+        }
+    }
+
+    public void EndPractice11()
+    {
+        panel11.SetActive(false);
+        practiceCounter++;
+    }
+
+    private void Practice12()
+    {
+        if (firstP12)
+        {
+            panel12.SetActive(true);
+            panelControl12.MovePanel();
+            firstP12 = false;
+        }
+    }
+
+    public void EndPractice12()
+    {
+        panel12.SetActive(false);
+        practiceCounter++;
+    }
+
+
+    public void PracticeExhale()
+    {
+        if (firstPExhale)
+        {
+            panelExhale.SetActive(true);
+            panelControlExhale.MovePanel();
+            moving = true;
+            MoveKite();
+
+            firstPExhale = false;
+            return;
+        }
+
+        realTimeCounter += Time.deltaTime;
+
+        MoveKite();
+
+        if (Util.IsWithinThreshold(elevationAngle, -90f, 0.5f)) elevationAngle = -90f;
+        else if (elevationAngle < -90) elevationAngle += angularElevSpeedExhale * Time.deltaTime;
+        else if (elevationAngle > -90) elevationAngle -= angularElevSpeedExhale * Time.deltaTime;
+
+        fillExhale.fillAmount = (realTimeCounter - inhaleDuration - holdDuration) / exhaleDuration;
+
+        if ((realTimeCounter - inhaleDuration - holdDuration) >= exhaleDuration)
+        {
+            EndMovingPhase();
+            scoreText.text = "Score: 1";
+        }
+
+    }
+
+
+    private void Practice13()
+    {
+        if (firstP13)
+        {
+            panel13.SetActive(true);
+            panelControl13.MovePanel();
+            firstP13 = false;
+        }
+    }
+
+    public void EndPractice13()
+    {
+        panel13.SetActive(false);
+        practiceCounter++;
+    }
+
+    private void Practice14()
+    {
+        if (firstP14)
+        {
+            panel14.SetActive(true);
+            panelControl14.MovePanel();
+            firstP14 = false;
+        }
+    }
+
+    public void EndPractice14()
+    {
+        panel14.SetActive(false);
+        practiceCounter++;
+    }
+
+    public void PracticeFullCycle()
+    {
+        if (firstPFull)
+        {
+            panelFull.SetActive(true);
+            panelControlFull.MovePanel();
+            moving = true;
+            MoveKite();
+
+            firstPFull = false;
+            return;
+        }
+
+        realTimeCounter += Time.deltaTime;
+
+        MoveKite();
+
+        if(realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) < inhaleDuration)
+        {
+            if (Util.IsWithinThreshold(elevationAngle, 0, 0.5f)) elevationAngle = 0f;
+            else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
+            else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
+
+            fillFull1.fillAmount = realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) / inhaleDuration;
+        }
+        else if (realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) < inhaleDuration + holdDuration)
+        {
+            if (Util.IsWithinThreshold(elevationAngle, 0f, 0.5f)) elevationAngle = 0f;
+            else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
+            else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
+
+            fillFull1.fillAmount = realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) - inhaleDuration / holdDuration;
+        }
+        else
+        {
+            if (Util.IsWithinThreshold(elevationAngle, -90f, 0.5f)) elevationAngle = -90f;
+            else if (elevationAngle < -90) elevationAngle += angularElevSpeedExhale * Time.deltaTime;
+            else if (elevationAngle > -90) elevationAngle -= angularElevSpeedExhale * Time.deltaTime;
+
+            fillFull1.fillAmount = realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) - inhaleDuration - holdDuration / exhaleDuration;
+        }
+
+        if (realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration) >= inhaleDuration + exhaleDuration + holdDuration)
+        {
+            EndMovingPhase();
+            scoreText.text = "Score: 2";
+        }
+    }
+
+
+
+    private void Practice15()
+    {
+        if (firstP15)
+        {
+            panel15.SetActive(true);
+            panelControl15.MovePanel();
+            firstP15 = false;
+            timeP15 = Time.time;
+        }
+
+        if(Time.time - timeP15 >= waitTimeP15)
+        {
+            EndPractice15();
+        }
+    }
+
+    public void EndPractice15()
+    {
+        panel15.SetActive(false);
+        practiceCounter++;
+    }
+
+    private void Practice16()
+    {
+        if (firstP16)
+        {
+            panel16.SetActive(true);
+            panelControl16.MovePanel();
+            firstP16 = false;
+        }
+    }
+
+    public void EndPractice16()
+    {
+        SceneManager.LoadScene(SharedConsts.Breath);    
+    }
+
 }

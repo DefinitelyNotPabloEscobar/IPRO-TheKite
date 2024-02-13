@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UiScripts\BreathinCyclesFiller.cs" />
+    <Compile Include="Assets\Scripts\KiteMovementScripts\CameraMovementPractice.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\GenerateOption.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Scripts\UiScripts\Btn View Play Pause Icon\IconView.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\KiteMovementScripts\KiteMovementPractice.cs" />
     <Compile Include="Assets\Scripts\UiScripts\TimerManager.cs" />
     <Compile Include="Assets\Scripts\UiScripts\SwiperTools\PageSwipper.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
@@ -134,6 +136,7 @@
     <Compile Include="Assets\Scripts\UiScripts\PhaseManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\EndGameMenu.cs" />
+    <Compile Include="Assets\Scripts\UiScripts\Masks\InvertedMask.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\CameraController.cs" />
     <Compile Include="Assets\Scripts\UiScripts\StressBar.cs" />
@@ -156,9 +159,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Managers\AudioManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\Scripts\KiteMovementScripts\KiteMovementPractice.cs" />
-    <Compile Include="Assets\Scripts\UiScripts\Masks\InvertedMask.cs" />
-    <Compile Include="Assets\Scripts\KiteMovementScripts\CameraMovementPractice.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\PracticeMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Nature Sound FX\__Gift__\Weapons SFX\Weapons SFX Full Package.txt" />
