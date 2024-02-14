@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/EndGames.unity
     guid: 1262bec75f307d14997e61d160be6978
   - enabled: 1
-    path: Assets/Scenes/SoundTesting.unity
+    path: Assets/Scenes/Calibration.unity
     guid: da3d2425fc8ede0448249f4739fde0fe
   - enabled: 1
     path: Assets/Scenes/LoadingEndGame.unity

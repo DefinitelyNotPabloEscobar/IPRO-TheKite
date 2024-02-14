@@ -15,10 +15,16 @@ public class DontDestroyBtnSound: MonoBehaviour
         }
         else
         {
-            Destroy(instances[instanceId].gameObject);
+            StartCoroutine(LetThemFinishTheirSound(2, instances[instanceId].gameObject));
             instances[instanceId] = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    IEnumerator LetThemFinishTheirSound(float seconds, GameObject toDestroy)
+    {
+        yield return new WaitForSeconds(seconds);
+        Destroy(toDestroy);
     }
 
 

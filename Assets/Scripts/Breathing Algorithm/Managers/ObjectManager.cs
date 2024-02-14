@@ -49,6 +49,10 @@ public class ObjectManager : MonoBehaviour {
     public Button micResetButton;
     private float calibrateTime; // for how long will it calibrate the mic
 
+    //ADDED FOR GAME
+
+    public CalibrationMenu calibrationMenu;
+
 
     void Start () {
         audioManager = GetComponent<AudioManager> ();
@@ -221,7 +225,13 @@ public class ObjectManager : MonoBehaviour {
                 feedbackImage.gameObject.SetActive(false);
                 instructionsText.gameObject.SetActive(false);
                 this.enabled = false;
-                if(micAlertText.text.Equals("")) SceneManager.LoadScene(SharedConsts.StartingMenu);
+                if (micAlertText.text.Equals(""))
+                {
+                    if (calibrationMenu != null)
+                    {
+                        calibrationMenu.StartAnimation();
+                    }
+                }
             }
         }
         //Update every numSeconds
