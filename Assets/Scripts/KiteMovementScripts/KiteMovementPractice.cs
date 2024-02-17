@@ -215,6 +215,13 @@ public class KiteMovementPractice : MonoBehaviour
     [Header("Audio")]
     public AudioSource Ticking;
 
+    [Header("Cloth")]
+    public Cloth cloth1;
+    public Cloth cloth2;
+
+    [Header("SkyBoxManager")]
+    public GameObject skyBoxManager;
+
 
 
     void Start()
@@ -274,6 +281,8 @@ public class KiteMovementPractice : MonoBehaviour
         transform.position = new Vector3(xPos, CalculateY(), zPos);
         transform.rotation = Quaternion.Euler(CalculateRotation(), -angle, secAngle + shakeLevel * shakeStrengh);
 
+        ClothingManager(true);
+        SkyBoxManager(true);
     }
 
     void Update()
@@ -596,6 +605,9 @@ public class KiteMovementPractice : MonoBehaviour
             MoveKite();
 
             firstPInhale = false;
+
+            ClothingManager(false);
+            SkyBoxManager(false);
             return;
         }
 
@@ -610,7 +622,11 @@ public class KiteMovementPractice : MonoBehaviour
 
         fillInhale.fillAmount = (realTimeCounter) / inhaleDuration;
 
-        if(realTimeCounter >= inhaleDuration) EndMovingPhase();
+        if (realTimeCounter >= inhaleDuration)
+        {
+            EndMovingPhase();
+            panelInhale.SetActive(false);
+        }
         
     }
 
@@ -619,6 +635,9 @@ public class KiteMovementPractice : MonoBehaviour
     {
         moving = false;
         practiceCounter++;
+
+        ClothingManager(true);
+        SkyBoxManager(true);
 
         TickingSound();
     }
@@ -665,6 +684,9 @@ public class KiteMovementPractice : MonoBehaviour
             MoveKite();
 
             firstPHold = false;
+
+            ClothingManager(false);
+            SkyBoxManager(false);
             return;
         }
 
@@ -678,7 +700,11 @@ public class KiteMovementPractice : MonoBehaviour
 
         fillHold.fillAmount = (realTimeCounter - inhaleDuration) / holdDuration;
 
-        if ((realTimeCounter - inhaleDuration) >= holdDuration) EndMovingPhase();
+        if ((realTimeCounter - inhaleDuration) >= holdDuration) 
+        {
+            EndMovingPhase();
+            panelHold.SetActive(false);
+        }
 
     }
 
@@ -726,6 +752,9 @@ public class KiteMovementPractice : MonoBehaviour
             MoveKite();
 
             firstPExhale = false;
+
+            ClothingManager(false);
+            SkyBoxManager(false);
             return;
         }
 
@@ -743,6 +772,7 @@ public class KiteMovementPractice : MonoBehaviour
         {
             EndMovingPhase();
             scoreText.text = "Score: 1";
+            panelExhale.SetActive(false);
         }
 
     }
@@ -790,6 +820,9 @@ public class KiteMovementPractice : MonoBehaviour
             MoveKite();
 
             firstPFull = false;
+
+            ClothingManager(false);
+            SkyBoxManager(false);
             return;
         }
 
@@ -838,6 +871,7 @@ public class KiteMovementPractice : MonoBehaviour
         {
             EndMovingPhase();
             scoreText.text = "Score: 2";
+            panelFull.SetActive(false);
         }
     }
 
@@ -886,6 +920,18 @@ public class KiteMovementPractice : MonoBehaviour
         {
             Ticking.Play();
         }
+    }
+
+
+    private void ClothingManager(bool Stop)
+    {
+        cloth1.damping = Stop? 1 : 0;
+        cloth2.damping = Stop? 1 : 0;
+    }
+
+    private void SkyBoxManager(bool Stop)
+    {
+        skyBoxManager.gameObject.SetActive(!Stop);
     }
 
 }

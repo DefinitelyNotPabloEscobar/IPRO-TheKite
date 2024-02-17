@@ -196,8 +196,21 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             videoManager.PlayVideo();
             iconViewManager.iconPlay.Appear();
+            skipBtn.enabled = false;
+            skipBtn.image.enabled = false;
+            skipText.enabled = false;
         }
-        else videoManager.StopVideo();
+        else if (currentPage == videoPageNumber - 1 || currentPage == videoPageNumber + 1)
+        {
+            skipBtn.enabled = true;
+            skipBtn.image.enabled = true;
+            skipText.enabled = true;
+            videoManager.StopVideo();
+        }
+        else
+        {
+            videoManager.StopVideo();
+        }
     }
 
     public void switchToPracticeBtn()
