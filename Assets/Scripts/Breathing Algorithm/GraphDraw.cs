@@ -120,6 +120,8 @@ public class GraphDraw : MonoBehaviour {
         {
             //Debug.Log(ex.Message);
         }
+
+        /*
         if (!calibrateMicMode){
             breath.gameObject.SetActive(true);
             breath.position = Vector3.Lerp(breath.position, temp, .01f);
@@ -128,9 +130,13 @@ public class GraphDraw : MonoBehaviour {
         else{
             breath.gameObject.SetActive(false);
         }
+        */
+
+        breath.gameObject.SetActive(true);
+        breath.position = Vector3.Lerp(breath.position, temp, .01f);
+        breath.position = new Vector3(_patternPos.x, breath.position.y, breath.position.z);
 
 
-        
         patternControlled.position = Vector3.Lerp (patternControlled.position, ComputePositionSin (1), .5f);
             //userControlled.position = Vector3.Lerp(userControlled.position, UserComputePositionSin(_waveSelection.sign), .5f);
         userControlled.position = UpdateUserPositions (UserComputePositionSin);

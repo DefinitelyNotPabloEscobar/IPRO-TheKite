@@ -135,5 +135,4 @@ public class PageSwipperSimple : MonoBehaviour, IDragHandler, IEndDragHandler
     }
 
 
-
 }

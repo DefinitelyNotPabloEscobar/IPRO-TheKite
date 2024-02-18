@@ -12,7 +12,7 @@ public class EndGameMenu : MonoBehaviour
     public StressBar stressBar;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI intScoreText;
-    public StressPanelController panelScroller;
+    public PanelScrollerUp panelScroller;
     public Button btn;
     private int Score;
 
@@ -22,6 +22,21 @@ public class EndGameMenu : MonoBehaviour
         Score = ReadFromFile(filePath);
         intScoreText.text = "" + Score;
 
+        Screen.autorotateToPortrait = true;
+
+        Screen.autorotateToPortraitUpsideDown = false;
+
+        Screen.autorotateToLandscapeLeft = false;
+
+        Screen.autorotateToLandscapeRight = false;
+
+        Screen.orientation = ScreenOrientation.Portrait;
+
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        MakeScreenHorizontal();
     }
 
     private int ReadFromFile(string filePath)
@@ -142,6 +157,17 @@ public class EndGameMenu : MonoBehaviour
     public void BackToMenu()
     {
         if (btnClickedSound != null) btnClickedSound.Play();
+        MakeScreenHorizontal();
         SceneManager.LoadScene(SharedConsts.StartingMenu);
+    }
+
+
+    private void MakeScreenHorizontal()
+    {
+        Screen.autorotateToPortrait = false;
+        Screen.autorotateToPortraitUpsideDown = false;
+        Screen.autorotateToLandscapeLeft = true;
+        Screen.autorotateToLandscapeRight = true;
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 }
