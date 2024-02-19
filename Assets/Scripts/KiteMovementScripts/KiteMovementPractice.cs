@@ -1,5 +1,6 @@
 using Assets.Scripts.Util;
 using ScottPlot.Drawing.Colormaps;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -197,7 +198,6 @@ public class KiteMovementPractice : MonoBehaviour
     private bool exhaleDone = false;
 
 
-
     [Header("Panel15")]
 
     public GameObject panel15;
@@ -222,6 +222,16 @@ public class KiteMovementPractice : MonoBehaviour
     [Header("SkyBoxManager")]
     public GameObject skyBoxManager;
 
+    [Header("Phase Timer Text")]
+    public TextMeshProUGUI phaseCounter;
+    private float phaseStartTimer = 3;
+    public bool waitingForBreath = true;
+    private float maxWaitingTime = 8;
+    private float timeTakenOfWait;
+
+    [Header("Breathing Algorithm")]
+
+    public Transform breath;
 
 
     void Start()
@@ -442,7 +452,6 @@ public class KiteMovementPractice : MonoBehaviour
                 if (0f + angularElevSpeedInhale * leftDuration < 0f) return 0f + angularElevSpeedInhale * leftDuration;
                 else return 0f;
             case "inhale":
-
                 if (-90f + angularElevSpeedInhale * leftDuration < 0f) return -90f + angularElevSpeedInhale * leftDuration;
                 else return 0f;
             case "exhale":
@@ -608,8 +617,12 @@ public class KiteMovementPractice : MonoBehaviour
 
             ClothingManager(false);
             SkyBoxManager(false);
+
+            PhaseCounterSetter();
             return;
         }
+
+        if (PhaseCounterManager(0)) return;
 
         realTimeCounter += Time.deltaTime;
 
@@ -628,6 +641,66 @@ public class KiteMovementPractice : MonoBehaviour
             panelInhale.SetActive(false);
         }
         
+    }
+
+
+    private void PhaseCounterSetter()
+    {
+        phaseStartTimer = 3;
+        phaseCounter.text = "" + phaseStartTimer;
+        waitingForBreath = true;
+        timeTakenOfWait = Time.time;
+    }
+
+    private bool PhaseCounterManager(int phase)
+    {
+        if (phaseStartTimer > 0.25)
+        {
+            phaseCounter.text = "" + (int)(phaseStartTimer + 1);
+            phaseStartTimer -= Time.deltaTime;
+            return true;
+        }
+        else if (phaseStartTimer > 0)
+        {
+            switch (phase)
+            {
+                case 0:
+                    phaseCounter.text = "Inhale";
+                    break;
+                case 1:
+                    phaseCounter.text = "Hold";
+                    break;
+                case 2:
+                    phaseCounter.text = "Exhale";
+                    break;
+            }
+            phaseStartTimer -= Time.deltaTime;
+            return true;
+        }
+
+        if (waitingForBreath)
+        {
+            switch (phase)
+            {
+                case 0:
+                    if (Math.Abs(breath.position.y) > 3) waitingForBreath = false;
+                    phaseCounter.text = "Inhale";
+                    break; 
+                case 1:
+                    if (Math.Abs(breath.position.y) < 2) waitingForBreath = false;
+                    phaseCounter.text = "Hold";
+                    break;
+                case 2:
+                    if (Math.Abs(breath.position.y) > 3) waitingForBreath = false;
+                    phaseCounter.text = "Exhale";
+                    break;
+            }
+            if (Time.time - timeTakenOfWait > maxWaitingTime) waitingForBreath = false;
+            return true;
+        }
+
+        phaseCounter.text = "";
+        return false;
     }
 
 
@@ -687,8 +760,13 @@ public class KiteMovementPractice : MonoBehaviour
 
             ClothingManager(false);
             SkyBoxManager(false);
+
+            PhaseCounterSetter();
             return;
         }
+
+
+        if (PhaseCounterManager(1)) return;
 
         realTimeCounter += Time.deltaTime;
 
@@ -755,8 +833,12 @@ public class KiteMovementPractice : MonoBehaviour
 
             ClothingManager(false);
             SkyBoxManager(false);
+
+            PhaseCounterSetter();
             return;
         }
+
+        if (PhaseCounterManager(2)) return;
 
         realTimeCounter += Time.deltaTime;
 
@@ -823,8 +905,12 @@ public class KiteMovementPractice : MonoBehaviour
 
             ClothingManager(false);
             SkyBoxManager(false);
+
+            PhaseCounterSetter();
             return;
         }
+
+        if (PhaseCounterManager(0)) return;
 
         realTimeCounter += Time.deltaTime;
 
