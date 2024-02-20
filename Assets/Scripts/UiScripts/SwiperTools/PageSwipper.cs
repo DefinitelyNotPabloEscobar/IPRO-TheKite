@@ -82,6 +82,8 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
             StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
         }
 
+        manageVideoPage();
+
     }
 
 
@@ -149,6 +151,18 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
         this.lowerIconDark = list;
     }
 
+    public void AskToGoFoward()
+    {
+        GoFoward();
+        manageVideoPage();
+    }
+
+    public void AskToGoBack()
+    {
+        GoBack();
+        manageVideoPage();
+    }
+
     public void GoFoward()
     {
         Vector3 newLocation = panelLocation;
@@ -165,8 +179,6 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         StartCoroutine(SmoothMove(transform.position, newLocation, easing));
         panelLocation = newLocation;
-
-        manageVideoPage();
     }
 
     public void GoBack()
@@ -186,8 +198,6 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
 
         StartCoroutine(SmoothMove(transform.position, newLocation, easing));
         panelLocation = newLocation;
-
-        manageVideoPage();
     }
 
     public void manageVideoPage()
