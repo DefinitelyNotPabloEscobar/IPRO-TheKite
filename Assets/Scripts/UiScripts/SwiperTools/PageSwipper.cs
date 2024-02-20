@@ -15,6 +15,8 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
     public Button fowardBtn;
     public Button backBtn;
 
+    public GameObject audioBtn;
+
     public Button skipBtn;
     public TextMeshProUGUI skipText;
     public Button practiceBtn;
@@ -206,15 +208,23 @@ public class PageSwipper : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             videoManager.PlayVideo();
             iconViewManager.iconPlay.Appear();
+
             skipBtn.enabled = false;
             skipBtn.image.enabled = false;
+
             skipText.enabled = false;
+
+            if(audioBtn != null) audioBtn.SetActive(false);
         }
         else if (currentPage == videoPageNumber - 1 || currentPage == videoPageNumber + 1)
         {
             skipBtn.enabled = true;
             skipBtn.image.enabled = true;
+
             skipText.enabled = true;
+
+            if (audioBtn != null)  audioBtn.SetActive(true);
+
             videoManager.StopVideo();
         }
         else

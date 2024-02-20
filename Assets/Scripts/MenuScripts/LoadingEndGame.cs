@@ -33,15 +33,7 @@ public class LoadingEndGame : MonoBehaviour
         string filePath = SharedConsts.ScorePath;
         Score = ReadFromFile(filePath);
 
-        Screen.autorotateToPortrait = true;
-
-        Screen.autorotateToPortraitUpsideDown = false;
-
-        Screen.autorotateToLandscapeLeft = false;
-
-        Screen.autorotateToLandscapeRight = false;
-
-        Screen.orientation = ScreenOrientation.Portrait;
+        RotationFunction.MakeScreenVertical();
     }
 
 

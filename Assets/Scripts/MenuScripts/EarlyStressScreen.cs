@@ -7,6 +7,11 @@ public class EarlyStressScreen : MonoBehaviour
 {
     public StressBar stressBar;
     public AudioSource btnSoundEffect;
+
+    public void Awake()
+    {
+        RotationFunction.MakeScreenVertical();
+    }
     public void PlayGame(){
         if(btnSoundEffect != null) btnSoundEffect.Play();
         SceneManager.LoadScene(SharedConsts.StartingMenu);

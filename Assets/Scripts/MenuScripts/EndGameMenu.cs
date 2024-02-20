@@ -22,21 +22,13 @@ public class EndGameMenu : MonoBehaviour
         Score = ReadFromFile(filePath);
         intScoreText.text = "" + Score;
 
-        Screen.autorotateToPortrait = true;
-
-        Screen.autorotateToPortraitUpsideDown = false;
-
-        Screen.autorotateToLandscapeLeft = false;
-
-        Screen.autorotateToLandscapeRight = false;
-
-        Screen.orientation = ScreenOrientation.Portrait;
+        RotationFunction.MakeScreenVertical();
 
     }
 
     public void OnTriggerExit(Collider other)
     {
-        MakeScreenHorizontal();
+        RotationFunction.MakeScreenHorizontal();
     }
 
     private int ReadFromFile(string filePath)
@@ -157,17 +149,9 @@ public class EndGameMenu : MonoBehaviour
     public void BackToMenu()
     {
         if (btnClickedSound != null) btnClickedSound.Play();
-        MakeScreenHorizontal();
+        RotationFunction.MakeScreenHorizontal();
         SceneManager.LoadScene(SharedConsts.StartingMenu);
     }
 
 
-    private void MakeScreenHorizontal()
-    {
-        Screen.autorotateToPortrait = false;
-        Screen.autorotateToPortraitUpsideDown = false;
-        Screen.autorotateToLandscapeLeft = true;
-        Screen.autorotateToLandscapeRight = true;
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
-    }
 }

@@ -24,33 +24,13 @@ public class TutorialPlayMenu:MonoBehaviour
 
     public void Start()
     {
-        //Screen.orientation = ScreenOrientation.Portrait;
-        Screen.autorotateToPortrait = true;
-
-        Screen.autorotateToPortraitUpsideDown = false;
-
-        Screen.autorotateToLandscapeLeft = false;
-
-        Screen.autorotateToLandscapeRight = false;
-
-        //Screen.orientation = ScreenOrientation.AutoRotation;
-        Screen.orientation = ScreenOrientation.Portrait;
-
+        RotationFunction.MakeScreenVertical();
         firstTutorial = ReadFromFile(SharedConsts.FirstTutorialPath);
     }
 
     public void OnTriggerExit(Collider other)
     {
-        //Screen.orientation = ScreenOrientation.LandscapeLeft;
-        Screen.autorotateToPortrait = false;
-
-        Screen.autorotateToPortraitUpsideDown = false;
-
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
-
-        Screen.autorotateToLandscapeLeft = true;
-
-        Screen.autorotateToLandscapeRight = true;
+        RotationFunction.MakeScreenHorizontal();
     }
 
     public void Play()
@@ -61,29 +41,20 @@ public class TutorialPlayMenu:MonoBehaviour
         }
         else
         {
-            MakeScreenHorizontal();
+            RotationFunction.MakeScreenHorizontal();
             SceneManager.LoadScene(SharedConsts.Game);
         }
     }
 
     public void Practice()
     {
-        MakeScreenHorizontal();
+        RotationFunction.MakeScreenHorizontal();
         SceneManager.LoadScene(SharedConsts.PracticeScene);
     }
 
     public void Tutorial()
     {
         SceneManager.LoadScene(SharedConsts.TutorialScene);
-    }
-
-    private void MakeScreenHorizontal()
-    {
-        Screen.autorotateToPortrait = false;
-        Screen.autorotateToPortraitUpsideDown = false;
-        Screen.autorotateToLandscapeLeft = true;
-        Screen.autorotateToLandscapeRight = true;
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
 
@@ -150,7 +121,7 @@ public class TutorialPlayMenu:MonoBehaviour
     public void PlayFromSmallMenu()
     {
         BtnClickedSound();
-        MakeScreenHorizontal();
+        RotationFunction.MakeScreenHorizontal();
         WriteBoolToFile(SharedConsts.FirstTutorialPath, false);
         SceneManager.LoadScene(SharedConsts.Game);
     }
@@ -174,7 +145,7 @@ public class TutorialPlayMenu:MonoBehaviour
 
     public void GoBack()
     {
-        MakeScreenHorizontal();
+        RotationFunction.MakeScreenHorizontal();
         SceneManager.LoadScene(SharedConsts.StartingMenu);
     }
 

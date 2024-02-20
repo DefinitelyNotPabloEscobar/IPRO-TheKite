@@ -10,33 +10,14 @@ public class TutorialUIMenu:MonoBehaviour
 
     public void Awake()
     {
-        //Screen.orientation = ScreenOrientation.Portrait;
-        Screen.autorotateToPortrait = true;
-
-        Screen.autorotateToPortraitUpsideDown = false;
-
-        Screen.autorotateToLandscapeLeft = false;
-
-        Screen.autorotateToLandscapeRight = false;
-
-        //Screen.orientation = ScreenOrientation.AutoRotation;
-        Screen.orientation = ScreenOrientation.Portrait;
+        RotationFunction.MakeScreenVertical();
 
         WriteBoolToFile(SharedConsts.FirstTutorialPath, false);
     }
 
     public void OnTriggerExit(Collider other)
     {
-        //Screen.orientation = ScreenOrientation.LandscapeLeft;
-        Screen.autorotateToPortrait = false;
-
-        Screen.autorotateToPortraitUpsideDown = false;
-
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
-
-        Screen.autorotateToLandscapeLeft = true;
-
-        Screen.autorotateToLandscapeRight = true;
+        RotationFunction.MakeScreenHorizontal();
     }
 
     public void Play()
@@ -46,23 +27,14 @@ public class TutorialUIMenu:MonoBehaviour
 
     public void Leave()
     {
-        MakeScreenHorizontal();
+        RotationFunction.MakeScreenHorizontal();
         SceneManager.LoadScene(SharedConsts.StartingMenu);
     }
 
     public void Practice()
     {
-        MakeScreenHorizontal();
+        RotationFunction.MakeScreenHorizontal();
         SceneManager.LoadScene(SharedConsts.PracticeScene);
-    }
-
-    private void MakeScreenHorizontal()
-    {
-        Screen.autorotateToPortrait = false;
-        Screen.autorotateToPortraitUpsideDown = false;
-        Screen.autorotateToLandscapeLeft = true;
-        Screen.autorotateToLandscapeRight = true;
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
 
 

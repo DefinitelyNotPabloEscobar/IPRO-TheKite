@@ -18,7 +18,7 @@ public class SubTitleManager : MonoBehaviour
     private string title3Text = "Hold, with air, in 2 seconds.";
 
     private float title4Time = 20;
-    private string title4Text = "and exxhale in 3 seconds.";
+    private string title4Text = "and exhale in 3 seconds.";
 
     private float title5Time = 25;
     private string title5Text = "";

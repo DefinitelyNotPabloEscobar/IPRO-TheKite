@@ -11,6 +11,8 @@ public class StartingMenu : MonoBehaviour
 
     public void Awake()
     {
+        RotationFunction.MakeScreenVertical();
+
         if (ReadFromFile(SharedConsts.FirstTimePath))
         {
             Debug.Log("Must Calibrate");
@@ -81,6 +83,7 @@ public class StartingMenu : MonoBehaviour
         if (btnClickedSound != null) btnClickedSound.Play();
         try
         {
+            RotationFunction.MakeScreenHorizontal();
             SceneManager.LoadScene(SharedConsts.Breath);
         }
         catch
@@ -140,5 +143,7 @@ public class StartingMenu : MonoBehaviour
         FirstTimeContainer firstTimeContainer = JsonUtility.FromJson<FirstTimeContainer>(jsonData);
         return firstTimeContainer;
     }
+
+
 
 }
