@@ -124,4 +124,9 @@ public class VideoManager : MonoBehaviour
         return currentPlayer != null && currentPlayer.isPlaying;
     }
 
+    public double GetCurrentVideoTime()
+    {
+        if(currentPlayer == null) return 0;
+        return currentPlayer.time;
+    }
 }

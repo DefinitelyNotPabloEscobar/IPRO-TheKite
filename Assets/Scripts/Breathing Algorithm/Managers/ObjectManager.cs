@@ -221,7 +221,7 @@ public class ObjectManager : MonoBehaviour {
                 }
                 inputGraph.gameObject.SetActive(false);
                 micResetButton.gameObject.SetActive(true);
-                micCalText.text = "Calibration finished";
+                micCalText.text = "";
                 feedbackImage.gameObject.SetActive(false);
                 instructionsText.gameObject.SetActive(false);
                 this.enabled = false;

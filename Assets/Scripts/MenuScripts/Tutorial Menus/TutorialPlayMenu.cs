@@ -171,4 +171,21 @@ public class TutorialPlayMenu:MonoBehaviour
         BtnPlay.enabled = !change;
         BtnTutorial.enabled = !change;
     }
+
+    public void GoBack()
+    {
+        MakeScreenHorizontal();
+        SceneManager.LoadScene(SharedConsts.StartingMenu);
+    }
+
+    public void LeaveGame()
+    {
+#if UNITY_EDITOR
+        // Simulate game exit behavior in the Unity Editor
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // Quit the application (works in standalone builds)
+        Application.Quit();
+#endif
+    }
 }
