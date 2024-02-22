@@ -19,6 +19,9 @@ public class PageSwipperSimple : MonoBehaviour, IDragHandler, IEndDragHandler
 
     private int currentPage;
 
+    public PageSwipperSimpleUp swipperUp;
+    public bool moving = false;
+
     void Start()
     {
         if (pages == null || pages.Count < 1) {
@@ -52,12 +55,15 @@ public class PageSwipperSimple : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (swipperUp.moving) return;
         float difference = eventData.pressPosition.x - eventData.position.x;
-        transform.position = panelLocation - new Vector3 (difference, 0, 0);
+        transform.position = GetUpdatePanelPosition() - new Vector3 (difference, 0, 0);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (swipperUp.moving) return;
+
         if (pages == null || pages.Count < 1)
         {
             Debug.Log("Error: Pages must bot be null nor less than 1.");
@@ -87,6 +93,7 @@ public class PageSwipperSimple : MonoBehaviour, IDragHandler, IEndDragHandler
     IEnumerator SmoothMove(Vector3 startPos,  Vector3 endPos, float seconds)
     {
         float t = 0f;
+        moving = true;
 
         while(t <= 1.0f)
         {
@@ -94,12 +101,19 @@ public class PageSwipperSimple : MonoBehaviour, IDragHandler, IEndDragHandler
             transform.position = Vector3.Lerp(startPos, endPos, Mathf.SmoothStep(0f,1f,t));
             yield return null;
         }
+        moving = false;
 
+    }
+
+    public Vector3 GetUpdatePanelPosition()
+    {
+        return new Vector3(panelLocation.x, pages[0].transform.position.y, panelLocation.y);
     }
 
     public void GoFoward()
     {
-        Vector3 newLocation = panelLocation;
+        Vector3 newLocation = GetUpdatePanelPosition();
+
         if (currentPage < pages.Count - 1)
         {
             newLocation += new Vector3(-Screen.width, 0, 0);
@@ -117,7 +131,8 @@ public class PageSwipperSimple : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void GoBack()
     {
-        Vector3 newLocation = panelLocation;
+        Vector3 newLocation = GetUpdatePanelPosition();
+
         if (currentPage > 0)
         {
             newLocation += new Vector3(Screen.width, 0, 0);

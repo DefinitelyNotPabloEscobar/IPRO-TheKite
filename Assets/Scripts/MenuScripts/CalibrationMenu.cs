@@ -30,7 +30,11 @@ public class CalibrationMenu : MonoBehaviour
     public Image breathBack;
     public RawImage breathGraph;
 
-    
+    public void Awake()
+    {
+        RotationFunction.MakeScreenHorizontal();
+    }
+
     public void StartAnimation()
     {
         if(Done) return;

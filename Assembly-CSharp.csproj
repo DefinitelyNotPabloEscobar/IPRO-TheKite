@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\KiteMovementScripts\KiteMovementScript.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\Tutorial Menus\TutorialPlayMenu.cs" />
     <Compile Include="Assets\Scripts\UiScripts\BtnVisualManager.cs" />
+    <Compile Include="Assets\Scripts\UiScripts\SwiperTools\PageSwipperSimpleUp.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\UiScripts\Lower Indicatores\LowerIndicatorPlacer.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\Shared\JsonScore.cs" />
+    <Compile Include="Assets\Scripts\Shared\RotationFunction.cs" />
     <Compile Include="Assets\Scripts\Util\Util.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\TutorialMenu.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\SmallPrimeUtility.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\Combinations.cs" />
+    <Compile Include="Assets\Scripts\Util\SlopeCalculator.cs" />
     <Compile Include="Assets\Scripts\UiScripts\MainUiPlacer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\UiScripts\PanelScrollerUp.cs" />
@@ -163,7 +166,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Managers\AudioManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\Scripts\Shared\RotationFunction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Nature Sound FX\__Gift__\Weapons SFX\Weapons SFX Full Package.txt" />

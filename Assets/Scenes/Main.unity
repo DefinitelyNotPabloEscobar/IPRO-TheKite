@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.090605006, g: 0.13450307, b: 0.16108376, a: 0.5}
+  m_IndirectSpecularColor: {r: 0.0906872, g: 0.13449655, b: 0.1606904, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24431,7 +24431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: INHALE
+  m_text: Inhale
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
   m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
@@ -24459,8 +24459,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -24983,7 +24983,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HOLD
+  m_text: Hold
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
   m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
@@ -25011,8 +25011,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -35012,7 +35012,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXHALE
+  m_text: Exhale
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
   m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
@@ -35040,8 +35040,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

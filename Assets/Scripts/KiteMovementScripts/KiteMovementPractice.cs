@@ -224,18 +224,27 @@ public class KiteMovementPractice : MonoBehaviour
 
     [Header("Phase Timer Text")]
     public TextMeshProUGUI phaseCounter;
-    private float phaseStartTimer = 3;
-    public bool waitingForBreath = true;
-    private float maxWaitingTime = 8;
+    public float phaseStartTimer = 3;
+    private bool waitingForBreath = true;
+    public float maxWaitingTime = 5;
     private float timeTakenOfWait;
 
     [Header("Breathing Algorithm")]
 
     public Transform breath;
+    public float InhaleExhaleThreshold = 45f;
+    public float HoldThreshold = 20f;
 
+    public SlopeCalculator slopeCalculator;
+    private float slopeCalculatorTime = 0.5f;
 
     void Start()
     {
+        slopeCalculator = new SlopeCalculator(slopeCalculatorTime, breath);
+        StartCoroutine(slopeCalculator.Obtain());
+
+        maxWaitingTime += phaseStartTimer;
+
         panel1.SetActive(false);
         panel2.SetActive(false);
         panel3.SetActive(false);
@@ -300,6 +309,8 @@ public class KiteMovementPractice : MonoBehaviour
         int minutes = Mathf.FloorToInt(realTimeCounter / 60);
         int seconds = Mathf.FloorToInt(realTimeCounter % 60);
         timeText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+
+        Debug.Log(Time.time + " " + slopeCalculator.CalculateSlopeAngle());
 
         switch (practiceCounter)
         {
@@ -680,18 +691,19 @@ public class KiteMovementPractice : MonoBehaviour
 
         if (waitingForBreath)
         {
+            var currentAngle = slopeCalculator.CalculateSlopeAngle();
             switch (phase)
             {
                 case 0:
-                    if (Math.Abs(breath.position.y) > 3) waitingForBreath = false;
+                    if (Math.Abs(currentAngle) > InhaleExhaleThreshold) waitingForBreath = false;
                     phaseCounter.text = "Inhale";
                     break; 
                 case 1:
-                    if (Math.Abs(breath.position.y) < 2) waitingForBreath = false;
+                    if (Math.Abs(currentAngle) < HoldThreshold) waitingForBreath = false;
                     phaseCounter.text = "Hold";
                     break;
                 case 2:
-                    if (Math.Abs(breath.position.y) > 3) waitingForBreath = false;
+                    if (Math.Abs(currentAngle) > InhaleExhaleThreshold) waitingForBreath = false;
                     phaseCounter.text = "Exhale";
                     break;
             }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18133758, g: 0.2689618, b: 0.3221703, a: 1}
+  m_IndirectSpecularColor: {r: 0.18116488, g: 0.26896426, b: 0.32216594, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -587,6 +587,8 @@ MonoBehaviour:
   lowerIconDark:
   - {fileID: 1076344664}
   - {fileID: 1283135459}
+  swipperUp: {fileID: 514779817}
+  moving: 0
 --- !u!1 &227803249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,7 +1669,7 @@ GameObject:
   - component: {fileID: 514779812}
   - component: {fileID: 514779815}
   - component: {fileID: 514779814}
-  - component: {fileID: 514779816}
+  - component: {fileID: 514779817}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1737,7 +1739,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514779811}
   m_CullTransparentMesh: 1
---- !u!114 &514779816
+--- !u!114 &514779817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1746,16 +1748,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 514779811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 511390909943573499b82d73b541dddb, type: 3}
+  m_Script: {fileID: 11500000, guid: 04841f4416673d547a9a2137220e360b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 514779811}
-  panelUpPositionHolder: {fileID: 1542442276}
-  panelDownPositionHolder: {fileID: 1149549364}
-  canvas: {fileID: 0}
-  upPercentage: -0.1
-  downPercentage: -0.475
-  pageManager: {fileID: 197899378}
+  ThresholdOfMovement: 5
+  easing: 0.5
+  swipperHorizontal: {fileID: 197899378}
+  moving: 0
 --- !u!1 &549060029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,7 +2345,7 @@ MonoBehaviour:
   stressBar: {fileID: 0}
   ScoreText: {fileID: 549060030}
   intScoreText: {fileID: 461009134}
-  panelScroller: {fileID: 514779816}
+  panelScroller: {fileID: 0}
   btn: {fileID: 2022510600}
 --- !u!224 &816106631
 RectTransform:
@@ -4195,19 +4194,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2022510601}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 816106630}
-        m_TargetAssemblyTypeName: EndGameMenu, Assembly-CSharp
-        m_MethodName: MovePanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2022510601
 MonoBehaviour:
   m_ObjectHideFlags: 0
