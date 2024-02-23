@@ -1836,7 +1836,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00006518513, y: -13.9999695}
+  m_AnchoredPosition: {x: -0.00006518513, y: -18.6}
   m_SizeDelta: {x: 130.80688, y: 23.48514}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &400838838
@@ -5599,7 +5599,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'through your nose deeply into your belly for <b>2 seconds</b> while the
+  m_text: 'through your nose deeply into your belly for <b>1 seconds</b> while the
     line
 
     goes up to move the kite up'
@@ -8788,7 +8788,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00006518513, y: -1}
+  m_AnchoredPosition: {x: -0.00006518513, y: -7.200034}
   m_SizeDelta: {x: 130.80688, y: 23.48514}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1816574296
@@ -10085,7 +10085,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'your breathe for <b>2 seconds</b>
+  m_text: 'your breathe for <b>3 seconds</b>
 
     while the line goes straight
 
@@ -10226,7 +10226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'completely for <b>3 seconds</b>
+  m_text: 'completely for <b>4 seconds</b>
 
     while the line goes down
 

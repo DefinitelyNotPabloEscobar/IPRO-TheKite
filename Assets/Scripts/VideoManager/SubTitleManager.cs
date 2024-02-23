@@ -9,16 +9,16 @@ public class SubTitleManager : MonoBehaviour
     public VideoManager videoManager;
 
     private float title1Time = 2;
-    private string title1Text = "Let's do the rhythm 1-2-3.";
+    private string title1Text = "Let's do the rhythm 1-3-4.";
 
     private float title2Time = 11;
     private string title2Text = "Inhale in 1 second.";
 
     private float title3Time = 15;
-    private string title3Text = "Hold, with air, in 2 seconds.";
+    private string title3Text = "Hold, with air, in 3 seconds.";
 
     private float title4Time = 20;
-    private string title4Text = "and exhale in 3 seconds.";
+    private string title4Text = "and exhale in 4 seconds.";
 
     private float title5Time = 25;
     private string title5Text = "";
