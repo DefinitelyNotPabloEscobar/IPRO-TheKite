@@ -9,7 +9,9 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using static UnityEngine.Rendering.DebugUI;
+using Image = UnityEngine.UI.Image;
 
 public class KiteMovementPractice : MonoBehaviour
 {
@@ -243,6 +245,8 @@ public class KiteMovementPractice : MonoBehaviour
         slopeCalculator = new SlopeCalculator(slopeCalculatorTime, breath);
         StartCoroutine(slopeCalculator.Obtain());
 
+        SetBaseOnDifficulty();
+
         maxWaitingTime += phaseStartTimer;
 
         panel1.SetActive(false);
@@ -377,6 +381,16 @@ public class KiteMovementPractice : MonoBehaviour
         }
 
         MoveIndicators();
+    }
+
+    private void SetBaseOnDifficulty()
+    {
+        inhaleDuration = 1;
+        holdDuration = 3;
+        exhaleDuration = 4;
+
+        angularElevSpeedInhale = angularElevSpeedInhale * (2 / inhaleDuration);
+        angularElevSpeedExhale = angularElevSpeedExhale * (3 / exhaleDuration);
     }
 
     public float getRadius()

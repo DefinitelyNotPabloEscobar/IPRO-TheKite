@@ -12,6 +12,7 @@ public class Pause : MonoBehaviour
 
     public RectTransform panelPause;
     public RectTransform panelExit;
+    public RectTransform outsideBtn;
 
     private bool paused = false;
     public void PauseGame()
@@ -27,6 +28,7 @@ public class Pause : MonoBehaviour
             maskColor.a = 0.8f;
             mask.color = maskColor;
             MoveToPausePanel();
+            MoveOutsideBtn();
         }
         else
         {
@@ -34,6 +36,7 @@ public class Pause : MonoBehaviour
             maskColor.a = 0.0f;
             mask.color = maskColor;
             MoveToPausePanel();
+            MoveOutsideBtnFar();
         }
     }
 
@@ -57,8 +60,21 @@ public class Pause : MonoBehaviour
         PlaySound();
     }
 
+    public void MoveOutsideBtn()
+    {
+        outsideBtn.anchoredPosition = Vector2.zero;
+    }
+
+    public void MoveOutsideBtnFar()
+    {
+        outsideBtn.anchoredPosition = new Vector2(-5000, 0);
+        panelPause.anchoredPosition = new Vector2(-1000, 0);
+        panelExit.anchoredPosition = new Vector2(-1000, 0);
+    }
+
     private void PlaySound()
     {
         if (audioSource != null) audioSource.Play();
     }
+
 }
