@@ -237,7 +237,7 @@ public class KiteMovementPractice : MonoBehaviour
     public float InhaleExhaleThreshold = 45f;
     public float HoldThreshold = 20f;
 
-    public SlopeCalculator slopeCalculator;
+    private SlopeCalculator slopeCalculator;
     private float slopeCalculatorTime = 0.5f;
 
     void Start()
@@ -690,13 +690,16 @@ public class KiteMovementPractice : MonoBehaviour
             switch (phase)
             {
                 case 0:
-                    phaseCounter.text = "Inhale";
+                    //phaseCounter.text = "Inhale";
+                    phaseCounter.text = "Go!";
                     break;
                 case 1:
-                    phaseCounter.text = "Hold";
+                    //phaseCounter.text = "Hold";
+                    phaseCounter.text = "Go!";
                     break;
                 case 2:
-                    phaseCounter.text = "Exhale";
+                    //phaseCounter.text = "Exhale";
+                    phaseCounter.text = "Go!";
                     break;
             }
             phaseStartTimer -= Time.deltaTime;
@@ -710,15 +713,18 @@ public class KiteMovementPractice : MonoBehaviour
             {
                 case 0:
                     if (Math.Abs(currentAngle) > InhaleExhaleThreshold) waitingForBreath = false;
-                    phaseCounter.text = "Inhale";
+                    //phaseCounter.text = "Inhale";
+                    phaseCounter.text = "Go!";
                     break; 
                 case 1:
                     if (Math.Abs(currentAngle) < HoldThreshold) waitingForBreath = false;
-                    phaseCounter.text = "Hold";
+                    //phaseCounter.text = "Hold";
+                    phaseCounter.text = "Go!";
                     break;
                 case 2:
                     if (Math.Abs(currentAngle) > InhaleExhaleThreshold) waitingForBreath = false;
-                    phaseCounter.text = "Exhale";
+                    //phaseCounter.text = "Exhale";
+                    phaseCounter.text = "Go!";
                     break;
             }
             if (Time.time - timeTakenOfWait > maxWaitingTime) waitingForBreath = false;
