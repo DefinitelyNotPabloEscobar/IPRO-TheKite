@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6667
     height: 976
   m_ShowMode: 4
-  m_Title: Simulator
+  m_Title: Inspector
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 95
+  controlID: 83
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 96
+  controlID: 84
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 81
+  controlID: 18
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,11 +189,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1205.3334
-    height: 544
+    height: 599.3333
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 82
+  controlID: 19
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,7 +212,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 282.66666
-    height: 544
+    height: 599.3333
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
@@ -238,7 +238,7 @@ MonoBehaviour:
     x: 282.66666
     y: 0
     width: 922.66675
-    height: 544
+    height: 599.3333
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
@@ -264,20 +264,20 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 544
+    y: 599.3333
     width: 1205.3334
-    height: 382
+    height: 326.6667
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 20}
+  m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 17}
   - {fileID: 18}
   - {fileID: 19}
   - {fileID: 20}
   - {fileID: 21}
-  m_Selected: 3
-  m_LastSelected: 0
+  m_Selected: 2
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -297,8 +297,8 @@ MonoBehaviour:
     y: 0
     width: 501.33325
     height: 926
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -328,7 +328,7 @@ MonoBehaviour:
     x: 282.6667
     y: 72.66667
     width: 920.66675
-    height: 523
+    height: 578.3333
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -531,9 +531,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 540.02386, y: 1382.25, z: 0}
+    m_Target: {x: 375.00146, y: 667, z: 0}
     speed: 2
-    m_Value: {x: 540.02386, y: 1382.25, z: 0}
+    m_Value: {x: 375.00143, y: 666.99994, z: 0.000001032777}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -580,13 +580,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.040133514, y: -0.041945387, z: 0.029686416, w: -0.99878675}
+    m_Target: {x: -0.027794704, y: 0.5661771, z: 0.021746794, w: -0.82466435}
     speed: 2
-    m_Value: {x: 0.040096913, y: -0.041907135, z: 0.029659342, w: -0.9978759}
+    m_Value: {x: -0.027794704, y: 0.5661771, z: 0.021746794, w: -0.82466435}
   m_Size:
-    m_Target: 733.31726
+    m_Target: 14142.136
     speed: 2
-    m_Value: 733.31726
+    m_Value: 14142.135
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -635,7 +635,7 @@ MonoBehaviour:
     x: 0
     y: 72.66667
     width: 281.66666
-    height: 523
+    height: 578.3333
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -644,9 +644,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d26b0000
-      m_LastClickedID: 27602
-      m_ExpandedIDs: 32fbffffe46a0000566b00001a6c0000
+      m_SelectedIDs: 18a90000
+      m_LastClickedID: 43288
+      m_ExpandedIDs: 6ec1ffff32fbffffb2a80000bca80000faa8000018a9000036a90000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -694,7 +694,7 @@ MonoBehaviour:
     x: 282.6667
     y: 72.66667
     width: 920.66675
-    height: 523
+    height: 578.3333
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -708,7 +708,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 1}
-  m_TargetSize: {x: 1242, y: 2688}
+  m_TargetSize: {x: 1440, y: 2960}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -730,11 +730,11 @@ MonoBehaviour:
     - '{"m_SerializationStates":{"thermalFoldout":false,"performanceFoldout":false,"developerFoldout":false,"indexerFoldout":false,"scalersFoldout":false,"deviceSettingsFoldout":false}}'
     - '{"m_SerializationStates":{"androidSystemFoldout":false}}'
     - '{}'
-    scale: 17
+    scale: 16
     fitToScreenEnabled: 1
     rotationDegree: 0
     highlightSafeAreaEnabled: 0
-    friendlyName: Apple iPhone XS Max
+    friendlyName: Samsung Galaxy S9
     networkReachability: 1
     systemLanguage: 10
 --- !u!114 &16
@@ -853,9 +853,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 616.6667
+    y: 672
     width: 1204.3334
-    height: 361
+    height: 305.6667
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -872,23 +872,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/UI/Tutorial Panel/Panel7-Video
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 61
   m_LastFolders:
-  - Assets/UI/Tutorial Panel/Panel7-Video
+  - Assets/Scenes
   m_LastFoldersGridSize: 61
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 379}
-    m_SelectedIDs: 54db1100
-    m_LastClickedID: 1170260
-    m_ExpandedIDs: 0000000036710000
+    scrollPos: {x: 0, y: 98.33331}
+    m_SelectedIDs: 60710000
+    m_LastClickedID: 29024
+    m_ExpandedIDs: 0000000070a70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -916,7 +916,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 5a1f0100
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000036710000
+    m_ExpandedIDs: 0000000070a70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -941,10 +941,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 0ec91200
-    m_LastClickedInstanceID: 1231118
+    m_SelectedInstanceIDs: f4fefdff
+    m_LastClickedInstanceID: -131340
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000945a0000f465010062830000ba6e000064170400ae6e0000fa6e00005ea50000646d00003c710000e86d000078870000066e0000ea6d000000000000
+    m_ExpandedInstanceIDs: c6230000945a0000f465010062830000ba6e000064170400ae6e0000fa6e00005ea50000646d00003c710000e86d000078870000066e0000ea6d000056bd02000000000082750200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -994,9 +994,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 616.6667
+    y: 672
     width: 1204.3334
-    height: 361
+    height: 305.6667
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1013,23 +1013,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/RunTimeFolder
+    - Assets/UI/EarlyStressScene
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 53
   m_LastFolders:
-  - Assets/RunTimeFolder
+  - Assets/UI/EarlyStressScene
   m_LastFoldersGridSize: 53
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: ca6d0000
-    m_LastClickedID: 28106
-    m_ExpandedIDs: 0000000036710000
+    scrollPos: {x: 0, y: 226.33331}
+    m_SelectedIDs: e2a70000
+    m_LastClickedID: 42978
+    m_ExpandedIDs: 0000000070a70000aea7000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1057,7 +1057,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000036710000
+    m_ExpandedIDs: 0000000070a70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1082,10 +1082,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: e2a70000
+    m_LastClickedInstanceID: 42978
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: f26d0000f86d000024b7000084ab0000a6ab00009eab0000dad60000246e0000426d0000a26b0000000000007a020d006c4503003c030200
+    m_ExpandedInstanceIDs: f26d0000f86d000024b7000084ab0000a6ab00009eab0000dad60000246e0000426d0000a26b0000000000007a020d006c4503003c03020058bd0200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1135,9 +1135,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 616.6667
+    y: 672
     width: 1204.3334
-    height: 361
+    height: 305.6667
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1154,23 +1154,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 53
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: 53
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: a06d0000
-    m_LastClickedID: 28064
-    m_ExpandedIDs: 0000000036710000
+    scrollPos: {x: 0, y: 98.33331}
+    m_SelectedIDs: a0a70000
+    m_LastClickedID: 42912
+    m_ExpandedIDs: 0000000070a7000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1198,7 +1198,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000036710000
+    m_ExpandedIDs: 0000000070a70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1226,7 +1226,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 40c00000426d0000000000004a6b0000
+    m_ExpandedInstanceIDs: 40c00000426d00004a6b00000000000058bd0200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1276,9 +1276,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 616.6667
+    y: 672
     width: 1204.3334
-    height: 361
+    height: 305.6667
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1295,23 +1295,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts/Environment
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 53
   m_LastFolders:
-  - Assets
+  - Assets/Scripts/Environment
   m_LastFoldersGridSize: 53
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 36710000
-    m_LastClickedID: 28982
-    m_ExpandedIDs: 000000003671000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 290.3333}
+    m_SelectedIDs: 92440300
+    m_LastClickedID: 214162
+    m_ExpandedIDs: 0000000070a70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1339,7 +1339,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000036710000
+    m_ExpandedIDs: 0000000070a70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1364,10 +1364,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: 5a9300003c030200066e0000ea6d000000000000
+    m_SelectedInstanceIDs: cc580000
+    m_LastClickedInstanceID: 22732
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: 5a9300003c030200066e0000ea6d00000000000058bd0200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1458,7 +1458,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 179
+    m_CachedPref: -179
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1

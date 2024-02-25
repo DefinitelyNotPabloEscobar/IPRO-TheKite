@@ -14,15 +14,16 @@ public static class SharedConsts
     public static string VideoInterPath = Application.dataPath + "/Videos/Intermediate-4-7-8.mp4";
     public static string VideoAdvancePath = Application.dataPath + "/Videos/Advanced-5-8-8.mp4";
 
-    public static int EarlyStressScene = 0;
-    public static int StartingMenu = 1;
-    public static int Game = 2;
-    public static int EndGame = 3;
-    public static int Breath = 4;
-    public static int LoadingEndGame = 5;
-    public static int TutorialScene = 6;
-    public static int PracticeScene = 7;
-    public static int BeforePlayMenu = 8;
+    public static int EarlyLoadingScene = 0;
+    public static int EarlyStressScene = 1;
+    public static int StartingMenu = 2;
+    public static int Game = 3;
+    public static int EndGame = 4;
+    public static int Breath = 5;
+    public static int LoadingEndGame = 6;
+    public static int TutorialScene = 7;
+    public static int PracticeScene = 8;
+    public static int BeforePlayMenu = 9;
 
     public static int WinTime = 90;
 
