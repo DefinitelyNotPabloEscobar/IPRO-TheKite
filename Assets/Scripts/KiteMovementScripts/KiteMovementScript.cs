@@ -33,13 +33,13 @@ public class KiteMovementScript : MonoBehaviour
 
     public float indicatorSpread = 50f;
     
-    private float angle = 0f;
+    public float angle = 0f;
     private float secAngle = 0f;
 
     private float elevationAngle = 0f;
     private float secMax = 2f;
     private float secMin = -15f;
-    private float radius;
+    public float radius;
 
     private float loseElevationAngle = 0f;
 
@@ -84,7 +84,7 @@ public class KiteMovementScript : MonoBehaviour
     private int wonTime;
 
     private float StartTime;
-    private float CycleStartTime = 0f;
+    public float CycleStartTime = 0f;
     private float EarlySecSpeed;
     private float phaseTimer;
 
@@ -113,9 +113,9 @@ public class KiteMovementScript : MonoBehaviour
     private float subErrorThreshold = 2f;
     private bool cycleStarted = false;
 
-    private float exhaleDuration = 3f;
-    private float inhaleDuration = 2f;
-    private float holdDuration = 2f;
+    public float exhaleDuration = 3f;
+    public float inhaleDuration = 2f;
+    public float holdDuration = 2f;
 
     private int Score = 0;
 
@@ -149,6 +149,15 @@ public class KiteMovementScript : MonoBehaviour
     [Header("Kite Object Group")]
 
     public GameObject objectGroup;
+
+    [Header("Difficulty")]
+
+    public int difficulty;
+
+    [Header("House")]
+
+    public Transform house;
+
 
     void Start()
     {
@@ -244,6 +253,7 @@ public class KiteMovementScript : MonoBehaviour
         progressBar1.duration = inhaleDuration;
         progressBar2.duration = holdDuration;
         progressBar3.duration = exhaleDuration;
+        difficulty = d;
     }
 
     void Update()
@@ -507,7 +517,7 @@ public class KiteMovementScript : MonoBehaviour
     public void LoseAnimation2()
     {
 
-        if (kite.position.y > 5)
+        if (kite.position.y > 5 && Vector3.Distance(house.position, transform.position) > 7)
         {
             float x = radius * Mathf.Cos(angle * Mathf.Deg2Rad);
             float z = radius * Mathf.Sin(angle * Mathf.Deg2Rad);
@@ -673,7 +683,7 @@ public class KiteMovementScript : MonoBehaviour
         //return Mathf.Sin((-((predicted.position.y / 10) * Time.deltaTime) - 45f) * Mathf.Deg2Rad) * elevationAmp;
     }
 
-    private float predictAngle(float time)
+    public float predictAngle(float time)
     {
         // Phase inspire2 - hold2 - expire3
         float cycleTime = inhaleDuration + holdDuration + exhaleDuration;

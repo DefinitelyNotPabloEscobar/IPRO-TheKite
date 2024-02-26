@@ -42,7 +42,7 @@ public class CameraMovement : MonoBehaviour
             angleReduce += angleReduceSpeed * Time.deltaTime;
 
             Vector3 kiteViewPosition = new Vector3(x, yStopped, z);
-             transform.LookAt(kiteViewPosition);
+            transform.LookAt(kiteViewPosition);
         }
     }
 
