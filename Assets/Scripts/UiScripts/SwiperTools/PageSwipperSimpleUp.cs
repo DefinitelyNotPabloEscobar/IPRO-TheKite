@@ -38,7 +38,7 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
 
         if(Screen.height/Screen.width < 1.5)
         {
-            LowerPanelVerticalSize = 2.25f;
+            LowerPanelVerticalSize = 2.15f;
         }
     }
 

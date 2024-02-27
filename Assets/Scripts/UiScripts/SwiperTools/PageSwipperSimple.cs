@@ -84,7 +84,7 @@ public class PageSwipperSimple : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         else
         {
-            StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
+            StartCoroutine(SmoothMove(transform.position, GetUpdatePanelPosition(), easing));
         }
 
     }
