@@ -16,8 +16,10 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
     private Vector3 initPanelLocation;
 
     private Vector3 panelLocationMain;
+    private Vector3 panelLocationText;
 
     public Transform MainMenu;
+    public Transform Texts;
 
     private bool isPanelDown = true;
 
@@ -29,6 +31,7 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         panelLocation = transform.position;
         panelLocationMain = MainMenu.position;
+        panelLocationText = Texts.position;
         initPanelLocation = transform.position;
     }
 
@@ -43,6 +46,7 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             transform.position = panelLocation - new Vector3(0, difference, 0);
             MainMenu.position = panelLocationMain -  new Vector3(0, difference, 0);
+            Texts.position = panelLocationText -  new Vector3(0, difference, 0);
         }
 
     }
@@ -58,14 +62,17 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
             {
                 panelLocation += new Vector3(0, Screen.height / 3, 0);
                 panelLocationMain += new Vector3(0, Screen.height / 3, 0);
+                panelLocationText += new Vector3(0, Screen.height / 3, 0);
                 StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
                 StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
+                StartCoroutine(SmoothMoveTexts(Texts.position, panelLocationText, easing));
                 isPanelDown = false;
             }
             else
             {
                 StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
                 StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
+                StartCoroutine(SmoothMoveTexts(Texts.position, panelLocationText, easing));
             }
         }
         else
@@ -74,14 +81,17 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
             {
                 panelLocation += new Vector3(0, -Screen.height / 3, 0);
                 panelLocationMain += new Vector3(0, -Screen.height / 3, 0);
+                panelLocationText += new Vector3(0, -Screen.height / 3, 0);
                 StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
                 StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
+                StartCoroutine(SmoothMoveTexts(Texts.position, panelLocationText, easing));
                 isPanelDown = true;
             }
             else
             {
                 StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
                 StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
+                StartCoroutine(SmoothMoveTexts(Texts.position, panelLocationText, easing));
             }
         }
     }
@@ -112,6 +122,22 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             t += Time.deltaTime / seconds;
             MainMenu.position = Vector3.Lerp(startPos, endPos, Mathf.SmoothStep(0f, 1f, t));
+            yield return null;
+        }
+
+        moving = false;
+
+    }
+
+    IEnumerator SmoothMoveTexts(Vector3 startPos, Vector3 endPos, float seconds)
+    {
+        float t = 0f;
+        moving = true;
+
+        while (t <= 1.0f)
+        {
+            t += Time.deltaTime / seconds;
+            Texts.position = Vector3.Lerp(startPos, endPos, Mathf.SmoothStep(0f, 1f, t));
             yield return null;
         }
 
