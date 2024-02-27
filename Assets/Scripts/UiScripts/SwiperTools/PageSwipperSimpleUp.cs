@@ -26,6 +26,8 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
     public PageSwipperSimple swipperHorizontal;
     public bool moving = false;
 
+    private float LowerPanelVerticalSize = 3;
+
 
     void Start()
     {
@@ -33,6 +35,11 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
         panelLocationMain = MainMenu.position;
         panelLocationText = Texts.position;
         initPanelLocation = transform.position;
+
+        if(Screen.height/Screen.width < 1.5)
+        {
+            LowerPanelVerticalSize = 2.25f;
+        }
     }
 
 
@@ -60,9 +67,9 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             if (transform.position.y > initPanelLocation.y + ((Screen.height/2) - (Screen.height / 2.25)))
             {
-                panelLocation += new Vector3(0, Screen.height / 3, 0);
-                panelLocationMain += new Vector3(0, Screen.height / 3, 0);
-                panelLocationText += new Vector3(0, Screen.height / 3, 0);
+                panelLocation += new Vector3(0, Screen.height / LowerPanelVerticalSize, 0);
+                panelLocationMain += new Vector3(0, Screen.height / LowerPanelVerticalSize, 0);
+                panelLocationText += new Vector3(0, Screen.height / LowerPanelVerticalSize, 0);
                 StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
                 StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
                 StartCoroutine(SmoothMoveTexts(Texts.position, panelLocationText, easing));
@@ -79,9 +86,9 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             if (transform.position.y <= initPanelLocation.y + Screen.height / 2.25)
             {
-                panelLocation += new Vector3(0, -Screen.height / 3, 0);
-                panelLocationMain += new Vector3(0, -Screen.height / 3, 0);
-                panelLocationText += new Vector3(0, -Screen.height / 3, 0);
+                panelLocation += new Vector3(0, -Screen.height / LowerPanelVerticalSize, 0);
+                panelLocationMain += new Vector3(0, -Screen.height / LowerPanelVerticalSize, 0);
+                panelLocationText += new Vector3(0, -Screen.height / LowerPanelVerticalSize, 0);
                 StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
                 StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
                 StartCoroutine(SmoothMoveTexts(Texts.position, panelLocationText, easing));
