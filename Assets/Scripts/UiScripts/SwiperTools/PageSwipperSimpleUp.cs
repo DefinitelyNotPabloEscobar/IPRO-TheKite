@@ -39,7 +39,7 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
 
         float difference = eventData.pressPosition.y - eventData.position.y;
 
-        if(transform.position.y < initPanelLocation.y + Screen.height / 2)
+        if(transform.position.y < initPanelLocation.y + Screen.height / 2 && transform.position.y > initPanelLocation.y - Screen.height/2)
         {
             transform.position = panelLocation - new Vector3(0, difference, 0);
             MainMenu.position = panelLocationMain -  new Vector3(0, difference, 0);
@@ -65,6 +65,7 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
             else
             {
                 StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
+                StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
             }
         }
         else
@@ -80,7 +81,7 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
             else
             {
                 StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
-                                StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
+                StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
             }
         }
     }
