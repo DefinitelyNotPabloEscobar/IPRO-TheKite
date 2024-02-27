@@ -83,6 +83,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\UiScripts\Lower Indicatores\LowerIndicatorPlacer.cs" />
+    <Compile Include="Assets\Scripts\Util\InhaleManager.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\StartingMenu.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\FollowGraphDraw.cs" />
     <Compile Include="Assets\Scripts\UiScripts\PanelScroller.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Assets\Scripts\UiScripts\PanelControl.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+    <Compile Include="Assets\Scripts\Util\HoldManager.cs" />
     <Compile Include="Assets\Scripts\Shared\JsonScore.cs" />
     <Compile Include="Assets\Scripts\Shared\RotationFunction.cs" />
     <Compile Include="Assets\Scripts\Util\Util.cs" />
@@ -134,6 +136,7 @@
     <Compile Include="Assets\Scripts\UiScripts\TimerManager.cs" />
     <Compile Include="Assets\Scripts\UiScripts\SwiperTools\PageSwipper.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
+    <Compile Include="Assets\Scripts\Util\ExhaleManager.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\SmallPrimeUtility.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\Combinations.cs" />
     <Compile Include="Assets\Scripts\Util\SlopeCalculator.cs" />

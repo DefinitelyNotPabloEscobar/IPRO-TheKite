@@ -314,8 +314,6 @@ public class KiteMovementPractice : MonoBehaviour
         int seconds = Mathf.FloorToInt(realTimeCounter % 60);
         timeText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
 
-        Debug.Log(Time.time + " " + slopeCalculator.CalculateSlopeAngle());
-
         switch (practiceCounter)
         {
             case 0:

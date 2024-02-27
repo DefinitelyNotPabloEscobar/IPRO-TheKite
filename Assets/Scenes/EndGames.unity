@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18124577, g: 0.26897636, b: 0.3221906, a: 1}
+  m_IndirectSpecularColor: {r: 0.18123119, g: 0.26891306, b: 0.32211882, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1753,6 +1753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThresholdOfMovement: 5
   easing: 0.5
+  MainMenu: {fileID: 816106631}
   swipperHorizontal: {fileID: 197899378}
   moving: 0
 --- !u!1 &549060029

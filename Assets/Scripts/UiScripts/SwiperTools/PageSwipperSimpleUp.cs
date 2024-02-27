@@ -15,6 +15,10 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
     private Vector3 panelLocation;
     private Vector3 initPanelLocation;
 
+    private Vector3 panelLocationMain;
+
+    public Transform MainMenu;
+
     private bool isPanelDown = true;
 
     public PageSwipperSimple swipperHorizontal;
@@ -24,6 +28,7 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
     void Start()
     {
         panelLocation = transform.position;
+        panelLocationMain = MainMenu.position;
         initPanelLocation = transform.position;
     }
 
@@ -34,8 +39,11 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
 
         float difference = eventData.pressPosition.y - eventData.position.y;
 
-        if(transform.position.y < initPanelLocation.y + Screen.height/1.5)
+        if(transform.position.y < initPanelLocation.y + Screen.height / 2)
+        {
             transform.position = panelLocation - new Vector3(0, difference, 0);
+            MainMenu.position = panelLocationMain -  new Vector3(0, difference, 0);
+        }
 
     }
 
@@ -48,8 +56,10 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             if (transform.position.y > initPanelLocation.y + ((Screen.height/2) - (Screen.height / 2.25)))
             {
-                panelLocation += new Vector3(0, Screen.height / 2, 0);
+                panelLocation += new Vector3(0, Screen.height / 3, 0);
+                panelLocationMain += new Vector3(0, Screen.height / 3, 0);
                 StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
+                StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
                 isPanelDown = false;
             }
             else
@@ -61,13 +71,16 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             if (transform.position.y <= initPanelLocation.y + Screen.height / 2.25)
             {
-                panelLocation += new Vector3(0, -Screen.height / 2, 0);
+                panelLocation += new Vector3(0, -Screen.height / 3, 0);
+                panelLocationMain += new Vector3(0, -Screen.height / 3, 0);
                 StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
+                StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
                 isPanelDown = true;
             }
             else
             {
                 StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
+                                StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
             }
         }
     }
@@ -82,6 +95,22 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             t += Time.deltaTime / seconds;
             transform.position = Vector3.Lerp(startPos, endPos, Mathf.SmoothStep(0f,1f,t));
+            yield return null;
+        }
+
+        moving = false;
+
+    }
+
+    IEnumerator SmoothMoveMain(Vector3 startPos, Vector3 endPos, float seconds)
+    {
+        float t = 0f;
+        moving = true;
+
+        while (t <= 1.0f)
+        {
+            t += Time.deltaTime / seconds;
+            MainMenu.position = Vector3.Lerp(startPos, endPos, Mathf.SmoothStep(0f, 1f, t));
             yield return null;
         }
 

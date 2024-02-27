@@ -29,6 +29,10 @@ public class KiteMovementScript : MonoBehaviour
 
     public Transform kite;
     public Transform breath;
+    public GameObject breathD0;
+    public GameObject breathD1;
+    public GameObject breathD2;
+
     public Transform predicted;
 
     public float indicatorSpread = 50f;
@@ -50,9 +54,15 @@ public class KiteMovementScript : MonoBehaviour
 
     public GameObject indicator;
 
-    [Header("Text")]
+    [Header("Text Breathing")]
 
     public TextMeshProUGUI instructionsTextFromIlias;
+    public TextMeshProUGUI instructionsTextFromIlias0;
+    public TextMeshProUGUI instructionsTextFromIlias1;
+    public TextMeshProUGUI instructionsTextFromIlias2;
+
+    [Header("Text")]
+
     public TextMeshProUGUI instructionsText;
     public TextMeshProUGUI gameResultText;
     public TextMeshProUGUI timeText;
@@ -158,12 +168,20 @@ public class KiteMovementScript : MonoBehaviour
 
     public Transform house;
 
+    public SlopeCalculator slopeCalculator;
+    public float slopeCalculatorTime = 0.25f;
+
+    private InhaleManager CurrentInhaleManager;
+    private HoldManager CurrentHoldManager;
+    private ExhaleManager CurrentExhaleManager;
 
     void Start()
     {
         StartTime = Time.time;
         EarlySecSpeed = angularSecSpeed;
         wonTime = SharedConsts.WinTime;
+
+        SetBaseOnDifficulty(ReadFromFile(SharedConsts.DifficultyPath));
 
         if (kite != null){
             radius = kite.position.z;
@@ -194,8 +212,10 @@ public class KiteMovementScript : MonoBehaviour
         phaseManager = new PhaseManager(instructionsText);
         scoreManager = new ScoreManager(scoreText);
 
-        SetBaseOnDifficulty(ReadFromFile(SharedConsts.DifficultyPath));
-        
+
+        slopeCalculator = new SlopeCalculator(slopeCalculatorTime, breath);
+        StartCoroutine(slopeCalculator.Obtain());
+
     }
 
 
@@ -217,6 +237,11 @@ public class KiteMovementScript : MonoBehaviour
                 angularElevSpeedInhale = angularElevSpeedInhale * (2/inhaleDuration);
                 angularElevSpeedExhale = angularElevSpeedExhale * (3/exhaleDuration);
 
+                breathD0.SetActive(true);
+                breathD1.SetActive(false);
+                breathD2.SetActive(false);
+                instructionsTextFromIlias = instructionsTextFromIlias0;
+
                 break;
 
             case 1:
@@ -232,6 +257,11 @@ public class KiteMovementScript : MonoBehaviour
                 angularElevSpeedInhale = angularElevSpeedInhale * (2/inhaleDuration);
                 angularElevSpeedExhale = angularElevSpeedExhale * (3 / exhaleDuration);
 
+                breathD0.SetActive(false);
+                breathD1.SetActive(true);
+                breathD2.SetActive(false);
+                instructionsTextFromIlias = instructionsTextFromIlias1;
+
                 break;
 
             case 2:
@@ -246,6 +276,11 @@ public class KiteMovementScript : MonoBehaviour
 
                 angularElevSpeedInhale = angularElevSpeedInhale * (2/inhaleDuration);
                 angularElevSpeedExhale = angularElevSpeedExhale * (3 / exhaleDuration);
+
+                breathD0.SetActive(false);
+                breathD1.SetActive(false);
+                breathD2.SetActive(true);
+                instructionsTextFromIlias = instructionsTextFromIlias2;
 
                 break;
         }
