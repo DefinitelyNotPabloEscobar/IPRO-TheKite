@@ -118,9 +118,6 @@ public class KiteMovementScript : MonoBehaviour
     public ProgressBar progressBar3;
 
     private int currentProgressBar = -1;
-    private float subError = 0f;
-    private float oldError = 0f;
-    private float subErrorThreshold = 2f;
     private bool cycleStarted = false;
 
     public float exhaleDuration = 3f;
@@ -171,9 +168,12 @@ public class KiteMovementScript : MonoBehaviour
     public SlopeCalculator slopeCalculator;
     public float slopeCalculatorTime = 0.25f;
 
+    //Phase Eval
+
     private InhaleManager CurrentInhaleManager;
     private HoldManager CurrentHoldManager;
     private ExhaleManager CurrentExhaleManager;
+    private PhaseEval PhaseEval;
 
     void Start()
     {
@@ -425,9 +425,6 @@ public class KiteMovementScript : MonoBehaviour
 
     public void UpdateProgressBars()
     {
-        if(oldError > 0)
-            subError += Error - oldError;
-        oldError = Error;
 
         switch (currentProgressBar)
         {
@@ -435,21 +432,25 @@ public class KiteMovementScript : MonoBehaviour
                 break;
             case 0:
                 progressBar1.StartBar();
-                progressBar1.ChangeColor(GetErrorColor(subError, subErrorThreshold * (2 / inhaleDuration)));
+                if(CurrentInhaleManager != null)
+                    progressBar1.ChangeColor(GetErrorColor(CurrentInhaleManager.ReturnErrorValue(), 1));
                 break;
             case 1:
                 progressBar2.StartBar();
-                progressBar2.ChangeColor(GetErrorColor(subError, subErrorThreshold * (2 / holdDuration)));
+                if (CurrentHoldManager != null)
+                    progressBar2.ChangeColor(GetErrorColor(CurrentHoldManager.ReturnErrorValue(), 1));
                 break;
             case 2:
                 progressBar3.StartBar();
-                progressBar3.ChangeColor(GetErrorColor(subError, subErrorThreshold * (2 / exhaleDuration)));
+                if (CurrentExhaleManager != null)
+                    progressBar3.ChangeColor(GetErrorColor(CurrentExhaleManager.ReturnErrorValue(), 1));
                 break;
             default:
                 HideProgressBars();
                 currentProgressBar = 0;
                 progressBar1.StartBar();
-                progressBar1.ChangeColor(GetErrorColor(subError, subErrorThreshold * (2 / inhaleDuration)));
+                if (CurrentInhaleManager != null)
+                    progressBar1.ChangeColor(GetErrorColor(0, 1));
                 break;
         }
     }
@@ -457,8 +458,6 @@ public class KiteMovementScript : MonoBehaviour
     private void ChangeProgressBar()
     {
         currentProgressBar++;
-        subError = 0;
-        oldError = 0;
     }
 
 
@@ -649,33 +648,44 @@ public class KiteMovementScript : MonoBehaviour
         switch (currentPhase.ToLower())
         {
             case "hold":
-                if (!Util.IsWithinThreshold(diff, 0f, 1f))
+                if (CurrentHoldManager == null) CurrentHoldManager = new HoldManager(slopeCalculator, difficulty, breath, predicted, holdDuration);
+                else if (CurrentHoldManager.HasEnded())
                 {
-                    Error += diff / 250;
+                    Error += CurrentHoldManager.ReturnErrorValue();
+                    CurrentHoldManager = new HoldManager(slopeCalculator, difficulty, breath, predicted, holdDuration);
+
+                }
+                else
+                {
+                    CurrentHoldManager.Calculate();
                 }
                 break;
 
             case "inhale":
-                if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
+                if (CurrentInhaleManager == null) CurrentInhaleManager = new InhaleManager(slopeCalculator, difficulty, breath, predicted, inhaleDuration);
+                else if (CurrentInhaleManager.HasEnded())
                 {
-                    if (breath.position.y <= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
-                    {
-                        Error += diff / 1000 * errorAmp;
-                        errorAmp += errorAmpIncrease;
-                    }
-                    else errorAmp = errorAmpConst;
+                    Error += CurrentInhaleManager.ReturnErrorValue();
+                    CurrentInhaleManager = new InhaleManager(slopeCalculator, difficulty, breath, predicted, inhaleDuration);
+                    
+                }
+                else
+                {
+                    CurrentInhaleManager.Calculate();
                 }
                 break;
 
             case "exhale":
-                if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
+                if (CurrentExhaleManager == null) CurrentExhaleManager = new ExhaleManager(slopeCalculator, difficulty, breath, predicted, exhaleDuration);
+                else if (CurrentExhaleManager.HasEnded())
                 {
-                    if (breath.position.y >= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
-                    {
-                        Error += diff / 1000 * errorAmp;
-                        errorAmp += errorAmpIncrease;
-                    }
-                    else errorAmp = errorAmpConst;
+                    Error += CurrentExhaleManager.ReturnErrorValue();
+                    CurrentExhaleManager = new ExhaleManager(slopeCalculator, difficulty, breath, predicted, exhaleDuration);
+
+                }
+                else
+                {
+                    CurrentExhaleManager.Calculate();
                 }
                 break;
 
