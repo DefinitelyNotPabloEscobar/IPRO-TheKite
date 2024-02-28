@@ -52,6 +52,13 @@ public class MultiBtnManager : MonoBehaviour
     public TextMeshProUGUI Level3TextNormal;
     public TextMeshProUGUI Level3TextDisable;
     public UnityEngine.UI.Button Level3Btn;
+    [Header("Level 4")]
+    public Image Level4Light;
+    public Image Level4Dark;
+    public Image Level4Disable;
+    public TextMeshProUGUI Level4TextNormal;
+    public TextMeshProUGUI Level4TextDisable;
+    public UnityEngine.UI.Button Level4Btn;
 
 
     private bool usable = true;
@@ -107,6 +114,12 @@ public class MultiBtnManager : MonoBehaviour
                 Level3TextDisable.enabled = true;
                 Level3Btn.enabled = false;
 
+                Level4Light.enabled = false;
+                Level4Disable.enabled = true;
+                Level4TextNormal.enabled = false;
+                Level4TextDisable.enabled = true;
+                Level4Btn.enabled = false;
+
                 break;
 
             case 1:
@@ -117,9 +130,22 @@ public class MultiBtnManager : MonoBehaviour
                 Level3TextDisable.enabled = true;
                 Level3Btn.enabled = false;
 
+                Level4Light.enabled = false;
+                Level4Disable.enabled = true;
+                Level4TextNormal.enabled = false;
+                Level4TextDisable.enabled = true;
+                Level4Btn.enabled = false;
+
                 break;
 
             case 2:
+
+                Level4Light.enabled = false;
+                Level4Disable.enabled = true;
+                Level4TextNormal.enabled = false;
+                Level4TextDisable.enabled = true;
+                Level4Btn.enabled = false;
+
                 break;
 
             case 3:
