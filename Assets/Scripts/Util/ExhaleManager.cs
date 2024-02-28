@@ -15,6 +15,7 @@ public class ExhaleManager : InhaleManager
     {
 
         var diff = Mathf.Abs(Mathf.Abs(breath.position.y) - Mathf.Abs(predicted.position.y));
+
         switch (difficulty)
         {
             case 0:

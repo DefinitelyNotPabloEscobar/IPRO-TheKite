@@ -320,10 +320,8 @@ public class KiteMovementPractice : MonoBehaviour
                 Practice1();
                 break;
             case 1:
-                Practice2();
                 break;
             case 2:
-                Practice3();
                 break;
             case 3:
                 Practice4();
@@ -510,7 +508,7 @@ public class KiteMovementPractice : MonoBehaviour
     public void EndPractice1()
     {
         panel1.SetActive(false);
-        practiceCounter++;
+        practiceCounter += 3;
     }
 
     private void Practice2()
