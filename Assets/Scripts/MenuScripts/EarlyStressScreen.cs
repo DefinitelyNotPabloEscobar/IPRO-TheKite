@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EarlyStressScreen : MonoBehaviour
 {
-    public StressBar stressBar;
+    public StressBar2 stressBar;
     public AudioSource btnSoundEffect;
 
     public void Awake()
@@ -14,6 +14,9 @@ public class EarlyStressScreen : MonoBehaviour
     }
     public void PlayGame(){
         if(btnSoundEffect != null) btnSoundEffect.Play();
+
+        JsonStressLevel.WriteFloatToFile(SharedConsts.StressLevelPath, stressBar.Stress);
+
         SceneManager.LoadScene(SharedConsts.StartingMenu);
     }
 
@@ -31,5 +34,6 @@ public class EarlyStressScreen : MonoBehaviour
 
     public void Start()
     {
+
     }
 }

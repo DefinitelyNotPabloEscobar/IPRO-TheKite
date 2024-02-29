@@ -9,6 +9,7 @@ public static class SharedConsts
     public static string FirstTimePath = Application.dataPath + "/RunTimeFolder/FirstTime.json";     //For calibration
     public static string DifficultyDonePath = Application.dataPath + "/RunTimeFolder/DifficultyDone.json";
     public static string FirstTutorialPath = Application.dataPath + "/RunTimeFolder/FirstTutorial.json";     //For tutorial
+    public static string StressLevelPath = Application.dataPath + "/RunTimeFolder/StressLevel.json";
 
     public static string VideoBeginnerPath = Application.dataPath + "/Videos/Beginner-1-3-4.mp4";
     public static string VideoInterPath = Application.dataPath + "/Videos/Intermediate-4-7-8.mp4";

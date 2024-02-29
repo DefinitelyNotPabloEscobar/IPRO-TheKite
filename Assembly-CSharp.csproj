@@ -58,7 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\MenuScripts\PracticeMenu.cs" />
     <Compile Include="Assets\Scripts\UiScripts\BreathinCyclesFiller.cs" />
-    <Compile Include="Assets\Scripts\Environment\HousePositionMain.cs" />
+    <Compile Include="Assets\Scripts\Environment\ObstaclePositionMain.cs" />
     <Compile Include="Assets\Scripts\KiteMovementScripts\CameraMovementPractice.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\CalibrationMenu.cs" />
@@ -173,6 +173,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Managers\AudioManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
+    <Compile Include="Assets\Scripts\Shared\JsonStressLevel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Nature Sound FX\__Gift__\Weapons SFX\Weapons SFX Full Package.txt" />

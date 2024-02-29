@@ -32,6 +32,7 @@ public class KiteMovementScript : MonoBehaviour
     public GameObject breathD0;
     public GameObject breathD1;
     public GameObject breathD2;
+    public GameObject breathD3;
 
     public Transform predicted;
 
@@ -60,6 +61,7 @@ public class KiteMovementScript : MonoBehaviour
     public TextMeshProUGUI instructionsTextFromIlias0;
     public TextMeshProUGUI instructionsTextFromIlias1;
     public TextMeshProUGUI instructionsTextFromIlias2;
+    public TextMeshProUGUI instructionsTextFromIlias3;
 
     [Header("Text")]
 
@@ -240,6 +242,7 @@ public class KiteMovementScript : MonoBehaviour
                 breathD0.SetActive(true);
                 breathD1.SetActive(false);
                 breathD2.SetActive(false);
+                breathD3.SetActive(false);
                 instructionsTextFromIlias = instructionsTextFromIlias0;
 
                 break;
@@ -260,6 +263,7 @@ public class KiteMovementScript : MonoBehaviour
                 breathD0.SetActive(false);
                 breathD1.SetActive(true);
                 breathD2.SetActive(false);
+                breathD3.SetActive(false);
                 instructionsTextFromIlias = instructionsTextFromIlias1;
 
                 break;
@@ -280,9 +284,32 @@ public class KiteMovementScript : MonoBehaviour
                 breathD0.SetActive(false);
                 breathD1.SetActive(false);
                 breathD2.SetActive(true);
+                breathD3.SetActive(false);
                 instructionsTextFromIlias = instructionsTextFromIlias2;
 
                 break;
+
+            case 3:
+
+                objectManagerBreathing.breathingPatternTime[0] = 5;
+                objectManagerBreathing.breathingPatternTime[1] = 10;
+                objectManagerBreathing.breathingPatternTime[2] = 10;
+
+                inhaleDuration = 5;
+                holdDuration = 10;
+                exhaleDuration = 10;
+
+                angularElevSpeedInhale = angularElevSpeedInhale * (2 / inhaleDuration);
+                angularElevSpeedExhale = angularElevSpeedExhale * (3 / exhaleDuration);
+
+                breathD0.SetActive(false);
+                breathD1.SetActive(false);
+                breathD2.SetActive(false);
+                breathD3.SetActive(true);
+                instructionsTextFromIlias = instructionsTextFromIlias3;
+
+                break;
+
         }
 
         progressBar1.duration = inhaleDuration;

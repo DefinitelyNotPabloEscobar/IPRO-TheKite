@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class EndGameMenu : MonoBehaviour
 {
     public AudioSource btnClickedSound;
-    public StressBar stressBar;
+    public StressBar2 stressBar;
+    public StressBar2 stressBar2;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI intScoreText;
     public PanelScrollerUp panelScroller;
@@ -21,6 +22,9 @@ public class EndGameMenu : MonoBehaviour
         string filePath = SharedConsts.ScorePath;
         Score = ReadFromFile(filePath);
         intScoreText.text = "" + Score;
+
+        stressBar2.Stress = JsonStressLevel.ReadFromFile(SharedConsts.StressLevelPath);
+        stressBar2.ChangeStress();
 
         RotationFunction.MakeScreenVertical();
 
@@ -65,28 +69,6 @@ public class EndGameMenu : MonoBehaviour
         // Quit the application (works in standalone builds)
         Application.Quit();
 #endif
-    }
-
-    public void MoveProgressBar()
-    {
-        if (stressBar == null) return;
-
-        if (stressBar.isMovingUp())
-        {
-            stressBar.BarGoDown();
-        }
-        else if (stressBar.isMovingDown())
-        {
-            stressBar.BarGoUp();
-        }
-        else if (stressBar.isBarTop())
-        {
-            stressBar.BarGoDown();
-        }
-        else
-        {
-            stressBar.BarGoUp();
-        }
     }
 
     string ReadJsonFromFile(string filePath)
