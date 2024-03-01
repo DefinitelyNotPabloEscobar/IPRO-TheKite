@@ -99,8 +99,7 @@ public class MultiBtnManager : MonoBehaviour
         levelDone = ReadFromFile(SharedConsts.DifficultyDonePath);
         switch (levelDone)
         {
-            case 0:
-            default:
+            case -1:
 
                 Level2Light.enabled = false;
                 Level2Disable.enabled = true;
@@ -122,7 +121,7 @@ public class MultiBtnManager : MonoBehaviour
 
                 break;
 
-            case 1:
+            case 0:
 
                 Level3Light.enabled = false;
                 Level3Disable.enabled = true;
@@ -138,7 +137,7 @@ public class MultiBtnManager : MonoBehaviour
 
                 break;
 
-            case 2:
+            case 1:
 
                 Level4Light.enabled = false;
                 Level4Disable.enabled = true;
@@ -148,7 +147,8 @@ public class MultiBtnManager : MonoBehaviour
 
                 break;
 
-            case 3:
+            case 2:
+            default:
                 break;
         }
     }
@@ -162,7 +162,7 @@ public class MultiBtnManager : MonoBehaviour
 
         foreach (BtnVisualManager m in multiBtns)
         {
-            if (m.d > levelDone) continue;
+            if (m.d > levelDone + 1) continue;
 
             if (btn.Equals(m))
             {

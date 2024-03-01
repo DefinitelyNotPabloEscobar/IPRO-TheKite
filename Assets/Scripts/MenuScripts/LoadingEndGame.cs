@@ -17,59 +17,71 @@ public class LoadingEndGame : MonoBehaviour
     public AudioSource btnSoundEffect;
     public Image fill;
     public Image backGround;
-    public float increaseSpeed = 4.0f;
+    public float increaseSpeed = 1.0f;
+    public float increaseAcceleration = 0.01f;
     public float colorLerpSpeed = 5.0f;
 
     private float currentScore;
-    private int Score;
+    public int Score;
     private float hue = 0.0f;
 
     private float moveNextSceneReady = 0f;
     private const float delay = 3;
 
+    public float MaxScore = 10f;
+
 
     public void Start()
     {
         string filePath = SharedConsts.ScorePath;
-        Score = ReadFromFile(filePath);
-
+        Score = DataContainer.ReadFromFile(filePath);
         RotationFunction.MakeScreenVertical();
-    }
 
+        int inhaleDuration = 0;
+        int holdDuration = 0;
+        int exhaleDuration = 0;
 
-    private int ReadFromFile(string filePath)
-    {
-        try
+        switch (DataContainerDifficulty.ReadFromFile(SharedConsts.DifficultyPath))
         {
-            string jsonResult = ReadJsonFromFile(filePath);
-            DataContainer dataContainer = JsonToData(jsonResult);
-            int integerValue = dataContainer.Score;
+            case 0:
+            default:
 
-            Debug.Log("Read integer value from JSON file: " + integerValue + " at " + filePath);
-            return integerValue;
+                inhaleDuration = SharedConsts.InhaleTime0;
+                holdDuration = SharedConsts.HoldTime0;
+                exhaleDuration = SharedConsts.ExhaleTime0;
+
+                break;
+
+            case 1:
+
+                inhaleDuration = SharedConsts.InhaleTime1;
+                holdDuration = SharedConsts.HoldTime1;
+                exhaleDuration = SharedConsts.ExhaleTime1;
+
+                break;
+
+            case 2:
+
+                inhaleDuration = SharedConsts.InhaleTime2;
+                holdDuration = SharedConsts.HoldTime2;
+                exhaleDuration = SharedConsts.ExhaleTime2;
+
+                break;
+
+            case 3:
+
+                inhaleDuration = SharedConsts.InhaleTime3;
+                holdDuration = SharedConsts.HoldTime3;
+                exhaleDuration = SharedConsts.ExhaleTime3;
+
+                break;
         }
-        catch
-        {
-            Debug.Log("Error while writting Int to File at " + filePath);
-        }
 
-        return -1;
+        var extra = SharedConsts.WinTime % (inhaleDuration + holdDuration + exhaleDuration);
+        var totalTime = SharedConsts.WinTime + (int)((inhaleDuration + holdDuration + exhaleDuration) - extra);
+        MaxScore = (int)totalTime / (inhaleDuration + exhaleDuration + holdDuration) - 1;
     }
 
-    string ReadJsonFromFile(string filePath)
-    {
-        // Read the JSON string from the file
-        string jsonResult = File.ReadAllText(filePath);
-
-        return jsonResult;
-    }
-
-    DataContainer JsonToData(string jsonData)
-    {
-        DataContainer dataContainer = JsonUtility.FromJson<DataContainer>(jsonData);
-
-        return dataContainer;
-    }
 
     public void Update()
     {
@@ -77,13 +89,14 @@ public class LoadingEndGame : MonoBehaviour
         if (currentScore < Score)
         {
             currentScore += Time.deltaTime * increaseSpeed;
+            increaseSpeed += Time.deltaTime * increaseAcceleration;
             UpdateScoreUI();
             if(currentScore >= Score)
             {
                 Color c = complementText1.color;
                 c.a = 1;
-                if (Score < 2) complementText1.color = c;
-                else if(Score < 4) complementText2.color = c;
+                if (Score < MaxScore/2) complementText1.color = c;
+                else if(Score < 3*MaxScore/4) complementText2.color = c;
                 else complementText3.color = c;
 
                 moveNextSceneReady = Time.time;
@@ -118,7 +131,7 @@ public class LoadingEndGame : MonoBehaviour
     public void UpdateScoreUI()
     {
         scoreText.text = ((int)(currentScore + 0.5)).ToString();
-        bar.value = Mathf.InverseLerp(0, Score, currentScore);
+        bar.value = Mathf.InverseLerp(0, MaxScore, currentScore);
         float t = Mathf.PingPong(Time.time * colorLerpSpeed, 1f);
 
         /*

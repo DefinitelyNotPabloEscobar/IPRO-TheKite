@@ -93,7 +93,7 @@ public class KiteMovementScript : MonoBehaviour
     private float lastYPos;
 
     private bool won = false;
-    private int wonTime;
+    public int wonTime;
 
     private float StartTime;
     public float CycleStartTime = 0f;
@@ -176,6 +176,10 @@ public class KiteMovementScript : MonoBehaviour
     private HoldManager CurrentHoldManager;
     private ExhaleManager CurrentExhaleManager;
     private PhaseEval PhaseEval;
+    private int CyclesDone;
+    private float CycleTotal = 0f;
+    private int phaseCounter = 0;
+    private string lastPhaseString = "";
 
     void Start()
     {
@@ -218,6 +222,8 @@ public class KiteMovementScript : MonoBehaviour
         slopeCalculator = new SlopeCalculator(slopeCalculatorTime, breath);
         StartCoroutine(slopeCalculator.Obtain());
 
+        PhaseEval = new PhaseEval(difficulty);
+
     }
 
 
@@ -228,13 +234,13 @@ public class KiteMovementScript : MonoBehaviour
             case 0:
             default:
 
-                objectManagerBreathing.breathingPatternTime[0] = 1;
-                objectManagerBreathing.breathingPatternTime[1] = 3;
-                objectManagerBreathing.breathingPatternTime[2] = 4;
+                inhaleDuration = SharedConsts.InhaleTime0;
+                holdDuration = SharedConsts.HoldTime0;
+                exhaleDuration = SharedConsts.ExhaleTime0;
 
-                inhaleDuration = 1;
-                holdDuration = 3;
-                exhaleDuration = 4;
+                objectManagerBreathing.breathingPatternTime[0] = (int) inhaleDuration;
+                objectManagerBreathing.breathingPatternTime[1] = (int) holdDuration;
+                objectManagerBreathing.breathingPatternTime[2] = (int) exhaleDuration;
 
                 angularElevSpeedInhale = angularElevSpeedInhale * (2/inhaleDuration);
                 angularElevSpeedExhale = angularElevSpeedExhale * (3/exhaleDuration);
@@ -245,17 +251,19 @@ public class KiteMovementScript : MonoBehaviour
                 breathD3.SetActive(false);
                 instructionsTextFromIlias = instructionsTextFromIlias0;
 
+                LoseThreshold = wonTime/(inhaleDuration + holdDuration + exhaleDuration)/2;
+
                 break;
 
             case 1:
 
-                objectManagerBreathing.breathingPatternTime[0] = 4;
-                objectManagerBreathing.breathingPatternTime[1] = 7;
-                objectManagerBreathing.breathingPatternTime[2] = 8;
+                inhaleDuration = SharedConsts.InhaleTime1;
+                holdDuration = SharedConsts.HoldTime1;
+                exhaleDuration = SharedConsts.ExhaleTime1;
 
-                inhaleDuration = 4;
-                holdDuration = 7;
-                exhaleDuration = 8;
+                objectManagerBreathing.breathingPatternTime[0] = (int)inhaleDuration;
+                objectManagerBreathing.breathingPatternTime[1] = (int)holdDuration;
+                objectManagerBreathing.breathingPatternTime[2] = (int)exhaleDuration;
 
                 angularElevSpeedInhale = angularElevSpeedInhale * (2/inhaleDuration);
                 angularElevSpeedExhale = angularElevSpeedExhale * (3 / exhaleDuration);
@@ -266,17 +274,19 @@ public class KiteMovementScript : MonoBehaviour
                 breathD3.SetActive(false);
                 instructionsTextFromIlias = instructionsTextFromIlias1;
 
+                LoseThreshold = wonTime / (inhaleDuration + holdDuration + exhaleDuration) / 2;
+
                 break;
 
             case 2:
 
-                objectManagerBreathing.breathingPatternTime[0] = 5;
-                objectManagerBreathing.breathingPatternTime[1] = 8;
-                objectManagerBreathing.breathingPatternTime[2] = 8;
+                inhaleDuration = SharedConsts.InhaleTime2;
+                holdDuration = SharedConsts.HoldTime2;
+                exhaleDuration = SharedConsts.ExhaleTime2;
 
-                inhaleDuration = 5;
-                holdDuration = 8;
-                exhaleDuration = 8;
+                objectManagerBreathing.breathingPatternTime[0] = (int)inhaleDuration;
+                objectManagerBreathing.breathingPatternTime[1] = (int)holdDuration;
+                objectManagerBreathing.breathingPatternTime[2] = (int)exhaleDuration;
 
                 angularElevSpeedInhale = angularElevSpeedInhale * (2/inhaleDuration);
                 angularElevSpeedExhale = angularElevSpeedExhale * (3 / exhaleDuration);
@@ -287,17 +297,19 @@ public class KiteMovementScript : MonoBehaviour
                 breathD3.SetActive(false);
                 instructionsTextFromIlias = instructionsTextFromIlias2;
 
+                LoseThreshold = wonTime / (inhaleDuration + holdDuration + exhaleDuration) / 2;
+
                 break;
 
             case 3:
 
-                objectManagerBreathing.breathingPatternTime[0] = 5;
-                objectManagerBreathing.breathingPatternTime[1] = 10;
-                objectManagerBreathing.breathingPatternTime[2] = 10;
+                inhaleDuration = SharedConsts.InhaleTime3;
+                holdDuration = SharedConsts.HoldTime3;
+                exhaleDuration = SharedConsts.ExhaleTime3;
 
-                inhaleDuration = 5;
-                holdDuration = 10;
-                exhaleDuration = 10;
+                objectManagerBreathing.breathingPatternTime[0] = (int)inhaleDuration;
+                objectManagerBreathing.breathingPatternTime[1] = (int)holdDuration;
+                objectManagerBreathing.breathingPatternTime[2] = (int)exhaleDuration;
 
                 angularElevSpeedInhale = angularElevSpeedInhale * (2 / inhaleDuration);
                 angularElevSpeedExhale = angularElevSpeedExhale * (3 / exhaleDuration);
@@ -308,9 +320,14 @@ public class KiteMovementScript : MonoBehaviour
                 breathD3.SetActive(true);
                 instructionsTextFromIlias = instructionsTextFromIlias3;
 
+                LoseThreshold = wonTime / (inhaleDuration + holdDuration + exhaleDuration) / 2;
+
                 break;
 
         }
+
+        var extra = wonTime%(inhaleDuration + holdDuration + exhaleDuration);
+        wonTime += (int)((inhaleDuration + holdDuration + exhaleDuration) - extra);
 
         progressBar1.duration = inhaleDuration;
         progressBar2.duration = holdDuration;
@@ -388,13 +405,17 @@ public class KiteMovementScript : MonoBehaviour
             {
                 SoundManager.playWin();
                 WriteIntToFile(SharedConsts.ScorePath, CalculateScore());
+                JsonLevelDone.WriteIntToFile(SharedConsts.DifficultyDonePath, difficulty);
                 HideProgressBars();
                 HideText();
             }
             won = true;
             WinAnimation();
 
-            if (Time.time - StartTime > wonTime + 10) SceneManager.LoadScene(SharedConsts.LoadingEndGame);
+            if (Time.time - StartTime > wonTime + 10)
+            {
+                EndGame();
+            }
             return;
         }
 
@@ -482,7 +503,7 @@ public class KiteMovementScript : MonoBehaviour
         }
     }
 
-    private void ChangeProgressBar()
+    private void NewCycleInformant()
     {
         currentProgressBar++;
     }
@@ -570,7 +591,10 @@ public class KiteMovementScript : MonoBehaviour
             SoundManager.playLose();
         }
 
-        if(kite.position.y > 150) SceneManager.LoadScene(SharedConsts.LoadingEndGame);
+        if (kite.position.y > 150)
+        {
+            EndGame();
+        }
 
         MoveIndicators();
     }
@@ -612,7 +636,7 @@ public class KiteMovementScript : MonoBehaviour
 
         if (LosingAnimation2TimerEnd + LosingAnimation2End < Time.time && LosingAnimation2TimerEnd > 0)
         {
-            SceneManager.LoadScene(SharedConsts.LoadingEndGame);
+            EndGame();
         }
     }
 
@@ -632,6 +656,17 @@ public class KiteMovementScript : MonoBehaviour
 
     }
 
+    public void WriteCurrectCycles()
+    {
+        JsonCyclesCompleted.WriteIntToFile(SharedConsts.CyclesDonePath, CyclesDone);
+    }
+
+    public void EndGame()
+    {
+        WriteCurrectCycles();
+        SceneManager.LoadScene(SharedConsts.LoadingEndGame);
+    }
+
     public void UpdateText(Color textColor)
     {
         var oldText = phaseManager.GetPhase();
@@ -643,12 +678,12 @@ public class KiteMovementScript : MonoBehaviour
 
         if (!oldText.Equals(phaseManager.GetPhase())) {
             SoundManager.playTick();
-            if(cycleStarted) ChangeProgressBar();
+            if(cycleStarted) NewCycleInformant();
             phaseTimer = 0f;
         }
 
 
-        if (cycleStarted && currentProgressBar == -1) ChangeProgressBar();
+        if (cycleStarted && currentProgressBar == -1) NewCycleInformant();
 
         //+0.25 So it stays red for a bit before losing
         phaseManager.UpdateColor(textColor);
@@ -669,8 +704,10 @@ public class KiteMovementScript : MonoBehaviour
 
     public void CalculateError()
     {
-        var diff = Mathf.Abs(Mathf.Abs(breath.position.y) - Mathf.Abs(predicted.position.y));
+        if (!cycleStarted) return;
+
         string currentPhase = instructionsTextFromIlias.text;
+        PhaseChangerManager();
 
         switch (currentPhase.ToLower())
         {
@@ -678,9 +715,7 @@ public class KiteMovementScript : MonoBehaviour
                 if (CurrentHoldManager == null) CurrentHoldManager = new HoldManager(slopeCalculator, difficulty, breath, predicted, holdDuration);
                 else if (CurrentHoldManager.HasEnded())
                 {
-                    Error += CurrentHoldManager.ReturnErrorValue();
                     CurrentHoldManager = new HoldManager(slopeCalculator, difficulty, breath, predicted, holdDuration);
-
                 }
                 else
                 {
@@ -692,9 +727,7 @@ public class KiteMovementScript : MonoBehaviour
                 if (CurrentInhaleManager == null) CurrentInhaleManager = new InhaleManager(slopeCalculator, difficulty, breath, predicted, inhaleDuration);
                 else if (CurrentInhaleManager.HasEnded())
                 {
-                    Error += CurrentInhaleManager.ReturnErrorValue();
                     CurrentInhaleManager = new InhaleManager(slopeCalculator, difficulty, breath, predicted, inhaleDuration);
-                    
                 }
                 else
                 {
@@ -706,9 +739,7 @@ public class KiteMovementScript : MonoBehaviour
                 if (CurrentExhaleManager == null) CurrentExhaleManager = new ExhaleManager(slopeCalculator, difficulty, breath, predicted, exhaleDuration);
                 else if (CurrentExhaleManager.HasEnded())
                 {
-                    Error += CurrentExhaleManager.ReturnErrorValue();
                     CurrentExhaleManager = new ExhaleManager(slopeCalculator, difficulty, breath, predicted, exhaleDuration);
-
                 }
                 else
                 {
@@ -720,9 +751,51 @@ public class KiteMovementScript : MonoBehaviour
                 break;
         }
 
-        lastErrorUpdate = Time.time;
+        if (phaseCounter == 3)
+        {
+            if (PhaseEval.EvalPhase(CycleTotal))
+            {
+                CyclesDone++;
+                Debug.Log("| " + Time.time + " |Good Cycle! " + CycleTotal);
+            }
+            else
+            {
+                Debug.Log("| " + Time.time + " |Bad Cycle! " + CycleTotal);
+            }
 
-        //Debug.Log(Time.time + " " + currentPhase.ToLower() + " breath.y " + breath.position.y + " asdasdqdwqdqddwq" + " amp " + errorAmp + " const " + errorAmpConst);
+            CycleTotal = 0;
+            phaseCounter = 0;
+        }
+
+        lastErrorUpdate = Time.time;
+    }
+
+
+    private void PhaseChangerManager()
+    {
+        string currentPhase = instructionsTextFromIlias.text;
+
+        if (lastPhaseString.ToLower().Equals("inhale") && currentPhase.ToLower().Equals("hold"))
+        {
+            Error += PhaseEval.EvalInhale(CurrentInhaleManager);
+            CycleTotal += PhaseEval.EvalInhale(CurrentInhaleManager);
+            phaseCounter++;
+        }
+        else if (lastPhaseString.ToLower().Equals("hold") && currentPhase.ToLower().Equals("exhale"))
+        {
+            Error += PhaseEval.EvalHold(CurrentHoldManager);
+            CycleTotal += PhaseEval.EvalHold(CurrentHoldManager);
+            phaseCounter++;
+        }
+        else if (lastPhaseString.ToLower().Equals("exhale") && currentPhase.ToLower().Equals("inhale"))
+        {
+            phaseCounter++;
+            Error += PhaseEval.EvalExhale(CurrentExhaleManager);
+            CycleTotal += PhaseEval.EvalExhale(CurrentExhaleManager);
+        }
+
+        lastPhaseString = currentPhase.ToLower();
+
     }
 
     public float CalculateY()
@@ -954,8 +1027,11 @@ public class KiteMovementScript : MonoBehaviour
         //Score = (int) ((100 * timerManager.currentTime / wonTime) + ((LoseThreshold - Error)*10));
         //Score = (int)(100 * timerManager.currentTime / wonTime);
 
+        /*
         int cycleTime = (int) (inhaleDuration + holdDuration + exhaleDuration);
         Score = Mathf.FloorToInt(((Mathf.Abs(Time.time - CycleStartTime) - 0.5f) / cycleTime));
+        */
+        Score = CyclesDone;
         if(Score < 0) Score = 0;
         return Score;
     }

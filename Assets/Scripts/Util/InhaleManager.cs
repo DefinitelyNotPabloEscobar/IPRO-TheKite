@@ -17,7 +17,9 @@ public class InhaleManager
 
     protected const float errorAmpConst = 1f;
     protected float errorAmp = errorAmpConst;
-    protected float errorAmpIncrease = 0.075f;
+    protected float errorAmpIncrease = 0.05f;
+
+    bool hasIncreased = false;
 
     protected bool ended = false;
 
@@ -37,15 +39,24 @@ public class InhaleManager
     {
 
         var diff = Mathf.Abs(Mathf.Abs(breath.position.y) - Mathf.Abs(predicted.position.y));
+        if (slopeCalculator.CalculateSlopeAngle() > 45f) hasIncreased = true;
+
         switch (difficulty)
         {
             case 0:
             default:
                 if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
                 {
+                    /*
                     if (breath.position.y <= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
                     {
                         Error += diff / 1000 * errorAmp;
+                        errorAmp += errorAmpIncrease*3;
+                    }
+                    */
+                    if (!hasIncreased)
+                    {
+                        Error += diff / 1000 * errorAmp * 4;
                         errorAmp += errorAmpIncrease;
                     }
                     else errorAmp = errorAmpConst;
@@ -53,15 +64,43 @@ public class InhaleManager
                 break;
 
             case 1:
+                if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
+                {
+                    if (breath.position.y <= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
+                    {
+                        Error += diff / 250 * errorAmp;
+                        errorAmp += errorAmpIncrease;
+                    }
+                    else errorAmp = errorAmpConst;
+                }
                 break;
 
             case 2:
+                if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
+                {
+                    if (breath.position.y <= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
+                    {
+                        Error += diff / 200 * errorAmp;
+                        errorAmp += errorAmpIncrease;
+                    }
+                    else errorAmp = errorAmpConst;
+                }
+                break;
+
+            case 3:
+                if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
+                {
+                    if (breath.position.y <= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
+                    {
+                        Error += diff / 200 * errorAmp;
+                        errorAmp += errorAmpIncrease;
+                    }
+                    else errorAmp = errorAmpConst;
+                }
                 break;
         }
 
         if(Error > 1) Error = 1;
-        Debug.Log("Inhale error " + Error);
-
         CheckTimer();
     }
 

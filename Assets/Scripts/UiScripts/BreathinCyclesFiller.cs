@@ -10,7 +10,7 @@ public class BreathinCyclesFiller : MonoBehaviour
     public TextMeshProUGUI incorrectText;
     public EndGameMenu endGame;
 
-    private int Score;
+    private int CyclesDone;
     void Start()
     {
         AssertCycles();
@@ -24,37 +24,50 @@ public class BreathinCyclesFiller : MonoBehaviour
 
         int totalCycles = 0;
 
+        CyclesDone = JsonCyclesCompleted.ReadFromFile(SharedConsts.CyclesDonePath);
+
         switch (ReadFromFile(SharedConsts.DifficultyPath))
         {
             case 0:
             default:
 
-                inhaleDuration = 1;
-                holdDuration = 3;
-                exhaleDuration = 4;
+                inhaleDuration = SharedConsts.InhaleTime0;
+                holdDuration = SharedConsts.HoldTime0;
+                exhaleDuration = SharedConsts.ExhaleTime0;
 
                 break; 
 
             case 1:
 
-                inhaleDuration = 4;
-                holdDuration = 7;
-                exhaleDuration = 8;
+                inhaleDuration = SharedConsts.InhaleTime1;
+                holdDuration = SharedConsts.HoldTime1;
+                exhaleDuration = SharedConsts.ExhaleTime1;
 
                 break;
 
             case 2:
 
-                inhaleDuration = 5;
-                holdDuration = 8;
-                exhaleDuration = 8;
+                inhaleDuration = SharedConsts.InhaleTime2;
+                holdDuration = SharedConsts.HoldTime2;
+                exhaleDuration = SharedConsts.ExhaleTime2;
+
+                break;
+
+            case 3:
+
+                inhaleDuration = SharedConsts.InhaleTime3;
+                holdDuration = SharedConsts.HoldTime3;
+                exhaleDuration = SharedConsts.ExhaleTime3;
 
                 break;
         }
 
-        totalCycles = (int)SharedConsts.WinTime / (inhaleDuration + exhaleDuration + holdDuration);
-        correctText.text = "" + Score;
-        incorrectText.text = "" + (totalCycles - Score);
+        var extra = SharedConsts.WinTime % (inhaleDuration + holdDuration + exhaleDuration);
+        var totalTime = SharedConsts.WinTime + (int)((inhaleDuration + holdDuration + exhaleDuration) - extra);
+        totalCycles = (int)totalTime / (inhaleDuration + exhaleDuration + holdDuration) - 1;
+
+        correctText.text = "" + CyclesDone;
+        incorrectText.text = "" + (totalCycles - CyclesDone);
     }
 
 

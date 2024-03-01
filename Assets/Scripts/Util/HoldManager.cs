@@ -18,23 +18,55 @@ public class HoldManager : InhaleManager
         {
             case 0:
             default:
-                if (Mathf.Abs(slopeCalculator.CalculateSlopeAngle()) > 25)
+
+                if (Time.time - phaseStartedTime < 1) break;
+
+                if (Mathf.Abs(slopeCalculator.CalculateSlopeAngle()) > 35 || Mathf.Abs(breath.position.y) >= 2)
                 {
-                    Error += diff / 1000 * errorAmp;
+                    Error += diff / 333 * errorAmp;
                     errorAmp += errorAmpIncrease;
                 }
                 else errorAmp = errorAmpConst;
                 break;
 
             case 1:
+
+                if (Time.time - phaseStartedTime < 1) break;
+
+                if (Mathf.Abs(slopeCalculator.CalculateSlopeAngle()) > 35 || Mathf.Abs(breath.position.y) >= 2)
+                {
+                    Error += diff / 142 * errorAmp;
+                    errorAmp += errorAmpIncrease;
+                }
+                else errorAmp = errorAmpConst;
                 break;
 
             case 2:
+
+                if (Time.time - phaseStartedTime < 1) break;
+
+                if (Mathf.Abs(slopeCalculator.CalculateSlopeAngle()) > 35 || Mathf.Abs(breath.position.y) >= 2)
+                {
+                    Error += diff / 125 * errorAmp;
+                    errorAmp += errorAmpIncrease;
+                }
+                else errorAmp = errorAmpConst;
+                break;
+
+            case 3:
+
+                if (Time.time - phaseStartedTime < 1) break;
+
+                if (Mathf.Abs(slopeCalculator.CalculateSlopeAngle()) > 35 || Mathf.Abs(breath.position.y) >= 2)
+                {
+                    Error += diff / 100 * errorAmp;
+                    errorAmp += errorAmpIncrease;
+                }
+                else errorAmp = errorAmpConst;
                 break;
         }
 
         if (Error > 1) Error = 1;
-        Debug.Log("Hold error " + Error);
         CheckTimer();
     }
 }

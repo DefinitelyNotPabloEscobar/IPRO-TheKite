@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6667
     height: 976
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Simulator
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 115171
+  controlID: 84
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 115172
+  controlID: 85
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 115173
+  controlID: 74
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 115174
+  controlID: 75
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: SimulatorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -239,15 +239,15 @@ MonoBehaviour:
     y: 0
     width: 934
     height: 599.3333
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 15}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 15}
   - {fileID: 13}
   - {fileID: 16}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -269,15 +269,15 @@ MonoBehaviour:
     height: 326.6667
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 17}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 17}
   - {fileID: 18}
   - {fileID: 19}
   - {fileID: 20}
   - {fileID: 21}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 4
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 1}
-  m_TargetSize: {x: 2960, y: 1440}
+  m_TargetSize: {x: 1440, y: 2960}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -364,9 +364,9 @@ MonoBehaviour:
     - '{"m_SerializationStates":{"thermalFoldout":false,"performanceFoldout":false,"developerFoldout":false,"indexerFoldout":false,"scalersFoldout":false,"deviceSettingsFoldout":false}}'
     - '{"m_SerializationStates":{"androidSystemFoldout":false}}'
     - '{}'
-    scale: 28
+    scale: 16
     fitToScreenEnabled: 1
-    rotationDegree: 270
+    rotationDegree: 0
     highlightSafeAreaEnabled: 0
     friendlyName: Samsung Galaxy S9
     networkReachability: 1
@@ -404,9 +404,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 6c4f0700
-      m_LastClickedID: 479084
-      m_ExpandedIDs: 8c3ffcff5e53fcff8661fcff10bbfcffacd0fcff7ce9fcff120ffdff6e20fdff4a21fdff4623fdff3234fdff5a6dfdffb66dfdff0e6efdffd47ffdff7681fdff1e8bfdff3692fdffe22bfeffe816ffffba28ffffbe28ffff622bffff7a5affff7e5affff405bffff425bffff6463ffff6663fffffe64ffff0065ffff2669ffff826bffff16abffff1aabfffffaabfffffcabffffc2acffffc4acffffa0b7ffffa4b7fffff0c0fffff2c0ffff72c3ffff3ec4ffff40c4ffffcad8ffff66e8ffff70e8ffff72e8ffffeee8ffff32fbffffc08f0000fa9b000018a40000b2a50000aaa60000fcaa0000e4af0000a0b00000c2b00000deb0000002b1000018b100001cb100005eb10000b8b10000cab100004ce1000068e1000054eb000040ef00006c00010088000100b20301006e050100980f0100e60f0100f00f01002210010058100100a2100100121101001c1101009a110100d4110100ea110100505d01007a5d0100925d01004a5f0100486f0100606f0100667501007e750100fa7501005c760100e876010048770100ac77010046410200684102008c410200da410200e4410200164202004c42020096420200b0420200f642020010430200864302008e430200c0430200d6430200aee702002ee8020056e8020090e8020094e80200c8e8020028e90200c0e9020078ea02008cea0200d2ea0200eaea02007ceb020096eb0200b8eb02006aec0200a0ec020010ee0200f6ee020054ef0200f8ef0200b8f002007af30200a6f30200d8f302001af402002ef4020098f4020002f5020032f5020048f5020042f602006af60200eeb10400ecd6040090d70400b0d7040030e704003ae7040088e70400bce70400d4e70400e4e7040000e804007ce80400b0250500c4250500cc250500f0250500062605000a260500542605007a260500be260500d0260500d24e0500ee4e0500fe4e05005c4f0500744f050014500500465005005c50050072500500085105001c5105004c5105006451050092510500aa510500e2510500165205002852050050520500105305002853050068530500b0530500be530500c8530500f65305000a5405002a5405004654050058540500dc540500fc5405002a5505006a55050074550500845505009c550500aa550500fc550500465605005a56050080560500205705007e5705009a570500b6570500225805005c58050092580500d2580500e0580500ea58050004590500a6590500165a0500205a05003e5a0500545a0500665a0500805a05009c5a0500d45a0500345b0500725b0500845b05008e5b0500b25b0500385c0500425c0500465c05006a5c05008c5c0500965c0500b05c0500ec5c0500365d0500485d0500d05d05001c5e05002e5e05003e5e0500ee5e05000a5f0500925f0500fc5f05000e600500886005007263050068640500b8650500
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: bae1fbff5ae3fbff1eb2ffffa2c5ffffe8c8ffffd4d2ffff46d9ffffc2dcffff48e3ffff4ce3ffff4ee3ffff78e4ffff94e7ffffe6e8ffff32fbfffffa920000049300004a9300008e930000ba930000d6930000229400001e9700006697000084970000a2970000c2980000d0980000209900004c990000a0990000089a00000ca2000016a2000060a200006aa2000096a200009ea20000c6a20000eaa2000052a30000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -422,7 +422,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 9}
+        m_ClientGUIView: {fileID: 11}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -652,14 +652,14 @@ MonoBehaviour:
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
-  m_2DMode: 1
+  m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1696.5435, y: 166.31178, z: 69.21653}
+    m_Target: {x: -39.1744, y: 6.5758505, z: 8.499732}
     speed: 2
-    m_Value: {x: 1697.5496, y: 142.20966, z: 69.57872}
+    m_Value: {x: -39.1744, y: 6.5758505, z: 8.499732}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -706,17 +706,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: 0.07473999, y: -0.8645117, z: 0.13488017, w: 0.47852194}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: 0.074734665, y: -0.8644501, z: 0.13487056, w: 0.47848782}
   m_Size:
-    m_Target: 841.0819
+    m_Target: 42.708122
     speed: 2
-    m_Value: 804.8631
+    m_Value: 42.708122
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
     m_Speed: 0.64068
     m_SpeedNormalized: 0.32
@@ -730,7 +730,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LastSceneViewRotation: {x: -0.10639126, y: 0.063192345, z: -0.0067752306, w: -0.9922923}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 4000, y: 1800}
+  m_TargetSize: {x: 1398, y: 836}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -788,10 +788,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -1333.3334
-    m_HBaseRangeMax: 1333.3334
-    m_VBaseRangeMin: -600
-    m_VBaseRangeMax: 600
+    m_HBaseRangeMin: -466
+    m_HBaseRangeMax: 466
+    m_VBaseRangeMin: -278.6667
+    m_VBaseRangeMax: 278.6667
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -800,7 +800,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -811,7 +811,7 @@ MonoBehaviour:
       y: 21
       width: 932
       height: 557.3333
-    m_Scale: {x: 0.3495, y: 0.3495}
+    m_Scale: {x: 0.9999999, y: 0.9999999}
     m_Translation: {x: 466, y: 278.66666}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -819,12 +819,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1333.3334
-      y: -797.32947
-      width: 2666.6667
-      height: 1594.6589
+      x: -466.00006
+      y: -278.6667
+      width: 932.0001
+      height: 557.3334
     m_MinimalGUI: 1
-  m_defaultScale: 0.3495
+  m_defaultScale: 0.9999999
   m_LastWindowPixelSize: {x: 1398, y: 867.5}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -872,23 +872,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Cartoon low poly tree/Prefabs
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 46
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Cartoon low poly tree/Prefabs
   m_LastFoldersGridSize: 46
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 226.33331}
-    m_SelectedIDs: 7a8d0000
-    m_LastClickedID: 36218
-    m_ExpandedIDs: 00000000408d000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: aecb0000
+    m_LastClickedID: 52142
+    m_ExpandedIDs: 00000000408d0000468d00004c8d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -916,7 +916,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 5a1f0100
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000408d000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000408d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -941,10 +941,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 54a90000
+    m_LastClickedInstanceID: 43348
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000945a0000f465010062830000ba6e000064170400ae6e0000fa6e00005ea50000646d00003c710000e86d000078870000066e0000ea6d000056bd0200000000008275020016150100
+    m_ExpandedInstanceIDs: c6230000945a0000f465010062830000ba6e000064170400ae6e0000fa6e00005ea50000646d00003c710000e86d000078870000066e0000ea6d000056bd020000000000827502001615010052940000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1013,23 +1013,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Fantasy Skybox FREE/Panoramics/FS003
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 46
   m_LastFolders:
-  - Assets/Fantasy Skybox FREE/Panoramics/FS003
+  - Assets/Scenes
   m_LastFoldersGridSize: 46
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 239}
-    m_SelectedIDs: 2e6e0100
-    m_LastClickedID: 93742
-    m_ExpandedIDs: 00000000408d0000628d0000306e010000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 210.33331}
+    m_SelectedIDs: 688d0000
+    m_LastClickedID: 36200
+    m_ExpandedIDs: 00000000408d0000508d0000f296000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1057,7 +1057,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000408d000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000408d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1082,9 +1082,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 48ca0000
-    m_LastClickedInstanceID: 51784
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: f26d0000f86d000024b7000084ab0000a6ab00009eab0000dad60000246e0000426d0000a26b0000000000007a020d006c4503003c03020058bd0200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1168,9 +1168,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 82.33331}
-    m_SelectedIDs: 788d0000
-    m_LastClickedID: 36216
-    m_ExpandedIDs: 00000000408d0000888d000000ca9a3bffffff7f
+    m_SelectedIDs: 668d0000
+    m_LastClickedID: 36198
+    m_ExpandedIDs: 00000000408d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1198,7 +1198,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000408d000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000408d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1223,8 +1223,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 48ca0000
-    m_LastClickedInstanceID: 51784
+    m_SelectedInstanceIDs: 0cb4ffff
+    m_LastClickedInstanceID: -19444
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 40c00000426d00004a6b000058bd02000000000016150100bcbe0000
     m_RenameOverlay:
@@ -1295,23 +1295,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/RunTimeFolder
+    - Assets/Cartoon low poly tree/Prefabs
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 67
   m_LastFolders:
-  - Assets/RunTimeFolder
+  - Assets/Cartoon low poly tree/Prefabs
   m_LastFoldersGridSize: 67
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 146.33331}
-    m_SelectedIDs: 788d0000
-    m_LastClickedID: 36216
-    m_ExpandedIDs: 00000000408d000000ca9a3bffffff7f
+    m_SelectedIDs: aecb0000
+    m_LastClickedID: 52142
+    m_ExpandedIDs: 00000000408d00004c8d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1339,7 +1339,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000408d000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000408d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1364,8 +1364,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 48ca0000
-    m_LastClickedInstanceID: 51784
+    m_SelectedInstanceIDs: 54a90000
+    m_LastClickedInstanceID: 43348
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 5a9300003c030200066e0000ea6d00000000000058bd0200bcbe0000d8930000
     m_RenameOverlay:

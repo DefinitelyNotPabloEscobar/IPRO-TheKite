@@ -24,7 +24,7 @@ public class ExhaleManager : InhaleManager
                 {
                     if (breath.position.y >= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
                     {
-                        Error += diff / 1000 * errorAmp;
+                        Error += diff / 250 * errorAmp;
                         errorAmp += errorAmpIncrease;
                     }
                     else errorAmp = errorAmpConst;
@@ -32,14 +32,48 @@ public class ExhaleManager : InhaleManager
                 break;
 
             case 1:
+
+                if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
+                {
+                    if (breath.position.y >= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
+                    {
+                        Error += diff / 125 * errorAmp;
+                        errorAmp += errorAmpIncrease;
+                    }
+                    else errorAmp = errorAmpConst;
+                }
                 break;
 
             case 2:
+
+                if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
+                {
+                    if (breath.position.y >= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
+                    {
+                        Error += diff / 125 * errorAmp;
+                        errorAmp += errorAmpIncrease;
+                    }
+                    else errorAmp = errorAmpConst;
+                }
+
+                break;
+
+            case 3:
+
+                if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
+                {
+                    if (breath.position.y >= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
+                    {
+                        Error += diff / 100 * errorAmp;
+                        errorAmp += errorAmpIncrease;
+                    }
+                    else errorAmp = errorAmpConst;
+                }
+
                 break;
         }
 
         if (Error > 1) Error = 1;
-        Debug.Log("Exhale error " + Error);
         CheckTimer();
     }
 
