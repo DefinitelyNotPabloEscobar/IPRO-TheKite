@@ -297,7 +297,7 @@ public class KiteMovementScript : MonoBehaviour
                 breathD3.SetActive(false);
                 instructionsTextFromIlias = instructionsTextFromIlias2;
 
-                LoseThreshold = wonTime / (inhaleDuration + holdDuration + exhaleDuration) / 2;
+                LoseThreshold = wonTime / (inhaleDuration + holdDuration + exhaleDuration) / 3;
 
                 break;
 
@@ -320,7 +320,7 @@ public class KiteMovementScript : MonoBehaviour
                 breathD3.SetActive(true);
                 instructionsTextFromIlias = instructionsTextFromIlias3;
 
-                LoseThreshold = wonTime / (inhaleDuration + holdDuration + exhaleDuration) / 2;
+                LoseThreshold = wonTime / (inhaleDuration + holdDuration + exhaleDuration) / 3;
 
                 break;
 

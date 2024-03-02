@@ -20,6 +20,8 @@ public class TutorialPlayMenu:MonoBehaviour
     public UnityEngine.UI.Button BtnPlay;
     public UnityEngine.UI.Button BtnTutorial;
 
+    public GameObject GetOutBtn;
+
     private bool firstTutorial;
 
     public void Start()
@@ -141,6 +143,7 @@ public class TutorialPlayMenu:MonoBehaviour
         SkipTutorialGameObject.SetActive(change);
         BtnPlay.enabled = !change;
         BtnTutorial.enabled = !change;
+        GetOutBtn.SetActive(change);
     }
 
     public void GoBack()

@@ -102,6 +102,7 @@
     <Compile Include="Assets\Scripts\Util\Util.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\TutorialMenu.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Shared\JsonCyclesCompleted.cs" />
     <Compile Include="Assets\Scripts\UiScripts\ProgressBar.cs" />
     <Compile Include="Assets\Scripts\KiteMovementScripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\SceneLoader.cs" />
@@ -174,7 +175,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Managers\AudioManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\Scripts\Shared\JsonCyclesCompleted.cs" />
+    <Compile Include="Assets\Scripts\Util\SetUpToLaunch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Nature Sound FX\__Gift__\Weapons SFX\Weapons SFX Full Package.txt" />
