@@ -51,9 +51,7 @@ public class PanelScroller : MonoBehaviour
             upPosition = screenHeight * upPercentage;
             downPosition = screenHeight * downPercentage;
 
-            Debug.Log("Down " + panel.transform.position + screenWidth/2 + " " + downPosition + " " + panel.transform.position.z);
-
-            MoveDown = false ; MoveUp = false ;
+            MoveDown = false ; MoveUp = false;
 
         }
 
@@ -140,5 +138,21 @@ public class PanelScroller : MonoBehaviour
     public bool isOnBottomHalf()
     {
         return Util.IsWithinThreshold(panel.transform.position.y, downPosition, 1f);
+    }
+
+    public void SetWithScreen()
+    {
+        screenHeight = Screen.height;
+        screenWidth = Screen.width;
+
+        upPosition = screenHeight * upPercentage;
+        downPosition = screenHeight * downPercentage;
+
+        MoveDown = false; MoveUp = false;
+    }
+
+    private void OnEnable()
+    {
+        SetWithScreen();
     }
 }
