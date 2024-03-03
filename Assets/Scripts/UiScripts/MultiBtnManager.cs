@@ -200,7 +200,7 @@ public class MultiBtnManager : MonoBehaviour
 
         if(activeBtn)
         {
-            BtnPressed?.Invoke(btn.d);
+            //BtnPressed?.Invoke(btn.d);
             WriteIntToFile(SharedConsts.DifficultyPath, btn.d);
         }
 

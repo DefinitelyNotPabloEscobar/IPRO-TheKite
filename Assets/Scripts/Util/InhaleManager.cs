@@ -57,13 +57,25 @@ public class InhaleManager
                     if (!hasIncreased)
                     {
                         Error += diff / 1000 * errorAmp * 4;
-                        errorAmp += errorAmpIncrease;
+                        errorAmp += errorAmpIncrease * 8;
                     }
                     else errorAmp = errorAmpConst;
                 }
                 break;
 
             case 1:
+
+                if (Time.time - phaseStartedTime > 2)
+                {
+                    if (!Util.IsWithinThreshold(Mathf.Abs(breath.position.y), predicted.position.y, 2f))
+                    {
+                        Error += diff / 250 * errorAmp;
+                        errorAmp += errorAmpIncrease;
+                    }
+                    else errorAmp = errorAmpConst;
+                    break;
+                }
+
                 if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
                 {
                     if (breath.position.y <= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
@@ -76,6 +88,18 @@ public class InhaleManager
                 break;
 
             case 2:
+
+                if (Time.time - phaseStartedTime > 2)
+                {
+                    if (!Util.IsWithinThreshold(Mathf.Abs(breath.position.y), predicted.position.y, 2f))
+                    {
+                        Error += diff / 250 * errorAmp;
+                        errorAmp += errorAmpIncrease;
+                    }
+                    else errorAmp = errorAmpConst;
+                    break;
+                }
+
                 if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
                 {
                     if (breath.position.y <= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))
@@ -88,6 +112,18 @@ public class InhaleManager
                 break;
 
             case 3:
+
+                if (Time.time - phaseStartedTime > 2)
+                {
+                    if (!Util.IsWithinThreshold(Mathf.Abs(breath.position.y), predicted.position.y, 2f))
+                    {
+                        Error += diff / 250 * errorAmp;
+                        errorAmp += errorAmpIncrease;
+                    }
+                    else errorAmp = errorAmpConst;
+                    break;
+                }
+
                 if (!Util.IsWithinThreshold(predicted.position.y, 0f, 1f))
                 {
                     if (breath.position.y <= 0 || Util.IsWithinThreshold(Mathf.Abs(breath.position.y), 0f, 0.15f))

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6667
     height: 976
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 106
+  controlID: 17
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 107
+  controlID: 18
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 108
+  controlID: 100
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 109
+  controlID: 101
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -213,8 +213,8 @@ MonoBehaviour:
     y: 0
     width: 288.66666
     height: 599.3333
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -239,8 +239,8 @@ MonoBehaviour:
     y: 0
     width: 934
     height: 599.3333
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 15}
@@ -269,15 +269,15 @@ MonoBehaviour:
     height: 326.6667
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 17}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 17}
   - {fileID: 18}
   - {fileID: 19}
   - {fileID: 20}
   - {fileID: 21}
-  m_Selected: 0
-  m_LastSelected: 3
+  m_Selected: 1
+  m_LastSelected: 2
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -297,8 +297,8 @@ MonoBehaviour:
     y: 0
     width: 484
     height: 926
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -364,9 +364,9 @@ MonoBehaviour:
     - '{"m_SerializationStates":{"thermalFoldout":false,"performanceFoldout":false,"developerFoldout":false,"indexerFoldout":false,"scalersFoldout":false,"deviceSettingsFoldout":false}}'
     - '{"m_SerializationStates":{"androidSystemFoldout":false}}'
     - '{}'
-    scale: 28
+    scale: 16
     fitToScreenEnabled: 1
-    rotationDegree: 270
+    rotationDegree: 0
     highlightSafeAreaEnabled: 0
     friendlyName: Samsung Galaxy S9
     networkReachability: 1
@@ -404,9 +404,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 58870000
-      m_LastClickedID: 34648
-      m_ExpandedIDs: a6d5ffffeaf8ffff32fbffff
+      m_SelectedIDs: 18870000
+      m_LastClickedID: 34584
+      m_ExpandedIDs: b4d4ffffd0f9ffff32fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -657,9 +657,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: 963.32043, y: 1315.866, z: 0}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: 963.32043, y: 1315.866, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -706,13 +706,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.14489023, y: -0.33025205, z: 0.05132123, w: 0.931381}
+    m_Target: {x: 0.079094306, y: 0.058038097, z: -0.0047143437, w: 0.99525934}
     speed: 2
-    m_Value: {x: 0.14487836, y: -0.33022496, z: 0.05131702, w: 0.93130463}
+    m_Value: {x: 0.079086885, y: 0.058032654, z: -0.0047139013, w: 0.995166}
   m_Size:
-    m_Target: 68.014534
+    m_Target: 3198.0122
     speed: 2
-    m_Value: 68.014534
+    m_Value: 3198.0122
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 4000, y: 1800}
+  m_TargetSize: {x: 1398, y: 836}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -788,10 +788,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -1333.3334
-    m_HBaseRangeMax: 1333.3334
-    m_VBaseRangeMin: -600
-    m_VBaseRangeMax: 600
+    m_HBaseRangeMin: -466
+    m_HBaseRangeMax: 466
+    m_VBaseRangeMin: -278.6667
+    m_VBaseRangeMax: 278.6667
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -800,7 +800,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -811,7 +811,7 @@ MonoBehaviour:
       y: 21
       width: 932
       height: 557.3333
-    m_Scale: {x: 0.3495, y: 0.3495}
+    m_Scale: {x: 0.9999999, y: 0.9999999}
     m_Translation: {x: 466, y: 278.66666}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -819,12 +819,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1333.3334
-      y: -797.32947
-      width: 2666.6667
-      height: 1594.6589
+      x: -466.00006
+      y: -278.6667
+      width: 932.0001
+      height: 557.3334
     m_MinimalGUI: 1
-  m_defaultScale: 0.3495
+  m_defaultScale: 0.9999999
   m_LastWindowPixelSize: {x: 1398, y: 867.5}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -872,23 +872,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/SkyBox
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
-  m_StartGridSize: 46
+  m_StartGridSize: 60
   m_LastFolders:
-  - Assets/Scenes
-  m_LastFoldersGridSize: 46
+  - Assets/SkyBox
+  m_LastFoldersGridSize: 60
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 178.33331}
-    m_SelectedIDs: f46c0000
-    m_LastClickedID: 27892
-    m_ExpandedIDs: 00000000ca6c0000d66c000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 418.3333}
+    m_SelectedIDs: a6820000
+    m_LastClickedID: 33446
+    m_ExpandedIDs: 00000000d06c0000d26c0000d46c0000d66c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -916,7 +916,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 5a1f0100
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ca6c0000
+    m_ExpandedIDs: 00000000d06c0000d26c0000d46c0000d66c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -941,8 +941,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: a6820000
+    m_LastClickedInstanceID: 33446
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000945a0000f465010062830000ba6e000064170400ae6e0000fa6e00005ea50000646d00003c710000e86d000078870000066e0000ea6d000056bd020000000000827502001615010052940000
     m_RenameOverlay:
@@ -969,7 +969,7 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
-    m_GridSize: 46
+    m_GridSize: 60
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 315
 --- !u!114 &18
@@ -1013,23 +1013,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 46
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: 46
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: ca6c0000
-    m_LastClickedID: 27850
-    m_ExpandedIDs: 00000000ca6c000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 210.33331}
+    m_SelectedIDs: 0a6d0000
+    m_LastClickedID: 27914
+    m_ExpandedIDs: 00000000d06c0000d26c0000d46c0000d66c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1057,7 +1057,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ca6c0000
+    m_ExpandedIDs: 00000000d06c0000d26c0000d46c0000d66c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1082,9 +1082,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 7a700000
-    m_LastClickedInstanceID: 28794
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: f26d0000f86d000024b7000084ab0000a6ab00009eab0000dad60000246e0000426d0000a26b0000000000007a020d006c4503003c03020058bd0200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1154,23 +1154,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/RunTimeFolder
+    - Assets/Light
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 53
   m_LastFolders:
-  - Assets/RunTimeFolder
+  - Assets/Light
   m_LastFoldersGridSize: 53
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 82.33331}
-    m_SelectedIDs: f26c0000
-    m_LastClickedID: 27890
-    m_ExpandedIDs: 00000000ca6c000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 210.33331}
+    m_SelectedIDs: f86c0000
+    m_LastClickedID: 27896
+    m_ExpandedIDs: 00000000d06c0000d26c0000d46c0000d66c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1198,7 +1198,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ca6c0000
+    m_ExpandedIDs: 00000000d06c0000d26c0000d46c0000d66c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1223,8 +1223,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 7a700000
-    m_LastClickedInstanceID: 28794
+    m_SelectedInstanceIDs: 666d0000
+    m_LastClickedInstanceID: 28006
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 40c00000426d00004a6b000058bd02000000000016150100bcbe0000
     m_RenameOverlay:
@@ -1295,23 +1295,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Cartoon low poly tree/Prefabs
+    - Assets/RunTimeFolder
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 67
   m_LastFolders:
-  - Assets/Cartoon low poly tree/Prefabs
+  - Assets/RunTimeFolder
   m_LastFoldersGridSize: 67
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 146.33331}
-    m_SelectedIDs: fc850000
-    m_LastClickedID: 34300
-    m_ExpandedIDs: 00000000ca6c0000d66c000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 274.3333}
+    m_SelectedIDs: a0820000
+    m_LastClickedID: 33440
+    m_ExpandedIDs: 00000000d06c0000d26c0000d46c0000d66c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1339,7 +1339,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ca6c0000
+    m_ExpandedIDs: 00000000d06c0000d26c0000d46c0000d66c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1364,9 +1364,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 7a700000
-    m_LastClickedInstanceID: 28794
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: e8820000
+    m_LastClickedInstanceID: 33512
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 5a9300003c030200066e0000ea6d00000000000058bd0200bcbe0000d8930000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

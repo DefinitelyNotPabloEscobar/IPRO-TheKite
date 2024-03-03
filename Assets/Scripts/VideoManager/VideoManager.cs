@@ -32,7 +32,7 @@ public class VideoManager : MonoBehaviour
 
         currentPlayer = player;
 
-        MultiBtnManager.BtnPressed += changeVideo;
+        //MultiBtnManager.BtnPressed += changeVideo;
     }
     public void ManageVideo()
     {
