@@ -48,4 +48,19 @@ public class PanelControl : MonoBehaviour
             }
         }
     }
+
+    public void MoveUp()
+    {
+        panelScroller.PanelGoUp();
+    }
+
+    public bool isUp()
+    {
+        return !panelScroller.isOnBottomHalf();
+    }
+
+    public void Fix()
+    {
+        panelScroller.SetWithScreen();
+    }
 }

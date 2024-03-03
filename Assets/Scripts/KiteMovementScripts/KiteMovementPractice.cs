@@ -515,7 +515,7 @@ public class KiteMovementPractice : MonoBehaviour
         if(firstP2)
         {
             panel2.SetActive(true);
-            panelControl2.MovePanel();
+            panelControl2.Fix();
             firstP2 = false;
         }
 
@@ -532,7 +532,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP3)
         {
             panel3.SetActive(true);
-            panelControl3.MovePanel();
+            panelControl3.Fix();
             firstP3 = false;
         }
     }
@@ -548,7 +548,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP4)
         {
             panel4.SetActive(true);
-            panelControl4.MovePanel();
+            panelControl4.Fix();
             firstP4 = false;
         }
     }
@@ -564,7 +564,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP5)
         {
             panel5.SetActive(true);
-            panelControl5.MovePanel();
+            panelControl5.Fix();
             firstP5 = false;
         }
     }
@@ -580,7 +580,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP6)
         {
             panel6.SetActive(true);
-            panelControl6.MovePanel();
+            panelControl6.Fix();
             firstP6 = false;
         }
     }
@@ -596,7 +596,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP7)
         {
             panel7.SetActive(true);
-            panelControl7.MovePanel();
+            panelControl7.Fix();
             firstP7 = false;
         }
     }
@@ -612,7 +612,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP8)
         {
             panel8.SetActive(true);
-            panelControl8.MovePanel();
+            panelControl8.Fix();
             firstP8 = false;
         }
     }
@@ -629,7 +629,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstPInhale)
         {
             panelInhale.SetActive(true);
-            panelControlInhale.MovePanel();
+            panelControlInhale.Fix();
             moving = true;
             MoveKite();
 
@@ -747,7 +747,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP9)
         {
             panel9.SetActive(true);
-            panelControl9.MovePanel();
+            panelControl9.Fix();
             firstP9 = false;
         }
     }
@@ -763,7 +763,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP10)
         {
             panel10.SetActive(true);
-            panelControl10.MovePanel();
+            panelControl10.Fix();
             firstP10 = false;
         }
     }
@@ -779,7 +779,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstPHold)
         {
             panelHold.SetActive(true);
-            panelControlHold.MovePanel();
+            panelControlHold.Fix();
             moving = true;
             MoveKite();
 
@@ -819,7 +819,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP11)
         {
             panel11.SetActive(true);
-            panelControl11.MovePanel();
+            panelControl11.Fix();
             firstP11 = false;
         }
     }
@@ -835,7 +835,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP12)
         {
             panel12.SetActive(true);
-            panelControl12.MovePanel();
+            panelControl12.Fix();
             firstP12 = false;
         }
     }
@@ -852,7 +852,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstPExhale)
         {
             panelExhale.SetActive(true);
-            panelControlExhale.MovePanel();
+            panelControlExhale.Fix();
             moving = true;
             MoveKite();
 
@@ -892,7 +892,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP13)
         {
             panel13.SetActive(true);
-            panelControl13.MovePanel();
+            panelControl13.Fix();
             firstP13 = false;
         }
     }
@@ -908,7 +908,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP14)
         {
             panel14.SetActive(true);
-            panelControl14.MovePanel();
+            panelControl14.Fix();
             firstP14 = false;
         }
     }
@@ -924,7 +924,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstPFull)
         {
             panelFull.SetActive(true);
-            panelControlFull.MovePanel();
+            panelControlFull.Fix();
             moving = true;
             MoveKite();
 
@@ -995,7 +995,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP15)
         {
             panel15.SetActive(true);
-            panelControl15.MovePanel();
+            panelControl15.Fix();
             firstP15 = false;
             timeP15 = Time.time;
         }
@@ -1017,7 +1017,7 @@ public class KiteMovementPractice : MonoBehaviour
         if (firstP16)
         {
             panel16.SetActive(true);
-            panelControl16.MovePanel();
+            panelControl16.Fix();
             firstP16 = false;
         }
     }

@@ -148,11 +148,11 @@ public class PanelScroller : MonoBehaviour
         upPosition = screenHeight * upPercentage;
         downPosition = screenHeight * downPercentage;
 
-        MoveDown = false; MoveUp = false;
-    }
+        panel.transform.position = new Vector3(
+                screenWidth / 2,
+                downPosition,
+                panel.transform.position.z);
 
-    private void OnEnable()
-    {
-        SetWithScreen();
+        MoveDown = false; MoveUp = true;
     }
 }
