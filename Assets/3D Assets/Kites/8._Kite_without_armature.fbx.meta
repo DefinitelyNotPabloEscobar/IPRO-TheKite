@@ -3,7 +3,37 @@ guid: d77bef34e78cac742b7b69640b697103
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fabric bottom-left
+    second: {fileID: 2100000, guid: 2b4a6c41e27a3cc4f881abd6f60b3fc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fabric bottom-right
+    second: {fileID: 2100000, guid: ce29e7dedbd41a34699c9ee347316c6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fabric top-left
+    second: {fileID: 2100000, guid: 5ecad891b69cf0041a54d6fbb6183a85, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fabric top-right
+    second: {fileID: 2100000, guid: 85578d48047169541b60539a159fd9b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rope.001
+    second: {fileID: 2100000, guid: c4bb5fd671f2f474495809241b59a753, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stick.001
+    second: {fileID: 2100000, guid: 05383e69575284540849f2ad994ee808, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
