@@ -117,8 +117,6 @@ public class ExhaleManager : InhaleManager
                 break;
         }
 
-        //TEST : ONLY CHECK .Y IN BEGGINING SO U INCENTIVISE THE BREATH TO CONTINUE!
-
         if (Error > 1) Error = 1;
         CheckTimer();
     }

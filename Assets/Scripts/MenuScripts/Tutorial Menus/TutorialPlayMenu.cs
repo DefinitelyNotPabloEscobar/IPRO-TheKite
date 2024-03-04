@@ -30,10 +30,11 @@ public class TutorialPlayMenu:MonoBehaviour
     public void Start()
     {
         RotationFunction.MakeScreenVertical();
-        firstTutorial = FirstTutorialContainer.ReadFromFile(SharedConsts.FirstTutorialPath);
+        firstTutorial = FirstTutorial.ReadFromFile(SharedConsts.FirstTutorialPath);
 
-        TEST.text = "" + firstTutorial + " dif" + JsonLevelDone.ReadFromFile(SharedConsts.DifficultyDonePath) +
-            "Cycles " + JsonCyclesCompleted.ReadFromFile(SharedConsts.CyclesDonePath);
+        TEST.text = "Difficulty: " + PlayerPrefs.GetInt(SharedConsts.DifficultyPath) + "\n"
+            + "FirstTutorial: " + (PlayerPrefs.GetInt(SharedConsts.FirstTutorialPath) == 1 ? "True" : "False") + "\n"
+            + "LevelDone: " + PlayerPrefs.GetInt(SharedConsts.DifficultyDonePath);
     }
 
     public void OnTriggerExit(Collider other)
@@ -65,7 +66,6 @@ public class TutorialPlayMenu:MonoBehaviour
         SceneManager.LoadScene(SharedConsts.TutorialScene);
     }
 
-
     public void BtnClickedSound()
     {
         if(btnAudioSource != null)
@@ -74,29 +74,11 @@ public class TutorialPlayMenu:MonoBehaviour
         }
     }
 
-    private void WriteBoolToFile(string filePath, bool data)
-    {
-        try
-        {
-            FirstTutorialContainer dataContainer = new FirstTutorialContainer();
-            dataContainer.firstTime = data;
-
-            string jsonResult = JsonUtility.ToJson(dataContainer);
-
-            File.WriteAllText(filePath, jsonResult);
-        }
-        catch
-        {
-            Debug.Log("Error while writting Bool to File at " + filePath);
-        }
-    }
-
-
     public void PlayFromSmallMenu()
     {
         BtnClickedSound();
         RotationFunction.MakeScreenHorizontal();
-        WriteBoolToFile(SharedConsts.FirstTutorialPath, false);
+        FirstTutorial.WriteToFile(SharedConsts.FirstTutorialPath, false);
         SceneManager.LoadScene(SharedConsts.Game);
     }
 

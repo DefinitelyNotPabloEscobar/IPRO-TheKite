@@ -187,7 +187,7 @@ public class KiteMovementScript : MonoBehaviour
         EarlySecSpeed = angularSecSpeed;
         wonTime = SharedConsts.WinTime;
 
-        SetBaseOnDifficulty(ReadFromFile(SharedConsts.DifficultyPath));
+        SetBaseOnDifficulty(Difficulty.ReadFromFile(SharedConsts.DifficultyPath));
 
         if (kite != null){
             radius = kite.position.z;
@@ -368,7 +368,7 @@ public class KiteMovementScript : MonoBehaviour
                 HideProgressBars();
                 HideText();
                 lastYPos = kite.position.y;
-                WriteIntToFile(SharedConsts.ScorePath, CalculateScore());
+                ScoreDone.WriteIntToFile(SharedConsts.ScorePath, CalculateScore());
                 //RemoveIndicatores();
 
                 if(loseAnimationPicked == 1) cameraMovement.DontLookAtKite();
@@ -404,8 +404,8 @@ public class KiteMovementScript : MonoBehaviour
             if (!won)
             {
                 SoundManager.playWin();
-                WriteIntToFile(SharedConsts.ScorePath, CalculateScore());
-                JsonLevelDone.WriteIntToFile(SharedConsts.DifficultyDonePath, difficulty);
+                ScoreDone.WriteIntToFile(SharedConsts.ScorePath, CalculateScore());
+                LevelDone.WriteIntToFile(SharedConsts.DifficultyDonePath, difficulty);
                 HideProgressBars();
                 HideText();
             }
@@ -658,7 +658,7 @@ public class KiteMovementScript : MonoBehaviour
 
     public void WriteCurrectCycles()
     {
-        JsonCyclesCompleted.WriteIntToFile(SharedConsts.CyclesDonePath, CyclesDone);
+        CyclesCompleted.WriteIntToFile(SharedConsts.CyclesDonePath, CyclesDone);
     }
 
     public void EndGame()
@@ -968,69 +968,8 @@ public class KiteMovementScript : MonoBehaviour
         scoreLableText.text = "";
     }
 
-
-    private void WriteIntToFile(string filePath, int data)
-    {
-        try
-        {
-            DataContainer dataContainer = new DataContainer();
-            dataContainer.Score = data;
-
-            string jsonResult = JsonUtility.ToJson(dataContainer);
-
-            File.WriteAllText(filePath, jsonResult);
-        }
-        catch
-        {
-            Debug.Log("Error while writting Int to File at " +  filePath);
-        }
-    }
-
-
-    private int ReadFromFile(string filePath)
-    {
-        try
-        {
-            string jsonResult = ReadJsonFromFile(filePath);
-            DataContainerDifficulty dataContainer = JsonToData(jsonResult);
-            int integerValue = dataContainer.d;
-
-            Debug.Log("Read integer value from JSON file: " + integerValue + " at " + filePath);
-            return integerValue;
-        }
-        catch
-        {
-            Debug.Log("Error while writting Int to File at " + filePath);
-        }
-
-        return -1;
-    }
-
-    private string ReadJsonFromFile(string filePath)
-    {
-        // Read the JSON string from the file
-        string jsonResult = File.ReadAllText(filePath);
-
-        return jsonResult;
-    }
-
-    private DataContainerDifficulty JsonToData(string jsonData)
-    {
-        DataContainerDifficulty dataContainer = JsonUtility.FromJson<DataContainerDifficulty>(jsonData);
-
-        return dataContainer;
-    }
-
     private int CalculateScore()
     {
-        //Score = (int) (timerManager.totalTime / (wonTime/5));
-        //Score = (int) ((100 * timerManager.currentTime / wonTime) + ((LoseThreshold - Error)*10));
-        //Score = (int)(100 * timerManager.currentTime / wonTime);
-
-        /*
-        int cycleTime = (int) (inhaleDuration + holdDuration + exhaleDuration);
-        Score = Mathf.FloorToInt(((Mathf.Abs(Time.time - CycleStartTime) - 0.5f) / cycleTime));
-        */
         Score = CyclesDone;
         if(Score < 0) Score = 0;
         return Score;

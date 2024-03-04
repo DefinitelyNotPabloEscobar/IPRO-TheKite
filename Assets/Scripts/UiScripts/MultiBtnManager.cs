@@ -96,7 +96,7 @@ public class MultiBtnManager : MonoBehaviour
             */
         }
 
-        levelDone = JsonLevelDone.ReadFromFile(SharedConsts.DifficultyDonePath);
+        levelDone = LevelDone.ReadFromFile(SharedConsts.DifficultyDonePath);
 
         switch (levelDone)
         {
@@ -201,7 +201,7 @@ public class MultiBtnManager : MonoBehaviour
 
         if(activeBtn)
         {
-            DataContainerDifficulty.WriteIntToFile(SharedConsts.DifficultyPath, btn.d);
+            Difficulty.WriteIntToFile(SharedConsts.DifficultyPath, btn.d);
         }
 
     }

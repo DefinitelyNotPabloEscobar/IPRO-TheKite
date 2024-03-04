@@ -9,15 +9,15 @@ public class SetUpToLaunch : MonoBehaviour
     private const string FirstTimeKey = "IsFirstTime";
     void Start()
     {
-        if (true)
+        if (IsFirstTime())
         {
-            DataContainerDifficulty.WriteIntToFile(SharedConsts.DifficultyPath, 0);
-            FirstTimeContainer.WriteToFile(SharedConsts.FirstTimePath, true);
-            FirstTutorialContainer.WriteToFile(SharedConsts.FirstTutorialPath, true);
-            JsonLevelDone.WriteIntToFile(SharedConsts.DifficultyDonePath, -1);
-            JsonCyclesCompleted.WriteIntToFile(SharedConsts.CyclesDonePath, -1);
-            JsonStressLevel.WriteFloatToFile(SharedConsts.StressLevelPath, -1);
-            DataContainer.WriteIntToFile(SharedConsts.ScorePath, -1);
+            Difficulty.WriteIntToFile(SharedConsts.DifficultyPath, 0);
+            FirstTime.WriteToFile(SharedConsts.FirstTimePath, true);
+            FirstTutorial.WriteToFile(SharedConsts.FirstTutorialPath, true);
+            LevelDone.WriteIntToFile(SharedConsts.DifficultyDonePath, -1);
+            CyclesCompleted.WriteIntToFile(SharedConsts.CyclesDonePath, -1);
+            StressLevel.WriteFloatToFile(SharedConsts.StressLevelPath, -1);
+            ScoreDone.WriteIntToFile(SharedConsts.ScorePath, -1);
 
 
             PlayerPrefs.SetInt("Difficulty", 0);

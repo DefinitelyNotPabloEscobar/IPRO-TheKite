@@ -19,11 +19,10 @@ public class EndGameMenu : MonoBehaviour
 
     public void Awake()
     {
-        string filePath = SharedConsts.ScorePath;
-        Score = ReadFromFile(filePath);
+        Score = ScoreDone.ReadFromFile(SharedConsts.ScorePath);
         intScoreText.text = "" + Score;
 
-        stressBar2.Stress = JsonStressLevel.ReadFromFile(SharedConsts.StressLevelPath);
+        stressBar2.Stress = StressLevel.ReadFromFile(SharedConsts.StressLevelPath);
         stressBar2.ChangeStress();
 
         RotationFunction.MakeScreenVertical();
@@ -35,24 +34,6 @@ public class EndGameMenu : MonoBehaviour
         RotationFunction.MakeScreenHorizontal();
     }
 
-    private int ReadFromFile(string filePath)
-    {
-        try
-        {
-            string jsonResult = ReadJsonFromFile(filePath);
-            DataContainer dataContainer = JsonToData(jsonResult);
-            int integerValue = dataContainer.Score;
-
-            Debug.Log("Read integer value from JSON file: " + integerValue + " at " + filePath);
-            return integerValue;
-        }
-        catch
-        {
-            Debug.Log("Error while writting Int to File at " + filePath);
-        }
-
-        return -1;
-    }
     public void PlayGame()
     {
         if (btnClickedSound != null) btnClickedSound.Play();
@@ -69,21 +50,6 @@ public class EndGameMenu : MonoBehaviour
         // Quit the application (works in standalone builds)
         Application.Quit();
 #endif
-    }
-
-    string ReadJsonFromFile(string filePath)
-    {
-        // Read the JSON string from the file
-        string jsonResult = File.ReadAllText(filePath);
-
-        return jsonResult;
-    }
-
-    DataContainer JsonToData(string jsonData)
-    {
-        DataContainer dataContainer = JsonUtility.FromJson<DataContainer>(jsonData);
-
-        return dataContainer;
     }
 
 

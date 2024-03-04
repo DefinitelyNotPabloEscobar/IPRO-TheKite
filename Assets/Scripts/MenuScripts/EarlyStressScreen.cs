@@ -15,7 +15,7 @@ public class EarlyStressScreen : MonoBehaviour
     public void PlayGame(){
         if(btnSoundEffect != null) btnSoundEffect.Play();
 
-        JsonStressLevel.WriteFloatToFile(SharedConsts.StressLevelPath, stressBar.Stress);
+        StressLevel.WriteFloatToFile(SharedConsts.StressLevelPath, stressBar.Stress);
 
         SceneManager.LoadScene(SharedConsts.StartingMenu);
     }

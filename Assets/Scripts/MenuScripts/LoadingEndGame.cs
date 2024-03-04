@@ -33,15 +33,14 @@ public class LoadingEndGame : MonoBehaviour
 
     public void Start()
     {
-        string filePath = SharedConsts.ScorePath;
-        Score = DataContainer.ReadFromFile(filePath);
+        Score = ScoreDone.ReadFromFile(SharedConsts.ScorePath);
         RotationFunction.MakeScreenVertical();
 
         int inhaleDuration = 0;
         int holdDuration = 0;
         int exhaleDuration = 0;
 
-        switch (DataContainerDifficulty.ReadFromFile(SharedConsts.DifficultyPath))
+        switch (Difficulty.ReadFromFile(SharedConsts.DifficultyPath))
         {
             case 0:
             default:

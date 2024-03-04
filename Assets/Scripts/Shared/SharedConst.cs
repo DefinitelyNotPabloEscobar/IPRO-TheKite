@@ -3,6 +3,7 @@ using UnityEngine;
 
 public static class SharedConsts
 {
+    /*
 #if UNITY_EDITOR
     public static string ScorePath = Application.dataPath + "/RunTimeFolder/Score.json";
     public static string DifficultyPath = Application.dataPath + "/RunTimeFolder/Difficulty.json";
@@ -28,6 +29,20 @@ public static class SharedConsts
     public static string VideoInterPath = Path.Combine(Application.streamingAssetsPath, "Videos/Intermediate-4-7-8.mp4");
     public static string VideoAdvancePath = Path.Combine(Application.streamingAssetsPath, "Videos/Advanced-5-8-8.mp4");
 #endif
+    */
+
+    public static string ScorePath = "Score";
+    public static string DifficultyPath = "Difficulty";
+    public static string FirstTimePath = "FirstTime"; //For calibration
+    public static string DifficultyDonePath = "DifficultyDone";
+    public static string FirstTutorialPath = "FirstTutorial"; //For tutorial
+    public static string StressLevelPath = "Stress";
+    public static string CyclesDonePath = "CyclesCompleted";
+
+    public static string VideoBeginnerPath = Application.dataPath + "/Videos/Beginner-1-3-4.mp4";
+    public static string VideoInterPath = Application.dataPath + "/Videos/Intermediate-4-7-8.mp4";
+    public static string VideoAdvancePath = Application.dataPath + "/Videos/Advanced-5-8-8.mp4";
+
 
     public static int EarlyLoadingScene = 0;
     public static int EarlyStressScene = 1;

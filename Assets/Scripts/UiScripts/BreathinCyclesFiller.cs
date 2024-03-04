@@ -24,9 +24,9 @@ public class BreathinCyclesFiller : MonoBehaviour
 
         int totalCycles = 0;
 
-        CyclesDone = JsonCyclesCompleted.ReadFromFile(SharedConsts.CyclesDonePath);
+        CyclesDone = CyclesCompleted.ReadFromFile(SharedConsts.CyclesDonePath);
 
-        switch (ReadFromFile(SharedConsts.DifficultyPath))
+        switch (Difficulty.ReadFromFile(SharedConsts.DifficultyPath))
         {
             case 0:
             default:
@@ -68,40 +68,5 @@ public class BreathinCyclesFiller : MonoBehaviour
 
         correctText.text = "" + CyclesDone;
         incorrectText.text = "" + (totalCycles - CyclesDone);
-    }
-
-
-    private int ReadFromFile(string filePath)
-    {
-        try
-        {
-            string jsonResult = ReadJsonFromFile(filePath);
-            DataContainerDifficulty dataContainer = JsonToData(jsonResult);
-            int integerValue = dataContainer.d;
-
-            Debug.Log("Read integer value from JSON file: " + integerValue + " at " + filePath);
-            return integerValue;
-        }
-        catch
-        {
-            Debug.Log("Error while writting Int to File at " + filePath);
-        }
-
-        return -1;
-    }
-
-    private string ReadJsonFromFile(string filePath)
-    {
-        // Read the JSON string from the file
-        string jsonResult = File.ReadAllText(filePath);
-
-        return jsonResult;
-    }
-
-    private DataContainerDifficulty JsonToData(string jsonData)
-    {
-        DataContainerDifficulty dataContainer = JsonUtility.FromJson<DataContainerDifficulty>(jsonData);
-
-        return dataContainer;
     }
 }

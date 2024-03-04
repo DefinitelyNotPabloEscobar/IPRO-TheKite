@@ -26,6 +26,6 @@ public class StressBar2 : MonoBehaviour
     public void ChangeStress()
     {
         slider.value = Stress;
-        scoreText.text = Stress.ToString();
+        if(scoreText != null) scoreText.text = Stress.ToString();
     }
 }

@@ -12,7 +12,7 @@ public class TutorialUIMenu:MonoBehaviour
     {
         RotationFunction.MakeScreenVertical();
 
-        WriteBoolToFile(SharedConsts.FirstTutorialPath, false);
+        FirstTutorial.WriteToFile(SharedConsts.FirstTutorialPath, false);
     }
 
     public void OnTriggerExit(Collider other)
@@ -45,59 +45,4 @@ public class TutorialUIMenu:MonoBehaviour
             btnAudioSource.Play();
         }
     }
-
-
-    /*File Writter/Reader*/
-
-    private void WriteBoolToFile(string filePath, bool data)
-    {
-        try
-        {
-            FirstTutorialContainer dataContainer = new FirstTutorialContainer();
-            dataContainer.firstTime = data;
-
-            string jsonResult = JsonUtility.ToJson(dataContainer);
-
-            File.WriteAllText(filePath, jsonResult);
-        }
-        catch
-        {
-            Debug.Log("Error while writting Bool to File at " + filePath);
-        }
-    }
-
-    private bool ReadFromFile(string filePath)
-    {
-        try
-        {
-            string jsonResult = ReadJsonFromFile(filePath);
-            FirstTutorialContainer dataContainer = JsonToData(jsonResult);
-            bool boolValue = dataContainer.firstTime;
-
-            Debug.Log("Read integer value from JSON file: " + boolValue + " at " + filePath);
-            return boolValue;
-        }
-        catch
-        {
-            Debug.Log("Error while writting Int to File at " + filePath);
-        }
-
-        return false;
-    }
-
-    private string ReadJsonFromFile(string filePath)
-    {
-        // Read the JSON string from the file
-        string jsonResult = File.ReadAllText(filePath);
-
-        return jsonResult;
-    }
-
-    private FirstTutorialContainer JsonToData(string jsonData)
-    {
-        FirstTutorialContainer jsonLevelDone = JsonUtility.FromJson<FirstTutorialContainer>(jsonData);
-
-        return jsonLevelDone;
-    }
-
 }
