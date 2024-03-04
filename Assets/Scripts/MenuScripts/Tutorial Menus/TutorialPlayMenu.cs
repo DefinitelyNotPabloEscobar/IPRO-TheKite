@@ -25,16 +25,10 @@ public class TutorialPlayMenu:MonoBehaviour
 
     private bool firstTutorial;
 
-    public TextMeshProUGUI TEST;
-
     public void Start()
     {
         RotationFunction.MakeScreenVertical();
         firstTutorial = FirstTutorial.ReadFromFile(SharedConsts.FirstTutorialPath);
-
-        TEST.text = "Difficulty: " + PlayerPrefs.GetInt(SharedConsts.DifficultyPath) + "\n"
-            + "FirstTutorial: " + (PlayerPrefs.GetInt(SharedConsts.FirstTutorialPath) == 1 ? "True" : "False") + "\n"
-            + "LevelDone: " + PlayerPrefs.GetInt(SharedConsts.DifficultyDonePath);
     }
 
     public void OnTriggerExit(Collider other)
