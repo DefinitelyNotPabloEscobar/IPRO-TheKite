@@ -60,4 +60,5 @@ public class JsonCyclesCompleted
 
         return dataContainer;
     }
+
 }

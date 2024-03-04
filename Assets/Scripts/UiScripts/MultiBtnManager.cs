@@ -96,7 +96,8 @@ public class MultiBtnManager : MonoBehaviour
             */
         }
 
-        levelDone = ReadFromFile(SharedConsts.DifficultyDonePath);
+        levelDone = JsonLevelDone.ReadFromFile(SharedConsts.DifficultyDonePath);
+
         switch (levelDone)
         {
             case -1:
@@ -200,62 +201,9 @@ public class MultiBtnManager : MonoBehaviour
 
         if(activeBtn)
         {
-            //BtnPressed?.Invoke(btn.d);
-            WriteIntToFile(SharedConsts.DifficultyPath, btn.d);
+            DataContainerDifficulty.WriteIntToFile(SharedConsts.DifficultyPath, btn.d);
         }
 
-    }
-
-
-    private void WriteIntToFile(string filePath, int data)
-    {
-        try
-        {
-            DataContainerDifficulty dataContainer = new DataContainerDifficulty();
-            dataContainer.d = data;
-
-            string jsonResult = JsonUtility.ToJson(dataContainer);
-
-            File.WriteAllText(filePath, jsonResult);
-        }
-        catch
-        {
-            Debug.Log("Error while writting Int to File at " + filePath);
-        }
-    }
-
-    private int ReadFromFile(string filePath)
-    {
-        try
-        {
-            string jsonResult = ReadJsonFromFile(filePath);
-            JsonLevelDone dataContainer = JsonToData(jsonResult);
-            int integerValue = dataContainer.currentLevel;
-
-            Debug.Log("Read integer value from JSON file: " + integerValue + " at " + filePath);
-            return integerValue;
-        }
-        catch
-        {
-            Debug.Log("Error while writting Int to File at " + filePath);
-        }
-
-        return 0;
-    }
-
-    private string ReadJsonFromFile(string filePath)
-    {
-        // Read the JSON string from the file
-        string jsonResult = File.ReadAllText(filePath);
-
-        return jsonResult;
-    }
-
-    private JsonLevelDone JsonToData(string jsonData)
-    {
-        JsonLevelDone jsonLevelDone = JsonUtility.FromJson<JsonLevelDone>(jsonData);
-
-        return jsonLevelDone;
     }
 
 }

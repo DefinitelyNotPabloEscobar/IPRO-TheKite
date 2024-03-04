@@ -1,20 +1,33 @@
-
-
+using System.IO;
 using UnityEngine;
 
 public static class SharedConsts
 {
+#if UNITY_EDITOR
     public static string ScorePath = Application.dataPath + "/RunTimeFolder/Score.json";
     public static string DifficultyPath = Application.dataPath + "/RunTimeFolder/Difficulty.json";
-    public static string FirstTimePath = Application.dataPath + "/RunTimeFolder/FirstTime.json";     //For calibration
+    public static string FirstTimePath = Application.dataPath + "/RunTimeFolder/FirstTime.json"; //For calibration
     public static string DifficultyDonePath = Application.dataPath + "/RunTimeFolder/DifficultyDone.json";
-    public static string FirstTutorialPath = Application.dataPath + "/RunTimeFolder/FirstTutorial.json";     //For tutorial
+    public static string FirstTutorialPath = Application.dataPath + "/RunTimeFolder/FirstTutorial.json"; //For tutorial
     public static string StressLevelPath = Application.dataPath + "/RunTimeFolder/StressLevel.json";
     public static string CyclesDonePath = Application.dataPath + "/RunTimeFolder/CyclesDone.json";
 
     public static string VideoBeginnerPath = Application.dataPath + "/Videos/Beginner-1-3-4.mp4";
     public static string VideoInterPath = Application.dataPath + "/Videos/Intermediate-4-7-8.mp4";
     public static string VideoAdvancePath = Application.dataPath + "/Videos/Advanced-5-8-8.mp4";
+#else
+    public static string ScorePath = Path.Combine(Application.streamingAssetsPath, "RunTimeFolder/Score.json");
+    public static string DifficultyPath = Path.Combine(Application.streamingAssetsPath, "RunTimeFolder/Difficulty.json");
+    public static string FirstTimePath = Path.Combine(Application.streamingAssetsPath, "RunTimeFolder/FirstTime.json"); //For calibration
+    public static string DifficultyDonePath = Path.Combine(Application.streamingAssetsPath, "RunTimeFolder/DifficultyDone.json");
+    public static string FirstTutorialPath = Path.Combine(Application.streamingAssetsPath, "RunTimeFolder/FirstTutorial.json"); //For tutorial
+    public static string StressLevelPath = Path.Combine(Application.streamingAssetsPath, "RunTimeFolder/StressLevel.json");
+    public static string CyclesDonePath = Path.Combine(Application.streamingAssetsPath, "RunTimeFolder/CyclesDone.json");
+
+    public static string VideoBeginnerPath = Path.Combine(Application.streamingAssetsPath, "Videos/Beginner-1-3-4.mp4");
+    public static string VideoInterPath = Path.Combine(Application.streamingAssetsPath, "Videos/Intermediate-4-7-8.mp4");
+    public static string VideoAdvancePath = Path.Combine(Application.streamingAssetsPath, "Videos/Advanced-5-8-8.mp4");
+#endif
 
     public static int EarlyLoadingScene = 0;
     public static int EarlyStressScene = 1;
