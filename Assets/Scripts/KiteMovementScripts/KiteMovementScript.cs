@@ -181,16 +181,11 @@ public class KiteMovementScript : MonoBehaviour
     private int phaseCounter = 0;
     private string lastPhaseString = "";
 
-    [Header("Lower Menu")]
-    public PanelControl panelControl;
-
     void Start()
     {
         StartTime = Time.time;
         EarlySecSpeed = angularSecSpeed;
         wonTime = SharedConsts.WinTime;
-
-        panelControl.Fix();
 
         SetBaseOnDifficulty(Difficulty.ReadFromFile(SharedConsts.DifficultyPath));
 

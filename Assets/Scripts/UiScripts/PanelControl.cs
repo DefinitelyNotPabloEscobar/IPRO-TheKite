@@ -63,4 +63,9 @@ public class PanelControl : MonoBehaviour
     {
         panelScroller.SetWithScreen();
     }
+
+    public void PlaceUp()
+    {
+        panelScroller.PlaceUp();
+    }
 }

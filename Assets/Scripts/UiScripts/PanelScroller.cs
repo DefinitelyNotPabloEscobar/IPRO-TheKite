@@ -25,6 +25,8 @@ public class PanelScroller : MonoBehaviour
 
     private bool isUp = false;
 
+    public bool startUp = false;
+
     private void Start()
     {
         screenHeight = Screen.height;
@@ -33,10 +35,22 @@ public class PanelScroller : MonoBehaviour
         upPosition = screenHeight * upPercentage;
         downPosition = screenHeight * downPercentage;
 
-        panel.transform.position = new Vector3(
-                screenWidth/2,
-                downPosition,
-                panel.transform.position.z);
+        if (!startUp)
+        {
+            panel.transform.position = new Vector3(
+                    screenWidth/2,
+                    downPosition,
+                    panel.transform.position.z);
+
+        }
+        else
+        {
+            panel.transform.position = new Vector3(
+                    screenWidth / 2,
+                    upPosition,
+                    panel.transform.position.z);
+            isUp = true;
+        }
 
     }
 
@@ -154,5 +168,13 @@ public class PanelScroller : MonoBehaviour
                 panel.transform.position.z);
 
         MoveDown = false; MoveUp = true;
+    }
+
+    public void PlaceUp()
+    {
+        panel.transform.position = new Vector3(
+                screenWidth / 2,
+                upPosition,
+                panel.transform.position.z);
     }
 }

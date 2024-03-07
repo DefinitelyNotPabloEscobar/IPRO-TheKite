@@ -53346,6 +53346,7 @@ MonoBehaviour:
   panel: {fileID: 2052121597}
   upPercentage: 0.07
   downPercentage: -0.0285
+  startUp: 1
 --- !u!114 &2052121602
 MonoBehaviour:
   m_ObjectHideFlags: 0
