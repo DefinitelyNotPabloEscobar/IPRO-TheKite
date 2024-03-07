@@ -27,7 +27,6 @@ public class TutorialUIMenu:MonoBehaviour
 
     public void Leave()
     {
-        RotationFunction.MakeScreenHorizontal();
         SceneManager.LoadScene(SharedConsts.StartingMenu);
     }
 
@@ -35,6 +34,17 @@ public class TutorialUIMenu:MonoBehaviour
     {
         RotationFunction.MakeScreenHorizontal();
         SceneManager.LoadScene(SharedConsts.PracticeScene);
+    }
+
+    public void LeaveGame()
+    {
+#if UNITY_EDITOR
+        // Simulate game exit behavior in the Unity Editor
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // Quit the application (works in standalone builds)
+        Application.Quit();
+#endif
     }
 
 
