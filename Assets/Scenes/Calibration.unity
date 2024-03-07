@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3177887, g: 0.8445987, b: 0.8593703, a: 1}
+  m_IndirectSpecularColor: {r: 0.31782594, g: 0.84464824, b: 0.85934937, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1037,7 +1037,7 @@ PrefabInstance:
     - target: {fileID: 8548410379131770240, guid: 8c57eb0d609b082448cb97c797ae9eef,
         type: 3}
       propertyPath: m_Volume
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8548410379131770240, guid: 8c57eb0d609b082448cb97c797ae9eef,
         type: 3}
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d487c35ddd04174289ca2cff91cb7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instanceId: 4
+  instanceId: 10
 --- !u!82 &485261692 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8548410379131770240, guid: 8c57eb0d609b082448cb97c797ae9eef,

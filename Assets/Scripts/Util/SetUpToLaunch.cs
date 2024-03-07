@@ -42,6 +42,8 @@ public class SetUpToLaunch : MonoBehaviour
 
         }
 
+        Application.targetFrameRate = 60;
+
     }
 
     private bool IsFirstTime()

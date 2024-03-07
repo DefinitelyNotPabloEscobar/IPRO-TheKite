@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6667
     height: 976
   m_ShowMode: 4
-  m_Title: Simulator
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 30
+  controlID: 70
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 31
+  controlID: 71
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 23
+  controlID: 72
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 24
+  controlID: 73
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -213,8 +213,8 @@ MonoBehaviour:
     y: 0
     width: 288.66666
     height: 599.3333
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -269,15 +269,15 @@ MonoBehaviour:
     height: 326.6667
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 19}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
   - {fileID: 18}
   - {fileID: 19}
   - {fileID: 20}
   - {fileID: 21}
-  m_Selected: 2
-  m_LastSelected: 3
+  m_Selected: 0
+  m_LastSelected: 4
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -297,8 +297,8 @@ MonoBehaviour:
     y: 0
     width: 484
     height: 926
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -364,8 +364,8 @@ MonoBehaviour:
     - '{"m_SerializationStates":{"thermalFoldout":false,"performanceFoldout":false,"developerFoldout":false,"indexerFoldout":false,"scalersFoldout":false,"deviceSettingsFoldout":false}}'
     - '{"m_SerializationStates":{"androidSystemFoldout":false}}'
     - '{}'
-    scale: 16
-    fitToScreenEnabled: 1
+    scale: 18
+    fitToScreenEnabled: 0
     rotationDegree: 0
     highlightSafeAreaEnabled: 0
     friendlyName: Samsung Galaxy S9
@@ -404,23 +404,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 486f0000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 76f9ffff32fbffff
+      m_SelectedIDs: 02a80400
+      m_LastClickedID: 305154
+      m_ExpandedIDs: 42e6faff68f7faffd2f7faff62f8faffeaf8faff00fbfaffb8fbfaff5446fbff8049fbffa65afbff1c5bfbff5e5cfbffe25cfbff5e5dfbffee5dfbff585efbffc65efbff1e5ffbff3a70fbff8670fbff3071fbff0083fbff6c83fbff2284fbff6285fbffd096fbff3a97fbff9697fbff1e98fbff7498fbff9aa9fbffdef4fbff38f5fbffa6f5fbff36f6fbffb2f6fbff3af7fbff6008fcfff849fcffd25bfcffbc5cfcff425dfcff9e6efcff266ffcff906ffcff2270fcff5072fcffd272fcffd673fcff0a75fcff889dfcff8ca0fcff86b8fcff52dffcff7cf2fcffdc3dfdffe03dfdff2c3efdff9c3efdff283ffdff6e54fdffbc54fdff5a57fdff6268fdff6e69fdff8069fdffbc69fdffe869fdffb47afdffc47afdff127bfdff5c7bfdffe635feffd04dfeffbe4efefff25efeff6070feff3c9afeff70aafeffbcaafeff1cb0feffd0b2feff58b3feffd8b3feff5ab4feff58dafeffe8f0feff30f2feff6402ffff2a15ffff3c17ffff7027ffffce3fffffea5dffff1e6effff3c70ffff9682ffff5a8efffff291ffff6a93ffff86a4ffff36f9ffff32fbfffff4ffffff346f0000446f0000946f0000de6f0000007000001c7000003470000042a000006ca0000034a1000050a1000074a100008aa1000096a10000e0a1000054a2000066a20000eaa2000064a5000078a5000010a6000036a6000042a6000084a6000096a600001aa70000a0b70000bcb700003ce6000096fc00009cfc00005a130100761f01007c1f0100323601004e42010054420100146601005e7e010096970100e8bb0100eebb0100d6c20100f4ce0100d0f6010046f9010062f901005e160300d23c0300ee3c0300823d0300ae3e0300b83e030080840300d0840300ee8403003ea603004ca603009ca60300b6a60300e8a603001ca7030084a7030074b203007ce903001c330400c6330400
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Btn_click
+        m_OriginalName: Btn_click
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 239316
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 9}
       m_SearchString: 
@@ -657,9 +657,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 643, y: 2445.099, z: 0}
+    m_Target: {x: 1480.0155, y: 204.87624, z: 0}
     speed: 2
-    m_Value: {x: 643, y: 2445.099, z: 0}
+    m_Value: {x: 1480.0155, y: 204.87624, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -706,13 +706,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.23990549, y: -0.06510489, z: 0.01635676, w: -0.96860594}
+    m_Target: {x: -0.09712949, y: -0.026529431, z: 0.0028977422, w: -0.99507356}
     speed: 2
-    m_Value: {x: -0.23987453, y: -0.06509648, z: 0.016354648, w: -0.9684809}
+    m_Value: {x: -0.097114064, y: -0.02652522, z: 0.0028972821, w: -0.9949156}
   m_Size:
-    m_Target: 852.3071
+    m_Target: 2608.2034
     speed: 2
-    m_Value: 852.3071
+    m_Value: 2608.2034
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -730,7 +730,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.10639126, y: 0.063192345, z: -0.0067752306, w: -0.9922923}
+  m_LastSceneViewRotation: {x: -0.10310603, y: -0.023518028, z: 0.0027297186, w: -0.9945362}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -872,23 +872,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Shared
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 60
   m_LastFolders:
-  - Assets/Scripts/Shared
+  - Assets/Scenes
   m_LastFoldersGridSize: 60
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 386.3333}
-    m_SelectedIDs: 186e0000
-    m_LastClickedID: 28184
-    m_ExpandedIDs: 00000000c86e0000ca6e0000cc6e0000ce6e0000
+    scrollPos: {x: 0, y: 194.33331}
+    m_SelectedIDs: 146e0000
+    m_LastClickedID: 28180
+    m_ExpandedIDs: 00000000de6d0000e06d0000e26d0000e46d0000166e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -916,7 +916,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 5a1f0100
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c86e0000ca6e0000cc6e0000ce6e0000
+    m_ExpandedIDs: 00000000de6d0000e06d0000e26d0000e46d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -943,7 +943,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000945a0000f465010062830000ba6e000064170400ae6e0000fa6e00005ea50000646d00003c710000e86d000078870000066e0000ea6d000056bd020000000000827502001615010052940000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1027,9 +1027,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 322.3333}
-    m_SelectedIDs: 3c6d0000
-    m_LastClickedID: 27964
-    m_ExpandedIDs: 00000000c86e0000ca6e0000cc6e0000ce6e0000
+    m_SelectedIDs: 226e0000
+    m_LastClickedID: 28194
+    m_ExpandedIDs: 00000000de6d0000e06d0000e26d0000e46d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1057,7 +1057,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c86e0000ca6e0000cc6e0000ce6e0000
+    m_ExpandedIDs: 00000000de6d0000e06d0000e26d0000e46d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1082,8 +1082,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 2e6d0000
-    m_LastClickedInstanceID: 27950
+    m_SelectedInstanceIDs: 5c6e0000
+    m_LastClickedInstanceID: 28252
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: f26d0000f86d000024b7000084ab0000a6ab00009eab0000dad60000246e0000426d0000a26b0000000000007a020d006c4503003c03020058bd0200
     m_RenameOverlay:
@@ -1154,23 +1154,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/UI/Tutorial Panel/Panel7-Video
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 67
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/UI/Tutorial Panel/Panel7-Video
   m_LastFoldersGridSize: 67
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 194.33331}
-    m_SelectedIDs: 006f0000
-    m_LastClickedID: 28416
-    m_ExpandedIDs: 00000000c86e0000ca6e0000cc6e0000ce6e0000026f000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 562.3333}
+    m_SelectedIDs: 1a400300
+    m_LastClickedID: 213018
+    m_ExpandedIDs: 00000000de6d0000e06d0000e26d0000e46d0000226e0000066f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1198,7 +1198,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c86e0000ca6e0000cc6e0000ce6e0000
+    m_ExpandedIDs: 00000000de6d0000e06d0000e26d0000e46d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1223,8 +1223,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 5c6e0000
+    m_LastClickedInstanceID: 28252
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 40c00000426d00004a6b000058bd02000000000016150100bcbe0000
     m_RenameOverlay:
@@ -1295,23 +1295,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Sounds
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
-  m_StartGridSize: 67
+  m_StartGridSize: 74
   m_LastFolders:
-  - Assets
-  m_LastFoldersGridSize: 67
+  - Assets/Sounds
+  m_LastFoldersGridSize: 74
   m_LastProjectPath: C:\Users\hmoes\Documents\IPROLEPSE\Lets Fly A Kite\IPRO-TheKite
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: c86e0000
-    m_LastClickedID: 28360
-    m_ExpandedIDs: 00000000c86e0000ca6e0000cc6e0000ce6e000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 242.33331}
+    m_SelectedIDs: 1a6e0000
+    m_LastClickedID: 28186
+    m_ExpandedIDs: 00000000de6d0000e06d0000e26d0000e46d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1339,7 +1339,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c86e0000ca6e0000cc6e0000ce6e0000
+    m_ExpandedIDs: 00000000de6d0000e06d0000e26d0000e46d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1364,9 +1364,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 5e6f0000
-    m_LastClickedInstanceID: 28510
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 5c6e0000
+    m_LastClickedInstanceID: 28252
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 5a9300003c030200066e0000ea6d00000000000058bd0200bcbe0000d8930000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1391,8 +1391,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 50.333313}
-    m_GridSize: 67
+    m_ScrollPosition: {x: 0, y: 0}
+    m_GridSize: 74
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 200
 --- !u!114 &21

@@ -181,11 +181,16 @@ public class KiteMovementScript : MonoBehaviour
     private int phaseCounter = 0;
     private string lastPhaseString = "";
 
+    [Header("Lower Menu")]
+    public PanelControl panelControl;
+
     void Start()
     {
         StartTime = Time.time;
         EarlySecSpeed = angularSecSpeed;
         wonTime = SharedConsts.WinTime;
+
+        panelControl.Fix();
 
         SetBaseOnDifficulty(Difficulty.ReadFromFile(SharedConsts.DifficultyPath));
 
@@ -534,7 +539,7 @@ public class KiteMovementScript : MonoBehaviour
                 {
                     if (Util.IsWithinThreshold(elevationAngle, 0f, 0.5f)) elevationAngle = 0f;
                     else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
-                    else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
+                    else if (elevationAngle > 0) elevationAngle = 0f;
                 }
                 else
                 {
@@ -546,14 +551,14 @@ public class KiteMovementScript : MonoBehaviour
                 {
                     if (Util.IsWithinThreshold(elevationAngle, 0, 0.5f)) elevationAngle = 0f;
                     else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
-                    else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
+                    else if (elevationAngle > 0) elevationAngle = 0f;
                 }
                 break;
             case "exhale":
                 if (cycleStarted)
                 {
                     if (Util.IsWithinThreshold(elevationAngle, -90f, 0.5f)) elevationAngle = -90f;
-                    else if (elevationAngle < -90) elevationAngle += angularElevSpeedExhale * Time.deltaTime;
+                    else if (elevationAngle < -90) elevationAngle = -90f;
                     else if (elevationAngle > -90) elevationAngle -= angularElevSpeedExhale * Time.deltaTime;
                 }
                 break;

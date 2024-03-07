@@ -650,7 +650,7 @@ public class KiteMovementPractice : MonoBehaviour
 
         if (Util.IsWithinThreshold(elevationAngle, 0, 0.5f)) elevationAngle = 0f;
         else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
-        else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
+        else if (elevationAngle > 0) elevationAngle = 0f;
 
 
         fillInhale.fillAmount = (realTimeCounter) / inhaleDuration;
@@ -801,7 +801,7 @@ public class KiteMovementPractice : MonoBehaviour
 
         if (Util.IsWithinThreshold(elevationAngle, 0f, 0.5f)) elevationAngle = 0f;
         else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
-        else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
+        else if (elevationAngle > 0) elevationAngle = 0f;
 
         fillHold.fillAmount = (realTimeCounter - inhaleDuration) / holdDuration;
 
@@ -872,7 +872,7 @@ public class KiteMovementPractice : MonoBehaviour
         MoveKite();
 
         if (Util.IsWithinThreshold(elevationAngle, -90f, 0.5f)) elevationAngle = -90f;
-        else if (elevationAngle < -90) elevationAngle += angularElevSpeedExhale * Time.deltaTime;
+        else if (elevationAngle < -90) elevationAngle = -90f;
         else if (elevationAngle > -90) elevationAngle -= angularElevSpeedExhale * Time.deltaTime;
 
         fillExhale.fillAmount = (realTimeCounter - inhaleDuration - holdDuration) / exhaleDuration;
@@ -947,7 +947,7 @@ public class KiteMovementPractice : MonoBehaviour
         {
             if (Util.IsWithinThreshold(elevationAngle, 0, 0.5f)) elevationAngle = 0f;
             else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
-            else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
+            else if (elevationAngle > 0) elevationAngle = 0f;
 
             fillFull1.fillAmount = (realTimeCounter - (holdDuration + exhaleDuration + inhaleDuration)) / inhaleDuration;
         }
@@ -955,7 +955,7 @@ public class KiteMovementPractice : MonoBehaviour
         {
             if (Util.IsWithinThreshold(elevationAngle, 0f, 0.5f)) elevationAngle = 0f;
             else if (elevationAngle < 0) elevationAngle += angularElevSpeedInhale * Time.deltaTime;
-            else if (elevationAngle > 0) elevationAngle -= angularElevSpeedInhale * Time.deltaTime;
+            else if (elevationAngle > 0) elevationAngle = 0f;
 
             if(!inhaleDone)
             {
@@ -968,7 +968,7 @@ public class KiteMovementPractice : MonoBehaviour
         else
         {
             if (Util.IsWithinThreshold(elevationAngle, -90f, 0.5f)) elevationAngle = -90f;
-            else if (elevationAngle < -90) elevationAngle += angularElevSpeedExhale * Time.deltaTime;
+            else if (elevationAngle < -90) elevationAngle = -90f;
             else if (elevationAngle > -90) elevationAngle -= angularElevSpeedExhale * Time.deltaTime;
 
             if (!holdDone)

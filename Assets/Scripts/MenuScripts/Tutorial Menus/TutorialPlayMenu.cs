@@ -96,7 +96,6 @@ public class TutorialPlayMenu:MonoBehaviour
 
     public void GoBack()
     {
-        RotationFunction.MakeScreenHorizontal();
         SceneManager.LoadScene(SharedConsts.StartingMenu);
     }
 
