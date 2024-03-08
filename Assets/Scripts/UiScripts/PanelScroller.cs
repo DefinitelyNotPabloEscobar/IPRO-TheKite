@@ -49,7 +49,7 @@ public class PanelScroller : MonoBehaviour
                     screenWidth / 2,
                     upPosition,
                     panel.transform.position.z);
-            isUp = true;
+            isUp = true;    
         }
 
     }

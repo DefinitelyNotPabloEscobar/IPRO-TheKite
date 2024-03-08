@@ -11,6 +11,8 @@ public class EndGameMenu : MonoBehaviour
     public AudioSource btnClickedSound;
     public StressBar2 stressBar;
     public StressBar2 stressBar2;
+    public CircularStressBarManager circularStressBarManager;
+    public CircularStressBarManager circularStressBarManager2;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI intScoreText;
     public PanelScrollerUp panelScroller;
@@ -20,10 +22,17 @@ public class EndGameMenu : MonoBehaviour
     public void Awake()
     {
         Score = ScoreDone.ReadFromFile(SharedConsts.ScorePath);
+        var stress = StressLevel.ReadFromFile(SharedConsts.StressLevelPath);
         intScoreText.text = "" + Score;
 
-        stressBar2.Stress = StressLevel.ReadFromFile(SharedConsts.StressLevelPath);
+        stressBar2.Stress = stress;
         stressBar2.ChangeStress();
+
+        if(circularStressBarManager != null && circularStressBarManager2 != null)
+        {
+            circularStressBarManager.ChangeWithPercentage(0.25f);
+            circularStressBarManager2.ChangeWithPercentage(stress);
+        }
 
         RotationFunction.MakeScreenVertical();
 

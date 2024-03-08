@@ -26,7 +26,11 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
     public PageSwipperSimple swipperHorizontal;
     public bool moving = false;
 
-    private float LowerPanelVerticalSize = 3;
+    private float LowerPanelVerticalSize = 2.25f;
+    private float LowerPanelMaxScroll;
+    private float LowerPanelMinScroll;
+    private float LowerPanelScrollCapUp;
+    private float LowerPanelScrollCapDown;
 
 
     void Start()
@@ -36,9 +40,21 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
         panelLocationText = Texts.position;
         initPanelLocation = transform.position;
 
-        if(Screen.height/Screen.width < 1.5)
+
+        if (Screen.height/Screen.width < 1.5)
         {
-            LowerPanelVerticalSize = 2.15f;
+            LowerPanelVerticalSize = 1.5f;
+            LowerPanelMaxScroll = (Screen.height / 2f) - (Screen.height / 2.25f);
+            LowerPanelMinScroll = Screen.height / 1.75f;
+            LowerPanelScrollCapUp = Screen.height;
+            LowerPanelScrollCapDown = -Screen.height / 2;
+        }
+        else
+        {
+            LowerPanelMaxScroll = (Screen.height / 2f) - (Screen.height / 2.25f);
+            LowerPanelMinScroll = Screen.height / 2.5f;
+            LowerPanelScrollCapUp = Screen.height / 2;
+            LowerPanelScrollCapDown = -Screen.height / 2;
         }
     }
 
@@ -49,7 +65,7 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
 
         float difference = eventData.pressPosition.y - eventData.position.y;
 
-        if(transform.position.y < initPanelLocation.y + Screen.height / 2 && transform.position.y > initPanelLocation.y - Screen.height/2)
+        if(transform.position.y < initPanelLocation.y + LowerPanelScrollCapUp && transform.position.y > initPanelLocation.y + LowerPanelScrollCapDown)
         {
             transform.position = panelLocation - new Vector3(0, difference, 0);
             MainMenu.position = panelLocationMain -  new Vector3(0, difference, 0);
@@ -65,7 +81,7 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
 
         if(isPanelDown)
         {
-            if (transform.position.y > initPanelLocation.y + ((Screen.height/2) - (Screen.height / 2.25)))
+            if (transform.position.y > initPanelLocation.y + LowerPanelMaxScroll)
             {
                 panelLocation += new Vector3(0, Screen.height / LowerPanelVerticalSize, 0);
                 panelLocationMain += new Vector3(0, Screen.height / LowerPanelVerticalSize, 0);
@@ -84,7 +100,7 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         else
         {
-            if (transform.position.y <= initPanelLocation.y + Screen.height / 2.25)
+            if (transform.position.y <= initPanelLocation.y + LowerPanelMinScroll)
             {
                 panelLocation += new Vector3(0, -Screen.height / LowerPanelVerticalSize, 0);
                 panelLocationMain += new Vector3(0, -Screen.height / LowerPanelVerticalSize, 0);
