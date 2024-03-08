@@ -19,6 +19,8 @@ public class EndGameMenu : MonoBehaviour
     public Button btn;
     private int Score;
 
+    public LoaderUIHandler loaderUIHandler;
+
     public void Awake()
     {
         Score = ScoreDone.ReadFromFile(SharedConsts.ScorePath);
@@ -45,8 +47,7 @@ public class EndGameMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        if (btnClickedSound != null) btnClickedSound.Play();
-        SceneManager.LoadScene(SharedConsts.Game);
+        loaderUIHandler.Go();
     }
 
 

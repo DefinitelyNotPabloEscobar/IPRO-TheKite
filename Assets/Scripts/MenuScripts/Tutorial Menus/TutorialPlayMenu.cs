@@ -23,10 +23,13 @@ public class TutorialPlayMenu:MonoBehaviour
 
     public GameObject GetOutBtn;
 
+    public LoaderUIHandler mainDelay;
+
     private bool firstTutorial;
 
     public void Start()
     {
+
         RotationFunction.MakeScreenVertical();
         firstTutorial = FirstTutorial.ReadFromFile(SharedConsts.FirstTutorialPath);
     }
@@ -44,8 +47,7 @@ public class TutorialPlayMenu:MonoBehaviour
         }
         else
         {
-            RotationFunction.MakeScreenHorizontal();
-            SceneManager.LoadScene(SharedConsts.Game);
+            mainDelay.Go();
         }
     }
 
@@ -71,9 +73,9 @@ public class TutorialPlayMenu:MonoBehaviour
     public void PlayFromSmallMenu()
     {
         BtnClickedSound();
-        RotationFunction.MakeScreenHorizontal();
         FirstTutorial.WriteToFile(SharedConsts.FirstTutorialPath, false);
-        SceneManager.LoadScene(SharedConsts.Game);
+        ChangeSmallMenuVisibility(false);
+        mainDelay.Go();
     }
 
     public void CancelFromSmallMenu()

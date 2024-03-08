@@ -31,8 +31,6 @@ public class CameraMovement : MonoBehaviour
             float z = kite.getRadius() * Mathf.Sin((kite.getAngle() - kiteScreanPosition) * Mathf.Deg2Rad);
 
             Vector3 kiteViewPosition = new Vector3(x, y, z);
-
-            // Make the camera look at the kite's position
             transform.LookAt(kiteViewPosition);
         }
         else

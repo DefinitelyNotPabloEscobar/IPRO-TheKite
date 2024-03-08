@@ -11,6 +11,7 @@ public class PracticeMenu:MonoBehaviour
     public RectTransform panelExit;
     public RectTransform outsideBtn;
     public Image mask;
+    public LoaderUIHandler loaderUIHandler;
 
     private bool paused = false;
     public void PauseGame()
@@ -65,5 +66,10 @@ public class PracticeMenu:MonoBehaviour
     public void LeavePractice()
     {
         SceneManager.LoadScene(SharedConsts.StartingMenu);
+    }
+
+    public void MoveToTestingMic()
+    {
+        loaderUIHandler.Go();
     }
 }

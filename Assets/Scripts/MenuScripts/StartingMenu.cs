@@ -8,6 +8,7 @@ public class StartingMenu : MonoBehaviour
 {
     public StressBar stressBar;
     public AudioSource btnClickedSound;
+    public LoaderUIHandler loaderUIHandler;
 
     public void Awake()
     {
@@ -73,8 +74,7 @@ public class StartingMenu : MonoBehaviour
         if (btnClickedSound != null) btnClickedSound.Play();
         try
         {
-            RotationFunction.MakeScreenHorizontal();
-            SceneManager.LoadScene(SharedConsts.Breath);
+            loaderUIHandler.Go();
         }
         catch
         {
