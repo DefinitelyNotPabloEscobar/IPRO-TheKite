@@ -35,18 +35,9 @@ public class LoaderUIHandler : MonoBehaviour
             yield return null;
         }
 
-        switch (scene)
-        {
-            case 0:
-            default:
-                RotationFunction.MakeScreenHorizontal();
-                SceneManager.LoadScene(SharedConsts.Game);
-                break;
-            case 1:
-                RotationFunction.MakeScreenHorizontal();
-                SceneManager.LoadScene(SharedConsts.Breath);
-                break;
-        }
+        int sceneNumber = SharedScenePicker.PickScene(scene);
+        RotationFunction.MakeScreenHorizontal();
+        SceneManager.LoadScene(sceneNumber);
     }
 
 }

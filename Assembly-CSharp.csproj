@@ -163,6 +163,7 @@
     <Compile Include="Assets\Scripts\Breathing Algorithm\Combinatorics\Variations.cs" />
     <Compile Include="Assets\Scripts\SoundManager\SoundManager2.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\CorrelationFromGraphs.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\LoaderUIHandler.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\Tutorial Menus\TutorialUIMenu.cs" />
     <Compile Include="Assets\Scripts\KiteMovementScripts\DefeatAnimationCrash.cs" />
     <Compile Include="Assets\Scripts\UiScripts\StressBar2.cs" />
@@ -177,7 +178,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\Managers\AudioManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\Scripts\MenuScripts\LoaderUIHandler.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\Loader.cs" />
+    <Compile Include="Assets\Scripts\Shared\SharedScenePicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Nature Sound FX\__Gift__\Weapons SFX\Weapons SFX Full Package.txt" />
