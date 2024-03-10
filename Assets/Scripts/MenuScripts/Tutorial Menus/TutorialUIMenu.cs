@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class TutorialUIMenu:MonoBehaviour
 {
     public AudioSource btnAudioSource;
+    public LoaderUIHandler loaderUIHandler;
 
     public void Awake()
     {
@@ -32,8 +33,7 @@ public class TutorialUIMenu:MonoBehaviour
 
     public void Practice()
     {
-        RotationFunction.MakeScreenHorizontal();
-        SceneManager.LoadScene(SharedConsts.PracticeScene);
+        loaderUIHandler.Go();
     }
 
     public void LeaveGame()

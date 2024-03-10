@@ -196,23 +196,7 @@ public class KiteMovementScript : MonoBehaviour
             radius = 10f;
         }
 
-        for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
-        {
-            float x = radius * Mathf.Cos((angle - (((float)i / (float)numberOfIndicatores)*indicatorSpread)) * Mathf.Deg2Rad);
-            float z = radius * Mathf.Sin((angle - (((float)i / (float)numberOfIndicatores)*indicatorSpread)) * Mathf.Deg2Rad);
-            Vector3 drawVector = new Vector3(x, (((Mathf.Sin((elevationAngle + (((float)i / (float)numberOfIndicatores)*indicatorSpread)) * Mathf.Deg2Rad) + 1) / 2) * elevationHeightAmp) + 3, z);
-
-            GameObject indicatorObj = Instantiate(indicator, drawVector, Quaternion.Euler(0f,0f,0f));
-
-            Renderer objectRenderer = indicatorObj.GetComponent<Renderer>();
-            if (objectRenderer != null)
-            {
-                objectRenderer.material.color = greenColor;
-                objectRenderer.enabled = false;
-            }
-
-            objectList.Add(indicatorObj);
-        }
+        SpwanIndicators();
 
         timerManager = new TimerManager(timeText);
         phaseManager = new PhaseManager(instructionsText);
@@ -224,6 +208,28 @@ public class KiteMovementScript : MonoBehaviour
 
         PhaseEval = new PhaseEval(difficulty);
 
+    }
+
+
+    public void SpwanIndicators()
+    {
+        for (int i = numberOfObjNotDrawn; i < numberOfIndicatores; i++)
+        {
+            float x = radius * Mathf.Cos((angle - (((float)i / (float)numberOfIndicatores) * indicatorSpread)) * Mathf.Deg2Rad);
+            float z = radius * Mathf.Sin((angle - (((float)i / (float)numberOfIndicatores) * indicatorSpread)) * Mathf.Deg2Rad);
+            Vector3 drawVector = new Vector3(x, (((Mathf.Sin((elevationAngle + (((float)i / (float)numberOfIndicatores) * indicatorSpread)) * Mathf.Deg2Rad) + 1) / 2) * elevationHeightAmp) + 3, z);
+
+            GameObject indicatorObj = Instantiate(indicator, drawVector, Quaternion.Euler(0f, 0f, 0f));
+
+            Renderer objectRenderer = indicatorObj.GetComponent<Renderer>();
+            if (objectRenderer != null)
+            {
+                objectRenderer.material.color = greenColor;
+                objectRenderer.enabled = false;
+            }
+
+            objectList.Add(indicatorObj);
+        }
     }
 
 

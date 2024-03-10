@@ -8,6 +8,7 @@ public class Loader : MonoBehaviour
 {
     private bool sceneLoaded = false;
     private int sceneNumber = 0;
+    private bool sceneActive = false;
 
     public int scene;
 
@@ -27,28 +28,31 @@ public class Loader : MonoBehaviour
 
     void Update()
     {
-
         if (!sceneLoaded)
         {
             if (SceneManager.GetSceneByBuildIndex(sceneNumber).isLoaded)
             {
                 sceneLoaded = true;
             }
-            else
-            {
+        }
 
-            }
+        if (sceneActive)
+        {
+            ActivateScene();
         }
     }
 
 
     public void ActivateScene()
     {
+        sceneActive = true;
+        sceneObj.allowSceneActivation = true;
+
         if (sceneLoaded)
         {
-            RotationFunction.MakeScreenHorizontal();
-            sceneObj.allowSceneActivation = true;
-            SceneManager.LoadScene(sceneNumber);
+            UnityEngine.SceneManagement.Scene currentScene = SceneManager.GetActiveScene();
+            int currentSceneIndex = currentScene.buildIndex;
+            SceneManager.UnloadSceneAsync(currentSceneIndex);
         }
         else
         {

@@ -15,6 +15,10 @@ public class SharedScenePicker
                 return SharedConsts.Game;
             case 1:
                 return SharedConsts.Breath;
+            case 2:
+                return SharedConsts.PracticeScene;
+            case 3:
+                return SharedConsts.TutorialScene;
         }
     }
 }

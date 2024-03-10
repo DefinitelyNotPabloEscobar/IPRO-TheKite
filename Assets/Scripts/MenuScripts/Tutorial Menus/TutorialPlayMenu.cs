@@ -23,7 +23,7 @@ public class TutorialPlayMenu:MonoBehaviour
 
     public GameObject GetOutBtn;
 
-    public LoaderUIHandler mainDelay;
+    public LoaderUIHandler loaderUIHandler;
 
     private bool firstTutorial;
 
@@ -47,7 +47,7 @@ public class TutorialPlayMenu:MonoBehaviour
         }
         else
         {
-            mainDelay.Go();
+            loaderUIHandler.Go();
         }
     }
 
@@ -75,7 +75,7 @@ public class TutorialPlayMenu:MonoBehaviour
         BtnClickedSound();
         FirstTutorial.WriteToFile(SharedConsts.FirstTutorialPath, false);
         ChangeSmallMenuVisibility(false);
-        mainDelay.Go();
+        loaderUIHandler.Go();
     }
 
     public void CancelFromSmallMenu()

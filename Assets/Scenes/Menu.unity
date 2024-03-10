@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3178344, g: 0.84463376, b: 0.85936844, a: 1}
+  m_IndirectSpecularColor: {r: 0.3178036, g: 0.8446591, b: 0.8593559, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -933,8 +933,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2092956412}
-  - {fileID: 875823945}
   - {fileID: 9221761096766025177}
+  - {fileID: 875823945}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -975,7 +975,7 @@ RectTransform:
   m_Children:
   - {fileID: 1836641916}
   m_Father: {fileID: 859088776}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -995,7 +995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2264151, g: 0.21929511, b: 0.21929511, a: 0.40392157}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1334,7 +1334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
   m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
@@ -1613,10 +1613,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd101471d31e685459d52b3015fb6b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mask: {fileID: 875823944}
+  mask: {fileID: 875823946}
+  maskGameObject: {fileID: 875823944}
   text: {fileID: 1836641917}
   wait: 3.5
   scene: 1
+  loader: {fileID: 0}
+  counting: 1
 --- !u!114 &9221761096072777368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1846,7 +1849,7 @@ RectTransform:
   - {fileID: 635676394}
   - {fileID: 9221761096072777369}
   m_Father: {fileID: 859088776}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
