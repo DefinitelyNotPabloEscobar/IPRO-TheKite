@@ -29,7 +29,6 @@ public class TutorialPlayMenu:MonoBehaviour
 
     public void Start()
     {
-
         RotationFunction.MakeScreenVertical();
         firstTutorial = FirstTutorial.ReadFromFile(SharedConsts.FirstTutorialPath);
     }

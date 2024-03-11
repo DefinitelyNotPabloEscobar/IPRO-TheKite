@@ -11,8 +11,8 @@ public class TutorialUIMenu:MonoBehaviour
 
     public void Awake()
     {
-        RotationFunction.MakeScreenVertical();
 
+        RotationFunction.MakeScreenVertical();
         FirstTutorial.WriteToFile(SharedConsts.FirstTutorialPath, false);
     }
 

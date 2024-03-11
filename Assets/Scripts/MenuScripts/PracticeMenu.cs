@@ -65,6 +65,7 @@ public class PracticeMenu:MonoBehaviour
 
     public void LeavePractice()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(SharedConsts.StartingMenu);
     }
 

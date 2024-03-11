@@ -74,4 +74,5 @@ public static class SharedConsts
 
     public static int WinTime = 240;
 
+    public static string UniversalSoundTag = "UniversalSoundTag";
 }
