@@ -9,6 +9,19 @@ public class SoundManager2 : MonoBehaviour
     public Image imageOn;
     public Image imageOff;
 
+    public void Start()
+    {
+        GameObject myObject = GameObject.Find(SharedConsts.UniversalSound);
+
+        if (myObject != null)
+        {
+            AudioSource component = myObject.GetComponent<AudioSource>();
+            if (component != null)
+            {
+                audioSource = component;
+            }
+        }
+    }
     public void Mute()
     {
         imageOff.enabled = true;

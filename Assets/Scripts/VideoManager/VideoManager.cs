@@ -33,10 +33,21 @@ public class VideoManager : MonoBehaviour
         currentPlayer = player;
 
         //MultiBtnManager.BtnPressed += changeVideo;
+
+        GameObject myObject = GameObject.Find(SharedConsts.UniversalSound);
+
+        if (myObject != null)
+        {
+            AudioSource component = myObject.GetComponent<AudioSource>();
+            if (component != null)
+            {
+                audioSource = component;
+            }
+        }
     }
     public void ManageVideo()
     {
-        if (currentPlayer == null) return;
+        if (currentPlayer == null || audioSource == null) return;
 
         if (currentPlayer.isPlaying)
         {
@@ -52,7 +63,7 @@ public class VideoManager : MonoBehaviour
 
     public void StopVideo()
     {
-        if (currentPlayer == null) return;
+        if (currentPlayer == null || audioSource == null) return;
         if (currentPlayer.isPlaying)
         {
             if(!audioSource.isPlaying) audioSource.Play();
@@ -62,7 +73,7 @@ public class VideoManager : MonoBehaviour
 
     public void PauseVideo()
     {
-        if (currentPlayer == null) return;
+        if (currentPlayer == null || audioSource == null) return;
         if (currentPlayer.isPlaying)
         {
             if (!audioSource.isPlaying) audioSource.Play();
@@ -72,7 +83,7 @@ public class VideoManager : MonoBehaviour
 
     public void PlayVideo()
     {
-        if (currentPlayer == null) return;
+        if (currentPlayer == null || audioSource == null) return;
         if (!currentPlayer.isPlaying)
         {
             if (audioSource.isPlaying) audioSource.Stop();

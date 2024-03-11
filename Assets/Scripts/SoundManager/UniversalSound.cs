@@ -11,7 +11,6 @@ public class UniversalSound : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            gameObject.tag = SharedConsts.UniversalSoundTag;
         }
         else
         {
