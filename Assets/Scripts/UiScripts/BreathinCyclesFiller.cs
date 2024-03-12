@@ -10,6 +10,15 @@ public class BreathinCyclesFiller : MonoBehaviour
     public TextMeshProUGUI incorrectText;
     public EndGameMenu endGame;
 
+    private float currentCorrect = 0f;
+    private float currentIncorrect = 0f;
+
+    private float correct = 0f;
+    private float incorrect = 0f;
+
+    public float seconds = 3f;
+    private bool done = false;
+
     private int CyclesDone;
     void Start()
     {
@@ -66,7 +75,34 @@ public class BreathinCyclesFiller : MonoBehaviour
         var totalTime = SharedConsts.WinTime + (int)((inhaleDuration + holdDuration + exhaleDuration) - extra);
         totalCycles = (int)totalTime / (inhaleDuration + exhaleDuration + holdDuration) - 1;
 
-        correctText.text = "" + CyclesDone;
-        incorrectText.text = "" + (totalCycles - CyclesDone);
+        correct = CyclesDone;
+        incorrect = totalCycles - CyclesDone;
+
+        correctText.text = "0";
+        incorrectText.text = "0";
+    }
+
+
+    IEnumerator MovingNumbers(float seconds)
+    {
+        var t = 0f;
+        while (t < seconds)
+        {
+            t += Time.deltaTime;
+            currentCorrect = Mathf.Lerp(0, correct, t / seconds);
+            currentIncorrect = Mathf.Lerp(0, incorrect, t / seconds);
+
+            correctText.text = "" + (int)currentCorrect;
+            incorrectText.text = "" + (int)currentIncorrect;
+
+            yield return null;
+        }
+    }
+
+    public void StartAnimation()
+    {
+        if (done) return;
+        StartCoroutine(MovingNumbers(seconds));
+        done = true;
     }
 }

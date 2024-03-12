@@ -30,10 +30,9 @@ public class EndGameMenu : MonoBehaviour
         stressBar2.Stress = stress;
         stressBar2.ChangeStress();
 
-        if(circularStressBarManager != null && circularStressBarManager2 != null)
+        if(circularStressBarManager != null)
         {
-            circularStressBarManager.ChangeWithPercentage(0.25f);
-            circularStressBarManager2.ChangeWithPercentage(stress);
+            circularStressBarManager.stressValue = stress;
         }
 
         RotationFunction.MakeScreenVertical();

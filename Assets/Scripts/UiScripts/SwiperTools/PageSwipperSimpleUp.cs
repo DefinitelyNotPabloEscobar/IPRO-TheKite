@@ -32,6 +32,8 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
     private float LowerPanelScrollCapUp;
     private float LowerPanelScrollCapDown;
 
+    public CircularStressBarManager circularStressBarManager;
+
 
     void Start()
     {
@@ -90,6 +92,7 @@ public class PageSwipperSimpleUp : MonoBehaviour, IDragHandler, IEndDragHandler
                 StartCoroutine(SmoothMoveMain(MainMenu.position, panelLocationMain, easing));
                 StartCoroutine(SmoothMoveTexts(Texts.position, panelLocationText, easing));
                 isPanelDown = false;
+                if(circularStressBarManager != null) circularStressBarManager.StartAnimation();
             }
             else
             {

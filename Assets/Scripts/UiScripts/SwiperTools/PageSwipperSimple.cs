@@ -22,6 +22,8 @@ public class PageSwipperSimple : MonoBehaviour, IDragHandler, IEndDragHandler
     public PageSwipperSimpleUp swipperUp;
     public bool moving = false;
 
+    public BreathinCyclesFiller breathinCyclesFiller;
+
     void Start()
     {
         if (pages == null || pages.Count < 1) {
@@ -76,6 +78,7 @@ public class PageSwipperSimple : MonoBehaviour, IDragHandler, IEndDragHandler
             if (percentage > 0)
             {
                 GoFoward();
+                if(breathinCyclesFiller != null) breathinCyclesFiller.StartAnimation();
             }
             else if(percentage < 0)
             {

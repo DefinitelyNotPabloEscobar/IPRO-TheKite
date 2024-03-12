@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3179328, g: 0.84467393, b: 0.8593447, a: 1}
+  m_IndirectSpecularColor: {r: 0.31799522, g: 0.8447381, b: 0.8594153, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -764,6 +764,7 @@ MonoBehaviour:
   - {fileID: 1283135459}
   swipperUp: {fileID: 514779817}
   moving: 0
+  breathinCyclesFiller: {fileID: 1854582363}
 --- !u!1 &227803249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,7 +1728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &451873039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2114,6 +2115,7 @@ MonoBehaviour:
   Texts: {fileID: 1090103681}
   swipperHorizontal: {fileID: 197899378}
   moving: 0
+  circularStressBarManager: {fileID: 1353450768}
 --- !u!1 &549060029
 GameObject:
   m_ObjectHideFlags: 0
@@ -4036,6 +4038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knob: {fileID: 412343045}
   stressValue: 0
+  stressReal: 0
+  seconds: 3
 --- !u!114 &1353450769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4228,7 +4232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1430600130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4263,6 +4267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knob: {fileID: 451873039}
   stressValue: 0
+  stressReal: 0
+  seconds: 3
 --- !u!114 &1430600132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5027,6 +5033,7 @@ MonoBehaviour:
   correctText: {fileID: 36437561}
   incorrectText: {fileID: 272681519}
   endGame: {fileID: 816106630}
+  seconds: 3
 --- !u!1 &1979164703
 GameObject:
   m_ObjectHideFlags: 0
