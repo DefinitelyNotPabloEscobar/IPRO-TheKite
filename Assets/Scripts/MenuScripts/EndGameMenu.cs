@@ -19,20 +19,21 @@ public class EndGameMenu : MonoBehaviour
     public Button btn;
     private int Score;
 
+    public float Stress = 0.5f;
+
     public LoaderUIHandler loaderUIHandler;
 
     public void Awake()
     {
         Score = ScoreDone.ReadFromFile(SharedConsts.ScorePath);
         var stress = StressLevel.ReadFromFile(SharedConsts.StressLevelPath);
+
         intScoreText.text = "" + Score;
 
-        stressBar2.Stress = stress;
-        stressBar2.ChangeStress();
 
         if(circularStressBarManager != null)
         {
-            circularStressBarManager.stressValue = stress;
+            circularStressBarManager.stressValue = Stress;
         }
 
         RotationFunction.MakeScreenVertical();
