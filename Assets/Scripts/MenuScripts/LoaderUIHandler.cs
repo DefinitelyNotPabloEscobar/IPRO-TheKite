@@ -31,14 +31,14 @@ public class LoaderUIHandler : MonoBehaviour
     {
         float t = seconds;
 
-        while (t >= 0.4f)
+        while (t >= 0.1f)
         {
             t -= Time.deltaTime;
             if (counting)
             {
                 this.text.text = "" + (int)(t + 0.5f);
 
-                if (this.text.text.Equals("0")) this.text.text = "Go!";
+                if (this.text.text.Equals("0")) this.text.text = "Start!";
             }
 
             yield return null;

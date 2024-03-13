@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31803352, g: 0.84471077, b: 0.859414, a: 1}
+  m_IndirectSpecularColor: {r: 0.3180896, g: 0.84468114, b: 0.8593885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -448,7 +448,7 @@ RectTransform:
   m_GameObject: {fileID: 49590904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.45, y: 0.24545453, z: 0.43865848}
+  m_LocalScale: {x: 0.29, y: 0.15818182, z: 0.28269103}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 943737218}
@@ -479,7 +479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b1b0afba9a06124592ab2c0d519b2ae, type: 2}
   m_sharedMaterial: {fileID: -5378647876083560534, guid: 4b1b0afba9a06124592ab2c0d519b2ae,
@@ -1345,7 +1345,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378048686}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &378048688
 Camera:
   m_ObjectHideFlags: 0

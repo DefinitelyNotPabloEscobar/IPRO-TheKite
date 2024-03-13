@@ -107,7 +107,6 @@ public class EndGameMenu : MonoBehaviour
     public void BackToMenu()
     {
         if (btnClickedSound != null) btnClickedSound.Play();
-        RotationFunction.MakeScreenHorizontal();
         SceneManager.LoadScene(SharedConsts.StartingMenu);
     }
 
