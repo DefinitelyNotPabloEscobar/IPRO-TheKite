@@ -44,11 +44,20 @@ public class Rope : MonoBehaviour
         for (int i = 0; i <= segments; i++)
         {
             float t = (float)i / segments;
+
+            // Interpolate in local space
+            Vector3 localPointOnLine = Vector3.Lerp(Vector3.zero, endTransform.localPosition - startTransform.localPosition, t);
+
             float curveOffset = Mathf.Sin(t * Mathf.PI) * maxCurveOffset;
             float curveOffsetY = Mathf.Sin(t * Mathf.PI) * maxCurveOffsetY;
 
-            Vector3 pointOnLine = Vector3.Lerp(startTransform.position, endTransform.position, t);
-            ropePositions[i] = new Vector3(pointOnLine.x, pointOnLine.y + curveOffsetY, pointOnLine.z + curveOffset);
+            // Apply curve offset in local space
+            Vector3 localCurveOffset = new Vector3(0f, curveOffsetY, curveOffset);
+
+            // Convert local point to world space and apply curve offset
+            Vector3 pointOnLine = startTransform.position + startTransform.TransformDirection(localPointOnLine + localCurveOffset);
+
+            ropePositions[i] = pointOnLine;
         }
 
         lineRenderer.SetPositions(ropePositions);

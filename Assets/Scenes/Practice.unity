@@ -2249,10 +2249,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTransform: {fileID: 197585400}
-  endTransform: {fileID: 323157318}
+  endTransform: {fileID: 1686989292}
   segments: 10
-  maxCurveOffset: -1
-  maxCurveOffsetY: -1
+  maxCurveOffset: -0.33
+  maxCurveOffsetY: -0.39
   ropeWidth: 0.05
 --- !u!120 &98060236
 LineRenderer:
@@ -5263,7 +5263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 197585400}
   m_Layer: 0
-  m_Name: Empty Rope Holder 2
+  m_Name: Empty Rope Holder (Top)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81671,6 +81671,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683979970}
   m_CullTransparentMesh: 1
+--- !u!1 &1686989291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1686989292}
+  m_Layer: 0
+  m_Name: Empty Rope Holder (Bottom)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1686989292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686989291}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -5.41, z: 3.1600013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1118381206}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1692465689
 GameObject:
   m_ObjectHideFlags: 0
