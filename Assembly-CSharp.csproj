@@ -129,6 +129,7 @@
     <Compile Include="Assets\Scripts\Util\FadeStart.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Scripts\Shared\StressLevel.cs" />
+    <Compile Include="Assets\Scripts\KiteMovementScripts\Rope.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\Scripts\Breathing Algorithm\SavWav.cs" />
     <Compile Include="Assets\Scripts\Shared\Difficulty.cs" />
