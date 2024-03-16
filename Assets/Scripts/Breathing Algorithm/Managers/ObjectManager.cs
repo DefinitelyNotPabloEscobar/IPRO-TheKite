@@ -274,7 +274,7 @@ public class ObjectManager : MonoBehaviour {
                     }
                     else
                     {
-                        feedbackImage.GetComponent<Image>().color = new Color32(236, 224, 0, 255);
+                        //feedbackImage.GetComponent<Image>().color = new Color32(236, 224, 0, 255);
                         inputGraph.userAmplitude = Mathf.Lerp(inputGraph.userAmplitude, 4f, amplitudeChangeSpeed);
 
                     }
@@ -290,7 +290,7 @@ public class ObjectManager : MonoBehaviour {
                     }
                     else
                     {
-                        feedbackImage.GetComponent<Image>().color = new Color32(236, 224, 0, 255);
+                        //feedbackImage.GetComponent<Image>().color = new Color32(236, 224, 0, 255);
                         inputGraph.userAmplitude = Mathf.Lerp(inputGraph.userAmplitude, 0f, amplitudeChangeSpeed);
                     }
                     break;
@@ -309,7 +309,7 @@ public class ObjectManager : MonoBehaviour {
                     }
                     else
                     {
-                        feedbackImage.GetComponent<Image>().color = new Color32(236, 224, 0, 255);
+                        //feedbackImage.GetComponent<Image>().color = new Color32(236, 224, 0, 255);
                         inputGraph.userAmplitude = Mathf.Lerp(inputGraph.userAmplitude, 4f, amplitudeChangeSpeed);
                     }
                     break;
