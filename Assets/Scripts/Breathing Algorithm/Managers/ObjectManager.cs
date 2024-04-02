@@ -200,7 +200,7 @@ public class ObjectManager : MonoBehaviour {
             if (calibrateTime>=0){ // calibrate the mic
                 calibrateTime -= Time.deltaTime;
                 calibrateMic = true;
-                micCalText.text = "Folow the (inhale-hold-exhale) breathing patterns below to calibrate the microphone";
+                micCalText.text = "Follow the breathing patterns (inhale-hold-exhale) below to calibrate the microphone";
                 MicCheck.UpdateNormalization();
             }else
             {       

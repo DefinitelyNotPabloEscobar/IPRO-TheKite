@@ -12,13 +12,13 @@ public class SubTitleManager : MonoBehaviour
     private string title1Text = "Let's do the rhythm 1-3-4.";
 
     private float title2Time = 11;
-    private string title2Text = "Inhale in 1 second.";
+    private string title2Text = "Inhale in one second.";
 
     private float title3Time = 15;
-    private string title3Text = "Hold, with air, 3 seconds.";
+    private string title3Text = "Hold, with air, three seconds.";
 
     private float title4Time = 20;
-    private string title4Text = "and exhale in 4 seconds.";
+    private string title4Text = "And exhale in four seconds.";
 
     private float title5Time = 25;
     private string title5Text = "";

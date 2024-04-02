@@ -657,7 +657,7 @@ public class KiteMovementScript : MonoBehaviour
 
         if (Error <= 0)
         {
-            gameResultText.text = "Win";
+            gameResultText.text = "Win!";
         }
 
     }
